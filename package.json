@@ -1,5 +1,5 @@
 {
-  "name": "djlui",
+  "name": "@derjacklive/djlui",
   "version": "0.0.1",
   "description": "The Design Component System of DJLs Projects",
   "main": "index.ts",
