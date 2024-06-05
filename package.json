@@ -1,5 +1,21 @@
 {
+  "name": "DJLUI MONOREPO",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "devDependencies": {
-    "turbo": "^2.0.1"
+    "turbo": "latest"
+  },
+  "packageManager": "pnpm@9.1.2",
+  "engines": {
+    "node": ">=18"
   }
 }
