@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@derjacklive/djlui": "*",
-    "next": "14.2.10",
+    "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18"
   },
