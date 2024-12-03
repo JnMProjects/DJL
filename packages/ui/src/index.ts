@@ -1,1 +1,2 @@
-export * as Button from ">/button";
+export { Button } from ">/button";
+console.log("hello");
