@@ -7,7 +7,8 @@
     "strictNullChecks": true,
     "paths": {
       ">/*": ["./src/src/ui/*"],
-      "$/*": ["./src/src/fx/*"]
+      "$/*": ["./src/src/fx/*"],
+      ">util/*": ["./src/src/util/*"],
     }
   }
 }

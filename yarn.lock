@@ -922,6 +922,7 @@ __metadata:
     input-otp: "npm:^1.4.1"
     mini-svg-data-uri: "npm:^1.4.4"
     react: "npm:^18.2.0"
+    react-feather: "npm:^2.0.10"
     tailwindcss: "npm:^3.4.15"
     tsup: "npm:^8.0.2"
     typescript: "npm:5.5.4"
@@ -3562,6 +3563,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cva@npm:1.0.0-beta.2":
+  version: 1.0.0-beta.2
+  resolution: "cva@npm:1.0.0-beta.2"
+  dependencies:
+    clsx: "npm:^2.1.1"
+  peerDependencies:
+    typescript: ">= 4.5.5 < 6"
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 10c3/5f8516e11f6977ec10a84dd24e395775c49b068416bec9f8fa5e82927dcb10824377e514813e1737a40f296d8bd158e5617131e779d932ce1731d38ddf953bf9
+  languageName: node
+  linkType: hard
+
 "damerau-levenshtein@npm:^1.0.8":
   version: 1.0.8
   resolution: "damerau-levenshtein@npm:1.0.8"
@@ -3696,6 +3711,7 @@ __metadata:
   resolution: "design-system@workspace:."
   dependencies:
     "@changesets/cli": "npm:^2.27.1"
+    "@repo/typescript-config": "npm:*"
     prettier: "npm:^3.2.5"
     turbo: "npm:^2.3.3"
   languageName: unknown
@@ -7824,7 +7840,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.8.1":
+"prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -7917,6 +7933,17 @@ __metadata:
   peerDependencies:
     react: ^18.3.1
   checksum: 10c3/8a227e525b28199adfcce45859e24f35060630018022ec594471798b44a64947c056f125f5f0ca700c0c2a3e213e1d6c16587547d767e9d9891e934113dedd51
+  languageName: node
+  linkType: hard
+
+"react-feather@npm:^2.0.10":
+  version: 2.0.10
+  resolution: "react-feather@npm:2.0.10"
+  dependencies:
+    prop-types: "npm:^15.7.2"
+  peerDependencies:
+    react: ">=16.8.6"
+  checksum: 10c3/221a71eafa81584a993eb66fb7cfd5db8952e048c4dfff2bc26a9b7e9a497478afa639d4a3e21029648c0d0f5b0b7e20371d6da77f7c194f98fbe68be39fce62
   languageName: node
   linkType: hard
 
