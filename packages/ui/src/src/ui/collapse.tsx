@@ -1,6 +1,5 @@
 "use client";
 
-// eslint-disable-next-line no-redeclare
 import * as React from "react";
 import * as CollapsePrimitive from "@radix-ui/react-accordion";
 import { ChevronDown } from "react-feather";
@@ -20,12 +19,12 @@ const CollapseGroup: React.FC<CGroupProps> = ({
 }) => {
   return (
     <>
-      {title && <h2>{title}</h2>}
+      {title ? <h2>{title}</h2> : null}
       <CollapsePrimitive.Root
         type="multiple"
         {...props}
-        defaultValue={["default"]}
         className="border-t border-b duration-700 border-secondary"
+        defaultValue={["default"]}
       >
         {children}
       </CollapsePrimitive.Root>
