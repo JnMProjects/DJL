@@ -1,4 +1,3 @@
-/* eslint-disable-next-line no-redeclare */
 import * as React from "react";
 
 import { cn } from ">util/twm";
@@ -9,11 +8,11 @@ const Card = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
   <div
-    ref={ref}
     className={cn(
       "rounded-lg border bg-background/10 duration-700 glassblur text-foreground shadow-sm",
       className
     )}
+    ref={ref}
     {...props}
   />
 ));
@@ -24,8 +23,8 @@ const CardHeader = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
   <div
-    ref={ref}
     className={cn("flex flex-col space-y-1.5 pt-1 px-3 pb-1", className)}
+    ref={ref}
     {...props}
   />
 ));
@@ -34,15 +33,17 @@ CardHeader.displayName = "CardHeader";
 const CardTitle = React.forwardRef<
   HTMLHeadingElement,
   React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => (
+>(({ className, children, ...props }, ref) => (
   <h3
-    ref={ref}
     className={cn(
       "text-2xl px-3 pt-2 font-semibold leading-none tracking-tight",
       className
     )}
+    ref={ref}
     {...props}
-  />
+  >
+    {children}
+  </h3>
 ));
 CardTitle.displayName = "CardTitle";
 
@@ -51,11 +52,11 @@ const CardDescription = React.forwardRef<
   React.HTMLAttributes<HTMLParagraphElement>
 >(({ className, ...props }, ref) => (
   <p
-    ref={ref}
     className={cn(
       "pl-3 text-sm text-muted-foreground duration-700 ",
       className
     )}
+    ref={ref}
     {...props}
   />
 ));
@@ -65,7 +66,7 @@ const CardContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("px-3 pt-2", className)} {...props} />
+  <div className={cn("px-3 pt-2", className)} ref={ref} {...props} />
 ));
 CardContent.displayName = "CardContent";
 
@@ -74,8 +75,8 @@ const CardFooter = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
   <div
-    ref={ref}
     className={cn("flex items-center px-3 py-1", className)}
+    ref={ref}
     {...props}
   />
 ));
@@ -86,8 +87,8 @@ const CardDivider = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
   <div
-    ref={ref}
     className={cn("border-t border-ring duration-700 ", className)}
+    ref={ref}
     {...props}
   />
 ));
@@ -120,14 +121,16 @@ const Preset: React.FC<
     <Card>
       {showheader && (
         <CardHeader>
-          {Title && <CardTitle>{Title}</CardTitle>}
-          {Description && <CardDescription>{Description}</CardDescription>}
-          {Header && <div className="px-3">{Header}</div>}
+          {Title ? <CardTitle>{Title}</CardTitle> : null}
+          {Description ? (
+            <CardDescription>{Description}</CardDescription>
+          ) : null}
+          {Header ? <div className="px-3">{Header}</div> : null}
           {!nodivider && <CardDivider />}
         </CardHeader>
       )}
-      {children && <CardContent {...props}>{children}</CardContent>}
-      {Footer && <CardFooter>{Footer}</CardFooter>}
+      {children ? <CardContent {...props}>{children}</CardContent> : null}
+      {Footer ? <CardFooter>{Footer}</CardFooter> : null}
     </Card>
   );
 };

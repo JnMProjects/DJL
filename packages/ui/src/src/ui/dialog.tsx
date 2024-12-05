@@ -1,6 +1,5 @@
 "use client";
 
-// eslint-disable-next-line no-redeclare
 import * as React from "react";
 import * as RawAlertRawDialogPrimitive from "@radix-ui/react-alert-dialog";
 import * as RawDialogPrimitive from "@radix-ui/react-dialog";
@@ -8,7 +7,7 @@ import { X } from "react-feather";
 
 import { cn } from ">util/twm";
 // need to add smth because vercel git integration is not working
-import { Button } from ">ui/button";
+import { Button } from ">/button";
 
 // ALERT DIALOG
 
@@ -26,10 +25,10 @@ const RawAlertRawDialogTrigger = React.forwardRef<
   }
 >(({ className, triggervariant, children, ...props }, ref) => (
   <RawAlertRawDialogPrimitive.Trigger
-    className={cn("", className)}
-    {...props}
-    ref={ref}
     asChild
+    className={cn("", className)}
+    ref={ref}
+    {...props}
   >
     <Button variant={triggervariant}>{children}</Button>
   </RawAlertRawDialogPrimitive.Trigger>
@@ -48,8 +47,8 @@ const RawAlertRawDialogOverlay = React.forwardRef<
       "fixed inset-0 z-50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className
     )}
-    {...props}
     ref={ref}
+    {...props}
   />
 ));
 RawAlertRawDialogOverlay.displayName =
@@ -62,11 +61,11 @@ const RawAlertRawDialogContent = React.forwardRef<
   <RawAlertRawDialogPortal>
     <RawAlertRawDialogOverlay className=" bg-background/20 softblur" />
     <RawAlertRawDialogPrimitive.Content
-      ref={ref}
       className={cn(
         "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border  border-ring bg-background/10 glassblur text-foreground p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
         className
       )}
+      ref={ref}
       {...props}
     />
   </RawAlertRawDialogPortal>
@@ -107,8 +106,8 @@ const RawAlertRawDialogTitle = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof RawAlertRawDialogPrimitive.Title>
 >(({ className, ...props }, ref) => (
   <RawAlertRawDialogPrimitive.Title
-    ref={ref}
     className={cn("text-lg font-semibold", className)}
+    ref={ref}
     {...props}
   />
 ));
@@ -120,8 +119,8 @@ const RawAlertRawDialogDescription = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof RawAlertRawDialogPrimitive.Description>
 >(({ className, ...props }, ref) => (
   <RawAlertRawDialogPrimitive.Description
-    ref={ref}
     className={cn("text-sm text-muted-foreground", className)}
+    ref={ref}
     {...props}
   />
 ));
@@ -140,8 +139,8 @@ const RawModalDialogAction = React.forwardRef<
   }
 >(({ className, children, actionvariant, ...props }, ref) => (
   <RawAlertRawDialogPrimitive.Action
-    ref={ref}
     className={cn("", className)}
+    ref={ref}
     {...props}
     asChild
   >
@@ -163,8 +162,8 @@ const RawAlertRawDialogCancel = React.forwardRef<
   }
 >(({ className, closevariant, children, ...props }, ref) => (
   <RawAlertRawDialogPrimitive.Cancel
-    ref={ref}
     className={cn("mt-2 sm:mt-0", className)}
+    ref={ref}
     {...props}
     asChild
   >
@@ -217,10 +216,13 @@ const ModalDialog: React.FC<
   return (
     <>
       <RawAlertRawDialogTrigger
-        triggervariant={triggervariant}
         onClick={onOpen}
+        triggervariant={triggervariant}
       >
-        {trigger !== "hide*" ? (trigger ? trigger : "Open Dialog") : ""}
+        {(() => {
+          if (trigger === "hide*") return "";
+          return trigger ? trigger : "Open Dialog";
+        })()}
       </RawAlertRawDialogTrigger>
       <RawAlertRawDialogContent>
         <RawAlertRawDialogHeader>
@@ -238,13 +240,16 @@ const ModalDialog: React.FC<
             closevariant={closevariant}
             onClick={onClose}
           >
-            {close !== "hide*" ? (close ? close : "Cancel") : ""}
+            {(() => {
+              if (close === "hide*") return "";
+              return close ? close : "Cancel";
+            })()}
           </RawAlertRawDialogCancel>
           <RawModalDialogAction
             actionvariant={actionvariant}
             onClick={onAction}
           >
-            {action !== "hide*" ? (action ? action : "Proceed") : ""}
+            {action !== "hide*" ? action || "Proceed" : ""}
           </RawModalDialogAction>
         </RawAlertRawDialogFooter>
       </RawAlertRawDialogContent>
@@ -268,8 +273,8 @@ const RawDialogTrigger = React.forwardRef<
   }
 >(({ className, triggervariant = "default", children, ...props }, ref) => (
   <RawDialogPrimitive.Trigger
-    ref={ref}
     className={cn("mt-2 sm:mt-0", className)}
+    ref={ref}
     {...props}
   >
     <Button variant={triggervariant}>{children}</Button>
@@ -291,11 +296,11 @@ const RawDialogClose = React.forwardRef<
   }
 >(({ className, closevariant = "secondary", children, ...props }, ref) => (
   <RawDialogPrimitive.Close
-    ref={ref}
     className={cn("mt-2 sm:mt-0", className)}
+    ref={ref}
     {...props}
   >
-    {children && <Button variant={closevariant}>{children}</Button>}
+    {children ? <Button variant={closevariant}>{children}</Button> : null}
   </RawDialogPrimitive.Close>
 ));
 RawDialogClose.displayName = RawDialogPrimitive.Close.displayName;
@@ -305,11 +310,11 @@ const RawDialogOverlay = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof RawDialogPrimitive.Overlay>
 >(({ className, ...props }, ref) => (
   <RawDialogPrimitive.Overlay
-    ref={ref}
     className={cn(
       "fixed inset-0 z-50 tinyblur bg-background/20 duration-700 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className
     )}
+    ref={ref}
     {...props}
   />
 ));
@@ -322,11 +327,11 @@ const RawDialogContent = React.forwardRef<
   <RawDialogPortal>
     <RawDialogOverlay />
     <RawDialogPrimitive.Content
-      ref={ref}
       className={cn(
         "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-ring  bg-background/10 glassblur text-l-txt dark:text-d-txt dar p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
         className
       )}
+      ref={ref}
       {...props}
     >
       {children}
@@ -372,11 +377,11 @@ const RawDialogTitle = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof RawDialogPrimitive.Title>
 >(({ className, ...props }, ref) => (
   <RawDialogPrimitive.Title
-    ref={ref}
     className={cn(
       "text-lg font-semibold leading-none tracking-tight",
       className
     )}
+    ref={ref}
     {...props}
   />
 ));
@@ -387,8 +392,8 @@ const RawDialogDescription = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof RawDialogPrimitive.Description>
 >(({ className, ...props }, ref) => (
   <RawDialogPrimitive.Description
-    ref={ref}
     className={cn("text-sm text-foreground duration-700", className)}
+    ref={ref}
     {...props}
   />
 ));
@@ -415,17 +420,16 @@ const DialogWrapper: React.FC<
         {children}
       </RawDialog>
     );
-  } else {
-    return (
-      <RawDialog>
-        {props.before}
-        <RawDialogTrigger triggervariant={triggervariant}>
-          {trigger}
-        </RawDialogTrigger>
-        {children}
-      </RawDialog>
-    );
   }
+  return (
+    <RawDialog>
+      {props.before}
+      <RawDialogTrigger triggervariant={triggervariant}>
+        {trigger}
+      </RawDialogTrigger>
+      {children}
+    </RawDialog>
+  );
 };
 
 interface DialogProps {
@@ -461,21 +465,20 @@ const Dialog: React.FC<DialogProps & React.HTMLAttributes<HTMLElement>> = ({
         </RawDialogFooter>
       </RawDialogContent>
     );
-  } else {
-    return (
-      <RawDialogContent>
-        <RawDialogHeader>
-          <RawDialogTitle>{title}</RawDialogTitle>
-          <RawDialogDescription>{description}</RawDialogDescription>
-        </RawDialogHeader>
-        {children}
-        <RawDialogFooter>
-          {footer}
-          <RawDialogClose closevariant={closevariant}>{close}</RawDialogClose>
-        </RawDialogFooter>
-      </RawDialogContent>
-    );
   }
+  return (
+    <RawDialogContent>
+      <RawDialogHeader>
+        <RawDialogTitle>{title}</RawDialogTitle>
+        <RawDialogDescription>{description}</RawDialogDescription>
+      </RawDialogHeader>
+      {children}
+      <RawDialogFooter>
+        {footer}
+        <RawDialogClose closevariant={closevariant}>{close}</RawDialogClose>
+      </RawDialogFooter>
+    </RawDialogContent>
+  );
 };
 
 export { ModalDialog, ModalDialogWrapper, Dialog, DialogWrapper };

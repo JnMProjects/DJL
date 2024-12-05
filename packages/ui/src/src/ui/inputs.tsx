@@ -1,34 +1,31 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-empty-object-type */
-/* eslint-disable no-unused-vars */
-// eslint-disable-next-line no-redeclare
 import * as React from "react";
 
 import { cn } from ">util/twm";
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {}
+import { forwardRef, useState } from "react";
+import { Eye, EyeOff, Circle } from "react-feather";
+import { Button } from "./button";
+
+import { OTPInput, OTPInputContext } from "input-otp";
+
+export type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, ...props }, ref) => {
     return (
       <input
-        type={type}
         className={cn(
           "flex text-foreground h-10 w-full duration-700 rounded-md border border-ring bg-background px-3 py-2 text-sm ring-offset-d-bg dark:ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
           className
         )}
         ref={ref}
+        type={type}
         {...props}
       />
     );
   }
 );
 Input.displayName = "Input";
-
-import { forwardRef, useState } from "react";
-import { Eye, EyeOff } from "react-feather";
-import { Button } from "./button";
 
 // need to add smth because vercel git integration is not working
 const PasswordInput = forwardRef<HTMLInputElement, InputProps>(
@@ -39,23 +36,25 @@ const PasswordInput = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="relative">
         <Input
-          type={showPassword ? "text" : "password"}
           className={cn("hide-password-toggle pr-10", className)}
           ref={ref}
+          type={showPassword ? "text" : "password"}
           {...props}
         />
         <Button
+          className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+          disabled={disabled}
+          onClick={() => {
+            setShowPassword(!showPassword);
+          }}
+          size="sm"
           type="button"
           variant="ghost"
-          size="sm"
-          className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
-          onClick={() => setShowPassword(!showPassword)}
-          disabled={disabled}
         >
           {showPassword && !disabled ? (
-            <Eye className="h-4 w-4" aria-hidden="true" />
+            <Eye aria-hidden="true" className="h-4 w-4" />
           ) : (
-            <EyeOff className="h-4 w-4" aria-hidden="true" />
+            <EyeOff aria-hidden="true" className="h-4 w-4" />
           )}
           <span className="sr-only">
             {showPassword ? "Hide password" : "Show password"}
@@ -77,20 +76,17 @@ const PasswordInput = forwardRef<HTMLInputElement, InputProps>(
 );
 PasswordInput.displayName = "PasswordInput";
 
-import { OTPInput, OTPInputContext } from "input-otp";
-import { Circle } from "react-feather";
-
 const InputOTP = React.forwardRef<
   React.ElementRef<typeof OTPInput>,
   React.ComponentPropsWithoutRef<typeof OTPInput>
 >(({ className, containerClassName, children, ...props }, ref) => (
   <OTPInput
-    ref={ref}
+    className={cn("disabled:cursor-not-allowed", className)}
     containerClassName={cn(
       "flex items-center gap-2 has-[:disabled]:opacity-50",
       containerClassName
     )}
-    className={cn("disabled:cursor-not-allowed", className)}
+    ref={ref}
     render={() => <>{children}</>}
     {...props}
   />
@@ -101,7 +97,7 @@ const InputOTPGroup = React.forwardRef<
   React.ElementRef<"div">,
   React.ComponentPropsWithoutRef<"div">
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("flex items-center", className)} {...props} />
+  <div className={cn("flex items-center", className)} ref={ref} {...props} />
 ));
 InputOTPGroup.displayName = "InputOTPGroup";
 
@@ -110,17 +106,16 @@ InputOTPGroup.displayName = "InputOTPGroup";
  * This component is used to display a single character of the OTP and
  * handle its appearance based on its state.
  *
- * @component
  * @example
  * ```tsx
  * <InputOTPSlot index={0} />
  * ```
  *
- * @param {number} index - The index of the slot.
- * @param {string} className - Additional CSS class names for the slot.
- * @param {React.ComponentPropsWithoutRef<"div">} props - Additional props for the slot.
- * @param {React.ElementRef<"div">} ref - The ref to attach to the slot.
- * @returns {JSX.Element} The rendered input slot component.
+ * @param index - The index of the slot.
+ * @param className - Additional CSS class names for the slot.
+ * @param props - Additional props for the slot.
+ * @param ref - The ref to attach to the slot.
+ * @returns The rendered input slot component.
  */
 const InputOTPSlot = React.forwardRef<
   React.ElementRef<"div">,
@@ -130,28 +125,28 @@ const InputOTPSlot = React.forwardRef<
     isActive?: boolean;
     hasFakeCaret?: boolean;
   }
->(({ index, className, ...props }, ref) => {
-  const inputOTPContext = React.useContext(OTPInputContext);
+>(({ className, ...props }, ref) => {
+  const _inputOTPContext = React.useContext(OTPInputContext);
   const char = props.char;
   const isActive = props.isActive;
   const hasFakeCaret = props.hasFakeCaret;
 
   return (
     <div
-      ref={ref}
       className={cn(
         "relative flex h-10 w-10 items-center justify-center border-y border-r border-ring duration-700 text-sm transition-all first:rounded-l-md first:border-l last:rounded-r-md",
         isActive && "z-10 ring-2 ring-ring ring-offset-background",
         className
       )}
+      ref={ref}
       {...props}
     >
       {char}
-      {hasFakeCaret && (
+      {hasFakeCaret ? (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
           <div className="h-4 w-px animate-caret-blink bg-foreground duration-1000" />
         </div>
-      )}
+      ) : null}
     </div>
   );
 });
@@ -167,8 +162,7 @@ const InputOTPSeparator = React.forwardRef<
 ));
 InputOTPSeparator.displayName = "InputOTPSeparator";
 
-export interface TextareaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
+export type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, ...props }, ref) => {

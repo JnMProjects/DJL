@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "strictNullChecks": true
+    },
+    "references": [
+        {
+            "path": "./packages/djl-ui/tsconfig.json"
+        }
+    ]
+}

@@ -54,11 +54,11 @@ const CollapseHeadRaw = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <CollapsePrimitive.Header className="flex text-l-txt">
     <CollapsePrimitive.Trigger
-      ref={ref}
       className={cn(
         "flex flex-1 items-center justify-between text-foreground duration-700 font py-4 font-medium transition-all [&[data-state=open]>svg]:rotate-180",
         className
       )}
+      ref={ref}
       {...props}
     >
       {children}
@@ -73,15 +73,15 @@ const CollapseContentRaw = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof CollapsePrimitive.Content>
 >(({ className, children, ...props }, ref) => (
   <CollapsePrimitive.Content
-    ref={ref}
     className="overflow-hidden text-sm transition-all data-[state=closed]:animate-collapse-up data-[state=open]:animate-collapse-down"
+    ref={ref}
     {...props}
   >
     <div className={cn("pb-4 pt-0", className)}>{children}</div>
   </CollapsePrimitive.Content>
 ));
 
-CollapseContentRaw.displayName = CollapsePrimitive.Content.displayName;
+CollapseContentRaw.displayName = "CollapseContentRaw";
 
 interface CollapseProps {
   title?: string;
@@ -120,21 +120,20 @@ const Collapse: React.FC<CollapseProps> = ({
         </CollapseContentRaw>
       </CollapseItem>
     );
-  } else {
-    return (
-      <CollapseItem className={cn("border-b border-t")} value={"default"}>
-        <CollapseHeadRaw>{trigger}</CollapseHeadRaw>
-        <CollapseContentRaw>
-          <h1 className=" font-bold border-collapse top-2 text-muted-foreground">
-            {title}
-          </h1>
-          <div className={cn("text-foreground", className)} {...props}>
-            {children}
-          </div>
-        </CollapseContentRaw>
-      </CollapseItem>
-    );
   }
+  return (
+    <CollapseItem className={cn("border-b border-t")} value="default">
+      <CollapseHeadRaw>{trigger}</CollapseHeadRaw>
+      <CollapseContentRaw>
+        <h1 className=" font-bold border-collapse top-2 text-muted-foreground">
+          {title}
+        </h1>
+        <div className={cn("text-foreground", className)} {...props}>
+          {children}
+        </div>
+      </CollapseContentRaw>
+    </CollapseItem>
+  );
 };
 
 export { CollapseGroup as Group, Collapse as Object };
