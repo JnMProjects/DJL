@@ -910,6 +910,7 @@ __metadata:
     "@radix-ui/react-aspect-ratio": "npm:^1.1.0"
     "@radix-ui/react-checkbox": "npm:^1.1.2"
     "@radix-ui/react-dialog": "npm:^1.1.2"
+    "@radix-ui/react-label": "npm:^2.1.0"
     "@radix-ui/react-slot": "npm:^1.1.0"
     "@repo/eslint-config": "npm:*"
     "@repo/typescript-config": "npm:*"
@@ -1504,6 +1505,25 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 10c3/dd38867b54d69258a52d0b774bad8f9155d3e6ee35c8d5869f727c4a7e4da7df981a8b724657add4bf847d54114c272ffc6b8242d1d028c3de8cd907b512b1eb
+  languageName: node
+  linkType: hard
+
+"@radix-ui/react-label@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@radix-ui/react-label@npm:2.1.0"
+  dependencies:
+    "@radix-ui/react-primitive": "npm:2.0.0"
+  peerDependencies:
+    "@types/react": "*"
+    "@types/react-dom": "*"
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: 10c3/6f249ed500deee4294290b0173b20e39fa9a5019ff803bf08adc4e1b94d8f4ef13cfe465ce40fc6656f13cba8719a96f2aee724031e444e2447d67a16e5a28f4
   languageName: node
   linkType: hard
 
