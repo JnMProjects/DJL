@@ -19,17 +19,15 @@ export function LinkTip({
   return (
     <Tooltip
       tips={
-        <>
-          <p
+        <p
             className="text-md sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl omnes"
             lang={lang}
           >
             {tooltipText}
           </p>
-        </>
       }
     >
-      <Link lang={lang} href={href} className={className} prefetch>
+      <Link className={className} href={href} lang={lang} prefetch>
         {children}
       </Link>
     </Tooltip>

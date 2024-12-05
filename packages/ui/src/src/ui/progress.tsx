@@ -1,6 +1,6 @@
 "use client";
 
-// eslint-disable-next-line no-redeclare
+ 
 import * as React from "react";
 import * as ProgressPrimitive from "@radix-ui/react-progress";
 
@@ -12,7 +12,7 @@ interface ProgressProps
     React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root>,
     "color"
   > {
-  color?: { [key: number]: string };
+  color?: Record<number, string>;
   bg?: string;
   value: number; // Stelle sicher, dass value ein number ist
 }
@@ -39,12 +39,12 @@ const Progress = React.forwardRef<
 
   return (
     <ProgressPrimitive.Root
-      ref={ref}
       className={cn(
         "relative h-4 w-full overflow-hidden rounded-full ",
         bg,
         className
       )}
+      ref={ref}
       {...props}
     >
       <ProgressPrimitive.Indicator

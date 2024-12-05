@@ -1,7 +1,7 @@
 "use client";
 
 // need to add smth because vercel git integration is not working
-// eslint-disable-next-line no-redeclare
+ 
 import * as React from "react";
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 
@@ -12,8 +12,8 @@ const ScrollArea = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root>
 >(({ className, children, ...props }, ref) => (
   <ScrollAreaPrimitive.Root
-    ref={ref}
     className={cn("relative overflow-hidden", className)}
+    ref={ref}
     {...props}
   >
     <ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit]">
@@ -30,8 +30,6 @@ const ScrollBar = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>
 >(({ className, orientation = "vertical", ...props }, ref) => (
   <ScrollAreaPrimitive.ScrollAreaScrollbar
-    ref={ref}
-    orientation={orientation}
     className={cn(
       "flex touch-none select-none transition-colors",
       orientation === "vertical" &&
@@ -40,6 +38,8 @@ const ScrollBar = React.forwardRef<
         "h-2.5 flex-col border-t border-t-transparent p-[1px]",
       className
     )}
+    orientation={orientation}
+    ref={ref}
     {...props}
   >
     <ScrollAreaPrimitive.ScrollAreaThumb className="relative flex-1 rounded-full bg-secondary duration-700" />

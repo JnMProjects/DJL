@@ -207,430 +207,430 @@ const Loader: React.FC<loaderProps> = ({
     case "ring":
       return (
         <l-ring
+          bg-opacity={bgOpacity}
+          color={color}
           size={(size = 50)}
           speed={(speed = 2)}
           stroke={(stroke = 6)}
-          bg-opacity={bgOpacity}
-          color={color}
           {...props}
         />
       );
     case "ring2":
       return (
         <l-ring-2
+          bg-opacity={(bgOpacity = 0.1)}
+          color={color}
           size={(size = 50)}
           speed={(speed = 0.8)}
           stroke={(stroke = 6)}
           stroke-length={(strokeLength = 0.25)}
-          bg-opacity={(bgOpacity = 0.1)}
-          color={color}
           {...props}
         />
       );
     case "tailSpin":
       return (
         <l-tailspin
+          color={color}
           size={(size = 50)}
           speed={(speed = 0.9)}
           stroke={(stroke = 6)}
-          color={color}
           {...props}
         />
       );
     case "lineSpinner":
       return (
         <l-line-spinner
+          color={color}
           size={(size = 50)}
           speed={(speed = 1)}
           stroke={(stroke = 3.5)}
-          color={color}
           {...props}
         />
       );
     case "squircle":
       return (
         <l-squircle
+          bg-opacity={(bgOpacity = 0.1)}
+          color={color}
           size={(size = 50)}
           speed={(speed = 0.9)}
           stroke={(stroke = 6)}
           stroke-length={(strokeLength = 0.15)}
-          bg-opacity={(bgOpacity = 0.1)}
-          color={color}
           {...props}
         />
       );
     case "square":
       return (
         <l-square
+          bg-opacity={(bgOpacity = 0.1)}
+          color={color}
           size={(size = 45)}
           speed={(speed = 1.2)}
           stroke={(stroke = 6)}
           stroke-length={(strokeLength = 0.25)}
-          bg-opacity={(bgOpacity = 0.1)}
-          color={color}
           {...props}
         />
       );
     case "reuleaux":
       return (
         <l-reuleaux
+          bg-opacity={(bgOpacity = 0.1)}
+          color={color}
           size={(size = 50)}
           speed={(speed = 1.2)}
           stroke={(stroke = 6)}
           stroke-length={(strokeLength = 0.15)}
-          bg-opacity={(bgOpacity = 0.1)}
-          color={color}
           {...props}
         />
       );
     case "tailChase":
       return (
         <l-tail-chase
+          color={color}
           size={(size = 50)}
           speed={(speed = 1.8)}
-          color={color}
           {...props}
         />
       );
     case "dotSpinner":
       return (
         <l-dot-spinner
+          color={color}
           size={(size = 50)}
           speed={(speed = 0.9)}
-          color={color}
           {...props}
         />
       );
     case "spiral":
       return (
         <l-spiral
+          color={color}
           size={(size = 50)}
           speed={(speed = 0.9)}
-          color={color}
           {...props}
         />
       );
     case "bouncy":
       return (
         <l-bouncy
+          color={color}
           size={(size = 55)}
           speed={(speed = 1.8)}
-          color={color}
           {...props}
         />
       );
     case "treadmill":
       return (
         <l-treadmill
+          color={color}
           size={(size = 85)}
           speed={(speed = 1.3)}
-          color={color}
           {...props}
         />
       );
     case "bouncyArc":
       return (
         <l-bouncy-arc
+          color={color}
           size={(size = 85)}
           speed={(speed = 1.6)}
-          color={color}
           {...props}
         />
       );
     case "waveform":
       return (
         <l-waveform
+          color={color}
           size={(size = 45)}
           speed={(speed = 1)}
           stroke={(stroke = 4)}
-          color={color}
           {...props}
         />
       );
     case "hatch":
       return (
         <l-hatch
+          color={color}
           size={(size = 35)}
           speed={(speed = 3.5)}
           stroke={(stroke = 4.5)}
-          color={color}
           {...props}
         />
       );
     case "hourglass":
       return (
         <l-hourglass
-          size={(size = 50)}
-          speed={(speed = 1.8)}
           bg-opacity={(bgOpacity = 0.1)}
           color={color}
+          size={(size = 50)}
+          speed={(speed = 1.8)}
           {...props}
         />
       );
     case "zoomies":
       return (
         <l-zoomies
+          bg-opacity={(bgOpacity = 0.1)}
+          color={color}
           size={(size = 100)}
           speed={(speed = 1.4)}
           stroke={(stroke = 6)}
-          bg-opacity={(bgOpacity = 0.1)}
-          color={color}
           {...props}
         />
       );
     case "lineWobble":
       return (
         <l-line-wobble
+          bg-opacity={(bgOpacity = 0.1)}
+          color={color}
           size={(size = 100)}
           speed={(speed = 1.8)}
           stroke={(stroke = 6)}
-          bg-opacity={(bgOpacity = 0.1)}
-          color={color}
           {...props}
         />
       );
     case "infinity":
       return (
         <l-infinity
+          bg-opacity={(bgOpacity = 0.1)}
+          color={color}
           size={(size = 65)}
           speed={(speed = 1.3)}
           stroke={(stroke = 5)}
           stroke-length={(strokeLength = 0.15)}
-          bg-opacity={(bgOpacity = 0.1)}
-          color={color}
           {...props}
         />
       );
     case "trefoil":
-      // eslint-disable-next-line no-unused-vars
+       
       return (
         <l-trefoil
+          bg-opacity={(bgOpacity = 0.1)}
+          color={color}
           size={(size = 50)}
           speed={(speed = 1.4)}
           stroke={(stroke = 5)}
           stroke-length={(strokeLength = 0.15)}
-          bg-opacity={(bgOpacity = 0.1)}
-          color={color}
           {...props}
         />
       );
     case "cardio":
       return (
         <l-cardio
+          color={color}
           size={(size = 60)}
           speed={(speed = 2)}
           stroke={(stroke = 5)}
-          color={color}
           {...props}
         />
       );
     case "helix":
       return (
         <l-helix
+          color={color}
           size={(size = 60)}
           speed={(speed = 2.5)}
-          color={color}
           {...props}
         />
       );
     case "grid":
       return (
         <l-grid
+          color={color}
           size={(size = 75)}
           speed={(speed = 1.5)}
-          color={color}
           {...props}
         />
       );
     case "quantum":
       return (
         <l-quantum
+          color={color}
           size={(size = 60)}
           speed={(speed = 1.8)}
-          color={color}
           {...props}
         />
       );
     case "wobble":
       return (
         <l-wobble
+          color={color}
           size={(size = 60)}
           speed={(speed = 0.9)}
-          color={color}
           {...props}
         />
       );
     case "orbit":
       return (
         <l-orbit
+          color={color}
           size={(size = 45)}
           speed={(speed = 1.5)}
-          color={color}
           {...props}
         />
       );
     case "chaoticOrbit":
       return (
         <l-chaotic-orbit
+          color={color}
           size={(size = 45)}
           speed={(speed = 1.5)}
-          color={color}
           {...props}
         />
       );
     case "superballs":
       return (
         <l-superballs
+          color={color}
           size={(size = 50)}
           speed={(speed = 1.4)}
-          color={color}
           {...props}
         />
       );
     case "trio":
       return (
         <l-trio
+          color={color}
           size={(size = 50)}
           speed={(speed = 1.3)}
-          color={color}
           {...props}
         />
       );
     case "momentum":
       return (
         <l-momentum
+          color={color}
           size={(size = 50)}
           speed={(speed = 1.1)}
-          color={color}
           {...props}
         />
       );
     case "dotWave":
       return (
         <l-dot-wave
+          color={color}
           size={(size = 65)}
           speed={(speed = 1)}
-          color={color}
           {...props}
         />
       );
     case "leapfrog":
       return (
         <l-leapfrog
+          color={color}
           size={(size = 50)}
           speed={(speed = 2.5)}
-          color={color}
           {...props}
         />
       );
     case "newton": // 's cradle
       return (
         <l-newtons-cradle
+          color={color}
           size={(size = 100)}
           speed={(speed = 1.4)}
-          color={color}
           {...props}
         />
       );
     case "dotStream":
       return (
         <l-dot-stream
+          color={color}
           size={(size = 75)}
           speed={(speed = 2.5)}
-          color={color}
           {...props}
         />
       );
     case "dotPulse":
       return (
         <l-dot-pulse
+          color={color}
           size={(size = 50)}
           speed={(speed = 1.3)}
-          color={color}
           {...props}
         />
       );
     case "metronome":
       return (
         <l-metronome
+          color={color}
           size={(size = 50)}
           speed={(speed = 1.6)}
-          color={color}
           {...props}
         />
       );
     case "jelly":
       return (
         <l-jelly
+          color={color}
           size={(size = 50)}
           speed={(speed = 0.9)}
-          color={color}
           {...props}
         />
       );
     case "jellyTriangle":
       return (
         <l-jelly-triangle
+          color={color}
           size={(size = 40)}
           speed={(speed = 1.8)}
-          color={color}
           {...props}
         />
       );
     case "mirage":
       return (
         <l-mirage
+          color={color}
           size={(size = 75)}
           speed={(speed = 2.5)}
-          color={color}
           {...props}
         />
       );
     case "ping":
       return (
         <l-ping
+          color={color}
           size={(size = 60)}
           speed={(speed = 2)}
-          color={color}
           {...props}
         />
       );
     case "pulsar":
       return (
         <l-pulsar
+          color={color}
           size={(size = 50)}
           speed={(speed = 1.8)}
-          color={color}
           {...props}
         />
       );
     case "ripples":
       return (
         <l-ripples
+          color={color}
           size={(size = 60)}
           speed={(speed = 2)}
-          color={color}
           {...props}
         />
       );
     case "miyagi":
       return (
         <l-miyagi
+          color={color}
           size={(size = 50)}
           speed={(speed = 0.9)}
           stroke={(stroke = 5)}
-          color={color}
           {...props}
         />
       );
     case "pinwheel":
-      // eslint-disable-next-line no-unused-vars
+       
       return (
         <l-pinwheel
+          color={color}
           size={(size = 50)}
           speed={(speed = 0.9)}
           stroke={(stroke = 5)}
-          color={color}
           {...props}
         />
       );

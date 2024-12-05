@@ -1,7 +1,7 @@
 "use client";
 
 // need to add smth because vercel git integration is not working
-// eslint-disable-next-line no-redeclare
+ 
 import * as React from "react";
 import * as TogglePrimitive from "@radix-ui/react-toggle";
 import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group";
@@ -35,8 +35,8 @@ const Toggle = React.forwardRef<
     VariantProps<typeof toggleVariants>
 >(({ className, variant, size, ...props }, ref) => (
   <TogglePrimitive.Root
-    ref={ref}
     className={cn(toggleVariants({ variant, size, className }))}
+    ref={ref}
     {...props}
   />
 ));
@@ -56,8 +56,8 @@ const ToggleGroup = React.forwardRef<
     VariantProps<typeof toggleVariants>
 >(({ className, variant, size, children, ...props }, ref) => (
   <ToggleGroupPrimitive.Root
-    ref={ref}
     className={cn("flex items-center justify-center gap-1", className)}
+    ref={ref}
     {...props}
   >
     <ToggleGroupContext.Provider value={{ variant, size }}>
@@ -75,14 +75,14 @@ const ToggleGroupItem = React.forwardRef<
 >(({ className, children, variant, size, ...props }, ref) => {
   return (
     <ToggleGroupPrimitive.Item
-      ref={ref}
       className={cn(
         toggleVariants({
-          variant: variant,
-          size: size,
+          variant,
+          size,
         }),
         className
       )}
+      ref={ref}
       {...props}
     >
       {children}

@@ -1,6 +1,6 @@
 "use client";
 
-// eslint-disable-next-line no-redeclare
+ 
 // need to add smth because vercel git integration is not working
 import * as React from "react";
 import * as LabelPrimitive from "@radix-ui/react-label";
@@ -19,8 +19,8 @@ const Label = React.forwardRef<
     VariantProps<typeof labelVariants>
 >(({ className, ...props }, ref) => (
   <LabelPrimitive.Root
-    ref={ref}
     className={cn(DefaultText, labelVariants(), className)}
+    ref={ref}
     {...props}
   />
 ));

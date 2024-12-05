@@ -1,6 +1,6 @@
 "use client";
 
-// eslint-disable-next-line no-redeclare
+ 
 import * as React from "react";
 import * as SliderPrimitive from "@radix-ui/react-slider";
 
@@ -12,11 +12,11 @@ const Slider = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
 >(({ className, ...props }, ref) => (
   <SliderPrimitive.Root
-    ref={ref}
     className={cn(
       "relative flex w-full touch-none select-none items-center",
       className
     )}
+    ref={ref}
     {...props}
   >
     <SliderPrimitive.Track className="relative h-2 w-full grow overflow-hidden rounded-full duration-700 bg-secondary opacity-50 glassblur">
@@ -64,21 +64,21 @@ function GaugeCircle({
       }
     >
       <svg
-        fill="none"
         className="h-full w-full"
+        fill="none"
         strokeWidth="2"
         viewBox="0 0 100 100"
       >
         {currentPercent <= 90 && currentPercent >= 0 && (
           <circle
+            className="opacity-100 stroke stroke-secondary/70 duration-700"
             cx="50"
             cy="50"
             r="45"
-            strokeWidth="10"
             strokeDashoffset="0"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="opacity-100 stroke stroke-secondary/70 duration-700"
+            strokeWidth="10"
             style={
               {
                 stroke: "",
@@ -96,14 +96,14 @@ function GaugeCircle({
           />
         )}
         <circle
+          className="opacity-100 stroke stroke-primary duration-700"
           cx="50"
           cy="50"
           r="45"
-          strokeWidth="10"
           strokeDashoffset="0"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="opacity-100 stroke stroke-primary duration-700"
+          strokeWidth="10"
           style={
             {
               stroke: "",
@@ -122,8 +122,8 @@ function GaugeCircle({
         />
       </svg>
       <span
-        data-current-value={currentPercent}
         className="duration-[var(--transition-length)] delay-[var(--delay)] absolute inset-0 m-auto h-fit w-fit ease-linear animate-in fade-in"
+        data-current-value={currentPercent}
       >
         {currentPercent}
       </span>

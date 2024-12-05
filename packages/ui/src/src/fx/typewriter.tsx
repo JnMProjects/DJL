@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
+ 
 "use client";
 // need to add smth because vercel git integration is not working
 
@@ -27,7 +27,7 @@ export function Typewriter({ delay, texts, baseText = "" }: ITypewriterProps) {
       delay,
       duration: 1,
       ease: "easeInOut",
-      onComplete: () => setAnimationComplete(true),
+      onComplete: () => { setAnimationComplete(true); },
     });
     return () => {
       controls.stop && controls.stop();
@@ -37,9 +37,7 @@ export function Typewriter({ delay, texts, baseText = "" }: ITypewriterProps) {
   return (
     <span className={DefaultText}>
       <motion.span>{displayText}</motion.span>
-      {animationComplete && (
-        <RepeatedTextAnimation texts={texts} delay={delay + 1} />
-      )}
+      {animationComplete ? <RepeatedTextAnimation delay={delay + 1} texts={texts} /> : null}
       <BlinkingCursor />
     </span>
   );
@@ -119,9 +117,9 @@ const cursorVariants = {
 function BlinkingCursor() {
   return (
     <motion.div
-      variants={cursorVariants}
       animate="blinking"
       className="inline-block h-5 w-[1px] translate-y-1 bg-accent"
+      variants={cursorVariants}
     />
   );
 }
