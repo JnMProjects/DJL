@@ -1,6 +1,5 @@
 "use client";
 
-// eslint-disable-next-line no-redeclare
 import * as React from "react";
 import * as ProgressPrimitive from "@radix-ui/react-progress";
 
@@ -12,7 +11,7 @@ interface ProgressProps
     React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root>,
     "color"
   > {
-  color?: { [key: number]: string };
+  color?: Record<number, string>;
   bg?: string;
   value: number; // Stelle sicher, dass value ein number ist
 }
@@ -22,15 +21,16 @@ const Progress = React.forwardRef<
   ProgressProps
 >(({ className, value, color, bg = "bg-background", ...props }, ref) => {
   const colorClasses = React.useMemo(() => {
-    if (!color) return "bg-primary duration-700"; // Default
+    if (!color) return "bg-primary duration-700";
 
-    const sortedKeys = Object.keys(color)
-      .map(Number)
+    const colorMap = color as Record<number, string>;
+    const sortedKeys = Object.keys(colorMap)
+      .map((key): number => Number(key))
       .sort((a, b) => a - b);
     for (let i = sortedKeys.length - 1; i >= 0; i--) {
       const threshold = sortedKeys[i];
-      if (threshold !== undefined && value >= threshold) {
-        return color[threshold];
+      if (value >= threshold) {
+        return colorMap[threshold];
       }
     }
 
@@ -39,12 +39,12 @@ const Progress = React.forwardRef<
 
   return (
     <ProgressPrimitive.Root
-      ref={ref}
       className={cn(
         "relative h-4 w-full overflow-hidden rounded-full ",
         bg,
         className
       )}
+      ref={ref}
       {...props}
     >
       <ProgressPrimitive.Indicator

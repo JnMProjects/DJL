@@ -43,44 +43,42 @@ export const TextHoverEffect = ({
 
   return (
     <motion.svg
-      key="hoverfx"
-      ref={svgRef}
-      width="100%"
-      height="100%"
-      viewBox="0 0 300 100"
-      xmlns="http://www.w3.org/2000/svg"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onMouseMove={(e) => setCursor({ x: e.clientX, y: e.clientY })}
-      className={cn("select-none", className)}
-      initial={initial}
       animate={animate}
+      className={cn("select-none", className)}
       exit={exit}
+      height="100%"
+      initial={initial}
+      key="hoverfx"
+      onMouseEnter={() => { setHovered(true); }}
+      onMouseLeave={() => { setHovered(false); }}
+      onMouseMove={(e) => { setCursor({ x: e.clientX, y: e.clientY }); }}
+      ref={svgRef}
+      viewBox="0 0 300 100"
+      width="100%"
+      xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
         <linearGradient
-          id="textGradient"
-          gradientUnits="userSpaceOnUse"
           cx="50%"
           cy="50%"
+          gradientUnits="userSpaceOnUse"
+          id="textGradient"
           r="25%"
         >
-          {hovered && (
-            <>
-              <stop offset="0%" stopColor={"var(--yellow-500)"} />
-              <stop offset="25%" stopColor={"var(--red-500)"} />
-              <stop offset="50%" stopColor={"var(--blue-500)"} />
-              <stop offset="75%" stopColor={"var(--cyan-500)"} />
-              <stop offset="100%" stopColor={"var(--violet-500)"} />
-            </>
-          )}
+          {hovered ? <>
+              <stop offset="0%" stopColor="var(--yellow-500)" />
+              <stop offset="25%" stopColor="var(--red-500)" />
+              <stop offset="50%" stopColor="var(--blue-500)" />
+              <stop offset="75%" stopColor="var(--cyan-500)" />
+              <stop offset="100%" stopColor="var(--violet-500)" />
+            </> : null}
         </linearGradient>
 
         <motion.radialGradient
-          id="revealMask"
-          gradientUnits="userSpaceOnUse"
-          r="20%"
           animate={maskPosition}
+          gradientUnits="userSpaceOnUse"
+          id="revealMask"
+          r="20%"
           transition={{ duration: duration ?? 0, ease: "easeOut" }}
 
           // example for a smoother animation below
@@ -96,65 +94,65 @@ export const TextHoverEffect = ({
         </motion.radialGradient>
         <mask id="textMask">
           <rect
+            fill="url(#revealMask)"
+            height="100%"
+            width="100%"
             x="0"
             y="0"
-            width="100%"
-            height="100%"
-            fill="url(#revealMask)"
           />
         </mask>
       </defs>
       <text
-        key="t1"
-        x="50%"
-        y="50%"
-        textAnchor="middle"
-        dominantBaseline="middle"
-        strokeWidth={thick ?? "0.3"}
         className={cn(
           font ?? "font-[helvetica] font-bold ",
           " stroke-neutral-200 dark:stroke-neutral-800 fill-transparent text-7xl"
         )}
+        dominantBaseline="middle"
+        key="t1"
+        strokeWidth={thick ?? "0.3"}
         style={{ opacity: hovered ? 0.7 : 0 }}
+        textAnchor="middle"
+        x="50%"
+        y="50%"
       >
         {text}
       </text>
       <motion.text
-        key="t2"
-        x="50%"
-        y="50%"
-        textAnchor="middle"
-        dominantBaseline="middle"
-        strokeWidth={thick ?? "0.3"}
-        className={cn(
-          font ?? "font-[helvetica] font-bold ",
-          " font-bold fill-transparent text-7xl   stroke-neutral-200 dark:stroke-neutral-800"
-        )}
-        initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
         animate={{
           strokeDashoffset: 0,
           strokeDasharray: 1000,
         }}
+        className={cn(
+          font ?? "font-[helvetica] font-bold ",
+          " font-bold fill-transparent text-7xl   stroke-neutral-200 dark:stroke-neutral-800"
+        )}
+        dominantBaseline="middle"
+        initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
+        key="t2"
+        strokeWidth={thick ?? "0.3"}
+        textAnchor="middle"
         transition={{
           duration: 4,
           ease: "easeInOut",
         }}
+        x="50%"
+        y="50%"
       >
         {text}
       </motion.text>
       <text
-        key="t3"
-        x="50%"
-        y="50%"
-        textAnchor="middle"
-        dominantBaseline="middle"
-        stroke="url(#textGradient)"
-        strokeWidth={thick ?? "0.3"}
-        mask="url(#textMask)"
         className={cn(
           font ?? "font-[helvetica] font-bold ",
           " font-bold fill-transparent text-7xl  "
         )}
+        dominantBaseline="middle"
+        key="t3"
+        mask="url(#textMask)"
+        stroke="url(#textGradient)"
+        strokeWidth={thick ?? "0.3"}
+        textAnchor="middle"
+        x="50%"
+        y="50%"
       >
         {text}
       </text>

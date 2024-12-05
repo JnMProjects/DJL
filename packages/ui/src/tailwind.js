@@ -133,7 +133,7 @@ export const config = {
   plugins: [
     "tailwindcss-animate",
     addVariablesForColors,
-    function ({ matchUtilities, theme }) {
+    function addGridUtilities({ matchUtilities, theme }) {
       matchUtilities(
         {
           "bg-grid": (value) => ({
@@ -159,8 +159,8 @@ export const config = {
 };
 
 function addVariablesForColors({ addBase, theme }) {
-  let allColors = flattenColorPalette(theme("colors"));
-  let newVars = Object.fromEntries(
+  const allColors = flattenColorPalette(theme("colors"));
+  const newVars = Object.fromEntries(
     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
   );
 

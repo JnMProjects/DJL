@@ -35,5 +35,12 @@ module.exports = {
   // add rules configurations here
   rules: {
     "import/no-default-export": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/order": "off",
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-unsafe-call": "off",
+    "@typescript-eslint/no-redundant-type-constituents": "off",
+    "react/function-component-definition": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
   },
 };

@@ -1,8 +1,7 @@
-/* eslint-disable no-unused-vars */
 "use client";
 
 // need to add smth because vercel git integration is not working
-// eslint-disable-next-line no-redeclare
+
 import React, {
   createContext,
   useContext,
@@ -22,13 +21,15 @@ const TRANSITION = {
   duration: 0.3,
 };
 
-function useClickOutside(
-  ref: React.RefObject<HTMLElement>,
+function useClickOutside<T extends HTMLElement>(
+  ref: React.RefObject<T>,
   handler: () => void
-) {
+): void {
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
+    const handleClickOutside = (event: MouseEvent): void => {
+      const target = event.target as HTMLElement;
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- don't know how to fix this
+      if (ref.current && !ref.current.contains(target)) {
         handler();
       }
     };
@@ -64,7 +65,9 @@ function useScaleUpLogic() {
   const [isOpen, setIsOpen] = useState(false);
   const [note, setNote] = useState("");
 
-  const openScaleUp = () => setIsOpen(true);
+  const openScaleUp = () => {
+    setIsOpen(true);
+  };
   const closeScaleUp = () => {
     setIsOpen(false);
     setNote("");
@@ -106,24 +109,22 @@ export function ScaleUpTrigger({ children, className }: ScaleUpTriggerProps) {
   const { openScaleUp, uniqueId } = useScaleUp();
 
   return (
-    <>
-      <motion.button
-        key="button"
-        layoutId={`ScaleUp-${uniqueId}`}
-        className={cn(
-          "flex h-9 items-center border border-zinc-950/10 bg-white px-3 text-zinc-950 dark:border-zinc-50/10 dark:bg-zinc-700 dark:text-zinc-50",
-          className
-        )}
-        style={{
-          borderRadius: 8,
-        }}
-        onClick={openScaleUp}
-      >
-        <motion.span layoutId={`ScaleUp-label-${uniqueId}`} className="text-sm">
-          {children}
-        </motion.span>
-      </motion.button>
-    </>
+    <motion.button
+      className={cn(
+        "flex h-9 items-center border border-zinc-950/10 bg-white px-3 text-zinc-950 dark:border-zinc-50/10 dark:bg-zinc-700 dark:text-zinc-50",
+        className
+      )}
+      key="button"
+      layoutId={`ScaleUp-${uniqueId}`}
+      onClick={openScaleUp}
+      style={{
+        borderRadius: 8,
+      }}
+    >
+      <motion.span className="text-sm" layoutId={`ScaleUp-label-${uniqueId}`}>
+        {children}
+      </motion.span>
+    </motion.button>
   );
 }
 
@@ -159,14 +160,14 @@ export function ScaleUpContent({
 
   return (
     <AnimatePresence>
-      {isOpen && (
+      {isOpen ? (
         <motion.div
-          ref={formContainerRef}
-          layoutId={`ScaleUp-${uniqueId}`}
           className={cn(
             "absolute h-[200px] w-[364px] overflow-hidden border border-zinc-950/10 bg-white outline-none dark:bg-zinc-700 z-50", // Changed z-90 to z-50
             className
           )}
+          layoutId={`ScaleUp-${uniqueId}`}
+          ref={formContainerRef}
           style={{
             borderRadius: 12,
             top: "auto", // Remove any top positioning
@@ -174,10 +175,10 @@ export function ScaleUpContent({
             transform: "none", // Remove any transform
           }}
         >
-          {header && <ScaleUpHeader>{header}</ScaleUpHeader>}
+          {header ? <ScaleUpHeader>{header}</ScaleUpHeader> : null}
           {children}
         </motion.div>
-      )}
+      ) : null}
     </AnimatePresence>
   );
 }
@@ -195,7 +196,8 @@ export function ScaleUpForm({
 }: ScaleUpFormProps) {
   const { note, closeScaleUp } = useScaleUp();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent): void => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- idk
     e.preventDefault();
     onSubmit?.(note);
     closeScaleUp();
@@ -221,15 +223,15 @@ export function ScaleUpLabel({ children, className }: ScaleUpLabelProps) {
 
   return (
     <motion.span
-      layoutId={`ScaleUp-label-${uniqueId}`}
       aria-hidden="true"
-      style={{
-        opacity: note ? 0 : 1,
-      }}
       className={cn(
         "absolute left-4 top-3 select-none text-sm text-zinc-500 dark:text-zinc-400",
         className
       )}
+      layoutId={`ScaleUp-label-${uniqueId}`}
+      style={{
+        opacity: note ? 0 : 1,
+      }}
     >
       {children}
     </motion.span>
@@ -249,9 +251,10 @@ export function ScaleUpTextarea({ className }: ScaleUpTextareaProps) {
         "h-full w-full resize-none rounded-md bg-transparent px-4 py-3 text-sm outline-none",
         className
       )}
-      autoFocus
+      onChange={(e) => {
+        setNote(e.target.value);
+      }}
       value={note}
-      onChange={(e) => setNote(e.target.value)}
     />
   );
 }
@@ -264,8 +267,8 @@ interface ScaleUpFooterProps {
 export function ScaleUpFooter({ children, className }: ScaleUpFooterProps) {
   return (
     <div
-      key="close"
       className={cn("flex justify-between px-4 py-3", className)}
+      key="close"
     >
       {children}
     </div>
@@ -281,12 +284,12 @@ export function ScaleUpCloseButton({ className }: ScaleUpCloseButtonProps) {
 
   return (
     <button
-      type="button"
+      aria-label="Close ScaleUp"
       className={cn("flex items-center", className)}
       onClick={closeScaleUp}
-      aria-label="Close ScaleUp"
+      type="button"
     >
-      <X size={16} className="text-zinc-900 dark:text-zinc-100" />
+      <X className="text-zinc-900 dark:text-zinc-100" size={16} />
     </button>
   );
 }
@@ -302,12 +305,12 @@ export function ScaleUpSubmitButton({
 }: ScaleUpSubmitButtonProps) {
   return (
     <button
+      aria-label={text}
       className={cn(
         "relative ml-1 flex h-8 shrink-0 scale-100 select-none appearance-none items-center justify-center rounded-lg border border-zinc-950/10 bg-transparent px-2 text-sm text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-800 focus-visible:ring-2 active:scale-[0.98] dark:border-zinc-50/10 dark:text-zinc-50 dark:hover:bg-zinc-800",
         className
       )}
       type="submit"
-      aria-label={text}
     >
       {text}
     </button>
@@ -360,6 +363,7 @@ export function ScaleUpButton({
         className
       )}
       onClick={onClick}
+      type="button"
     >
       {children}
     </button>

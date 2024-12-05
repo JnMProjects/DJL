@@ -45,48 +45,44 @@ export const HoverEffect = ({
     >
       {items.map((item, idx) => (
         <Link
-          href={item?.href || "#"}
-          key={item?.title || generateRandomInt()}
-          id={item?.title}
           className="relative group  block p-2 h-full w-full"
-          onMouseEnter={() => setHoveredIndex(idx)}
-          onMouseLeave={() => setHoveredIndex(null)}
+          href={item.href || "#"}
+          id={item.title}
+          key={item.title || generateRandomInt()}
+          onMouseEnter={() => { setHoveredIndex(idx); }}
+          onMouseLeave={() => { setHoveredIndex(null); }}
         >
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block  rounded-3xl"
-                layoutId="hoverBackground"
-                key={item?.title + "span" || generateRandomInt()}
-                initial={{ opacity: 0 }}
                 animate={{
                   opacity: 1,
                   transition: { duration: 0.15 },
                 }}
+                className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block  rounded-3xl"
                 exit={{
                   opacity: 0,
                   transition: { duration: 0.15, delay: 0.2 },
                 }}
+                initial={{ opacity: 0 }}
+                key={`${item.title  }span` || generateRandomInt()}
+                layoutId="hoverBackground"
               />
             )}
           </AnimatePresence>
           <Card
-            bg={item?.bg}
-            key={"card" + item?.title || generateRandomInt()}
-            forewardkey={item?.title}
+            bg={item.bg}
+            forewardkey={item.title}
+            key={`card${  item.title}` || generateRandomInt()}
           >
-            {item?.title && (
-              <CardTitle key={"title" + item?.title || generateRandomInt()}>
+            {item.title ? <CardTitle key={`title${  item.title}` || generateRandomInt()}>
                 {item.title}
-              </CardTitle>
-            )}
-            {item?.description && (
-              <CardDescription
-                key={"desc" + item?.title || generateRandomInt()}
+              </CardTitle> : null}
+            {item.description ? <CardDescription
+                key={`desc${  item.title}` || generateRandomInt()}
               >
                 {item.description}
-              </CardDescription>
-            )}
+              </CardDescription> : null}
           </Card>
         </Link>
       ))}
@@ -113,15 +109,13 @@ export const Card = ({
       )}
       key={`${forewardkey}hoverfxwrapper`}
     >
-      {bg && (
-        <Image
-          src={bg || "/default-image.jpg"}
+      {bg ? <Image
           alt={bg || "default image"}
-          width={250}
           height={250}
           key={`${forewardkey}hoverfximage`}
-        />
-      )}
+          src={bg || "/default-image.jpg"}
+          width={250}
+        /> : null}
       <div className="relative z-50">
         <div className="p-2">{children}</div>
       </div>
