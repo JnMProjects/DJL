@@ -61,7 +61,7 @@ const Checkbox = React.forwardRef<
     </div>
   </div>
 ));
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- Needed it because its Passed through from CheckboxPrimitive
+ 
 Checkbox.displayName = CheckboxPrimitive.Root.displayName;
 
 export { Checkbox };

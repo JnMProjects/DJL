@@ -1,19 +1,22 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
+ 
 "use client";
 // need to add smth because vercel git integration is not working
 
-import { ReactNode, useMemo, useState } from "react";
+import type { ReactNode} from "react";
+import { useMemo, useState } from "react";
 import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 import useMeasure from "react-use-measure";
 
 import { cn } from ">util/twm";
+import { Wrapper } from ">ui/customCard";
+import { DefaultText } from ">util/className";
 
 // Direction Aware Tabs
-type Tab = {
+interface Tab {
   id: number;
   label: string;
   content: ReactNode;
-};
+}
 
 interface OgImageSectionProps {
   tabs: Tab[];
@@ -21,7 +24,7 @@ interface OgImageSectionProps {
   rounded?: string;
   onChange?: () => void;
   activeTab: number;
-  // eslint-disable-next-line no-unused-vars
+   
   setActiveTab: (tabId: number) => void;
 }
 
@@ -81,8 +84,6 @@ function CustomDirectionAwareTabs({
       >
         {tabs.map((tab) => (
           <button
-            key={tab.id}
-            onClick={() => handleTabClick(tab.id)}
             className={cn(
               DefaultText,
               "relative rounded-full px-3.5 py-1.5 text-xs sm:text-sm font-medium  transition focus-visible:outline-1 focus-visible:ring-1  focus-visible:outline-none flex gap-2 items-center ",
@@ -91,12 +92,14 @@ function CustomDirectionAwareTabs({
                 : "hover:text-neutral-300/60  text-neutral-200/80",
               rounded
             )}
+            key={tab.id}
+            onClick={() => { handleTabClick(tab.id); }}
             style={{ WebkitTapHighlightColor: "transparent" }}
           >
             {activeTab === tab.id && (
               <motion.span
-                layoutId="bubble"
                 className="absolute  inset-0 z-10 bg-muted mix-blend-difference shadow-inner-shadow border border-accent"
+                layoutId="bubble"
                 style={rounded ? { borderRadius: 9 } : { borderRadius: 9999 }}
                 transition={{ type: "spring", bounce: 0.19, duration: 0.4 }}
               />
@@ -108,26 +111,26 @@ function CustomDirectionAwareTabs({
       </div>
       <MotionConfig transition={{ duration: 0.4, type: "spring", bounce: 0.2 }}>
         <motion.div
+          animate={{ height: bounds.height }}
           className="relative mx-auto w-full h-full overflow-hidden"
           initial={false}
-          animate={{ height: bounds.height }}
         >
           <div className="p-1" ref={ref}>
             <AnimatePresence
               custom={direction}
               mode="popLayout"
-              onExitComplete={() => setIsAnimating(false)}
+              onExitComplete={() => { setIsAnimating(false); }}
             >
               <motion.div
-                key={activeTab}
-                variants={variants}
-                initial="initial"
                 animate="active"
-                exit="exit"
+                className="text-foreground"
                 custom={direction}
-                onAnimationStart={() => setIsAnimating(true)}
-                onAnimationComplete={() => setIsAnimating(false)}
-                className={"text-foreground"}
+                exit="exit"
+                initial="initial"
+                key={activeTab}
+                onAnimationComplete={() => { setIsAnimating(false); }}
+                onAnimationStart={() => { setIsAnimating(true); }}
+                variants={variants}
               >
                 {content}
               </motion.div>
@@ -138,8 +141,6 @@ function CustomDirectionAwareTabs({
     </div>
   );
 }
-import { Wrapper } from ">ui/customCard";
-import { DefaultText } from ">util/className";
 
 function PresetDirectionAwareTabs(props: OgImageSectionProps) {
   const [activeTabs, setActiveTabs] = useState(0);

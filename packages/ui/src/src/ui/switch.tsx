@@ -1,7 +1,7 @@
 "use client";
 
 // need to add smth because vercel git integration is not working
-// eslint-disable-next-line no-redeclare
+ 
 import * as React from "react";
 import * as SwitchPrimitives from "@radix-ui/react-switch";
 

@@ -1,4 +1,5 @@
-import { useRef, useEffect, useState, RefObject } from "react";
+import type { RefObject } from "react";
+import { useRef, useEffect, useState } from "react";
 import { cn } from ">util/twm";
 
 function useDimensions(ref: RefObject<HTMLElement>, options = { debounce: 0 }) {
@@ -25,11 +26,9 @@ function Skeleton({
 
   return (
     <div className="">
-      {children && (
-        <div className="relative z-1 h-auto w-auto" ref={childRef}>
+      {children ? <div className="relative z-1 h-auto w-auto" ref={childRef}>
           {children}
-        </div>
-      )}
+        </div> : null}
       <div
         className="bg-background duration-700  relative z-50"
         style={{ top: `-${height}px` }}
@@ -39,11 +38,11 @@ function Skeleton({
           style={{
             position: "relative",
             zIndex: 1,
-            width: width,
-            height: height,
+            width,
+            height,
           }}
           {...props}
-        ></div>
+         />
       </div>
     </div>
   );

@@ -2,9 +2,11 @@
 "use client";
 // need to add smth because vercel git integration is not working
 
-import { FC, useRef } from "react";
+import type { FC} from "react";
+import { useRef } from "react";
+import type {
+  HTMLMotionProps} from "framer-motion";
 import {
-  HTMLMotionProps,
   motion,
   useAnimation,
   useInView,
@@ -34,7 +36,7 @@ const animationVariants = {
   fadeIn: {
     container: {
       hidden: { opacity: 0 },
-      visible: (i: number = 1) => ({
+      visible: (i = 1) => ({
         opacity: 1,
         transition: { staggerChildren: 0.05, delayChildren: i * 0.3 },
       }),
@@ -85,7 +87,7 @@ const animationVariants = {
   calmInUp: {
     container: {
       hidden: {},
-      visible: (i: number = 1) => ({
+      visible: (i = 1) => ({
         transition: { staggerChildren: 0.01, delayChildren: 0.2 * i },
       }),
     },
@@ -110,7 +112,7 @@ const animationVariants = {
   shiftInUp: {
     container: {
       hidden: {},
-      visible: (i: number = 1) => ({
+      visible: (i = 1) => ({
         transition: { staggerChildren: 0.01, delayChildren: 0.2 * i },
       }),
     },
@@ -135,7 +137,7 @@ const animationVariants = {
   whipInUp: {
     container: {
       hidden: {},
-      visible: (i: number = 1) => ({
+      visible: (i = 1) => ({
         transition: { staggerChildren: 0.01, delayChildren: 0.2 * i },
       }),
     },
@@ -213,13 +215,13 @@ const TextAnimate: FC<Props> = ({
   //   });
 
   const ref = useRef(null);
-  // eslint-disable-next-line no-unused-vars
+   
   const isInView = useInView(ref, { once: true });
 
   const letters = Array.from(text);
   const { container, child } = animationVariants[type];
 
-  // eslint-disable-next-line no-unused-vars
+   
   const ctrls = useAnimation();
 
   //   useEffect(() => {
@@ -237,27 +239,27 @@ const TextAnimate: FC<Props> = ({
         {text.split(" ").map((word, index) => {
           return (
             <motion.span
-              ref={ref}
-              className="inline-block mr-[0.25em] whitespace-nowrap"
-              aria-hidden="true"
-              key={index}
-              initial="hidden"
               animate="visible"
-              variants={container}
+              aria-hidden="true"
+              className="inline-block mr-[0.25em] whitespace-nowrap"
+              initial="hidden"
+              key={index}
+              ref={ref}
               transition={{
                 delayChildren: index * 0.13,
                 // delayChildren: index * 0.35,
                 staggerChildren: 0.025,
                 // staggerChildren: 0.05,
               }}
+              variants={container}
             >
               {word.split("").map((character, index) => {
                 return (
                   <motion.span
                     aria-hidden="true"
+                    className="inline-block -mr-[0.01em]"
                     key={index}
                     variants={child}
-                    className="inline-block -mr-[0.01em]"
                   >
                     {character}
                   </motion.span>
@@ -272,12 +274,12 @@ const TextAnimate: FC<Props> = ({
 
   return (
     <motion.h2
-      style={{ display: "flex", overflow: "hidden" }}
-      role="heading"
-      variants={container}
-      initial="hidden"
       animate="visible"
       className={cn([DefaultText, className])}
+      initial="hidden"
+      role="heading"
+      style={{ display: "flex", overflow: "hidden" }}
+      variants={container}
       {...props}
     >
       {letters.map((letter, index) => (
