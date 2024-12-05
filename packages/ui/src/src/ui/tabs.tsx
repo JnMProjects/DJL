@@ -1,14 +1,13 @@
- 
 "use client";
 // need to add smth because vercel git integration is not working
 
-import type { ReactNode} from "react";
+import type { ReactNode } from "react";
 import { useMemo, useState } from "react";
 import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 import useMeasure from "react-use-measure";
 
 import { cn } from ">util/twm";
-import { Wrapper } from ">ui/customCard";
+import { Wrapper } from ">/custom-card";
 import { DefaultText } from ">util/className";
 
 // Direction Aware Tabs
@@ -24,7 +23,7 @@ interface OgImageSectionProps {
   rounded?: string;
   onChange?: () => void;
   activeTab: number;
-   
+
   setActiveTab: (tabId: number) => void;
 }
 
@@ -33,10 +32,10 @@ function CustomDirectionAwareTabs({
   className,
   rounded,
   onChange,
-  activeTab,
-  setActiveTab,
+  activeTab: propActiveTab,
+  setActiveTab: _propSetActiveTab,
 }: OgImageSectionProps) {
-  [activeTab, setActiveTab] = useState(1);
+  const [activeTab, setActiveTab] = useState(propActiveTab || 1);
   const [direction, setDirection] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [ref, bounds] = useMeasure();
@@ -56,8 +55,8 @@ function CustomDirectionAwareTabs({
   };
 
   const variants = {
-    initial: (direction: number) => ({
-      x: 300 * direction,
+    initial: (dir: number) => ({
+      x: 300 * dir,
       opacity: 0,
       filter: "blur(4px)",
     }),
@@ -66,8 +65,8 @@ function CustomDirectionAwareTabs({
       opacity: 1,
       filter: "blur(0px)",
     },
-    exit: (direction: number) => ({
-      x: -300 * direction,
+    exit: (dir: number) => ({
+      x: -300 * dir,
       opacity: 0,
       filter: "blur(4px)",
     }),
@@ -93,8 +92,11 @@ function CustomDirectionAwareTabs({
               rounded
             )}
             key={tab.id}
-            onClick={() => { handleTabClick(tab.id); }}
+            onClick={() => {
+              handleTabClick(tab.id);
+            }}
             style={{ WebkitTapHighlightColor: "transparent" }}
+            type="button"
           >
             {activeTab === tab.id && (
               <motion.span
@@ -111,6 +113,7 @@ function CustomDirectionAwareTabs({
       </div>
       <MotionConfig transition={{ duration: 0.4, type: "spring", bounce: 0.2 }}>
         <motion.div
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- idk it works
           animate={{ height: bounds.height }}
           className="relative mx-auto w-full h-full overflow-hidden"
           initial={false}
@@ -119,7 +122,9 @@ function CustomDirectionAwareTabs({
             <AnimatePresence
               custom={direction}
               mode="popLayout"
-              onExitComplete={() => { setIsAnimating(false); }}
+              onExitComplete={() => {
+                setIsAnimating(false);
+              }}
             >
               <motion.div
                 animate="active"
@@ -128,8 +133,12 @@ function CustomDirectionAwareTabs({
                 exit="exit"
                 initial="initial"
                 key={activeTab}
-                onAnimationComplete={() => { setIsAnimating(false); }}
-                onAnimationStart={() => { setIsAnimating(true); }}
+                onAnimationComplete={() => {
+                  setIsAnimating(false);
+                }}
+                onAnimationStart={() => {
+                  setIsAnimating(true);
+                }}
                 variants={variants}
               >
                 {content}

@@ -1,16 +1,15 @@
 "use client";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
-import { Button } from ">ui/button";
+import { Button } from ">/button";
 import type * as Feather from "react-feather";
 
 import { cn } from ">util/twm";
 // need to add smth because vercel git integration is not working
- 
-import React from "react";
+import { forwardRef } from "react";
 
 const Popover = PopoverPrimitive.Root;
 
-const PopoverTrigger = React.forwardRef<
+const PopoverTrigger = forwardRef<
   React.ElementRef<typeof PopoverPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Trigger> & {
     variant?: "default" | "secondary" | "destructive" | "outline" | "ghost";
@@ -28,7 +27,7 @@ const PopoverTrigger = React.forwardRef<
 ));
 PopoverTrigger.displayName = PopoverPrimitive.Trigger.displayName;
 
-const PopoverContent = React.forwardRef<
+const PopoverContent = forwardRef<
   React.ElementRef<typeof PopoverPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>
 >(({ className = "", align = "center", sideOffset = 4, ...props }, ref) => (

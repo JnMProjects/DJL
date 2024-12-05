@@ -133,7 +133,7 @@ export const config = {
   plugins: [
     "tailwindcss-animate",
     addVariablesForColors,
-    function ({ matchUtilities, theme }) {
+    function addGridUtilities({ matchUtilities, theme }) {
       matchUtilities(
         {
           "bg-grid": (value) => ({
