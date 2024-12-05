@@ -1,8 +1,7 @@
- 
 "use client";
 
 // need to add smth because vercel git integration is not working
- 
+
 import React, {
   createContext,
   useContext,
@@ -22,13 +21,15 @@ const TRANSITION = {
   duration: 0.3,
 };
 
-function useClickOutside(
-  ref: React.RefObject<HTMLElement>,
+function useClickOutside<T extends HTMLElement>(
+  ref: React.RefObject<T>,
   handler: () => void
-) {
+): void {
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
+    const handleClickOutside = (event: MouseEvent): void => {
+      const target = event.target as HTMLElement;
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- don't know how to fix this
+      if (ref.current && !ref.current.contains(target)) {
         handler();
       }
     };
@@ -64,7 +65,9 @@ function useScaleUpLogic() {
   const [isOpen, setIsOpen] = useState(false);
   const [note, setNote] = useState("");
 
-  const openScaleUp = () => { setIsOpen(true); };
+  const openScaleUp = () => {
+    setIsOpen(true);
+  };
   const closeScaleUp = () => {
     setIsOpen(false);
     setNote("");
@@ -107,21 +110,21 @@ export function ScaleUpTrigger({ children, className }: ScaleUpTriggerProps) {
 
   return (
     <motion.button
-        className={cn(
-          "flex h-9 items-center border border-zinc-950/10 bg-white px-3 text-zinc-950 dark:border-zinc-50/10 dark:bg-zinc-700 dark:text-zinc-50",
-          className
-        )}
-        key="button"
-        layoutId={`ScaleUp-${uniqueId}`}
-        onClick={openScaleUp}
-        style={{
-          borderRadius: 8,
-        }}
-      >
-        <motion.span className="text-sm" layoutId={`ScaleUp-label-${uniqueId}`}>
-          {children}
-        </motion.span>
-      </motion.button>
+      className={cn(
+        "flex h-9 items-center border border-zinc-950/10 bg-white px-3 text-zinc-950 dark:border-zinc-50/10 dark:bg-zinc-700 dark:text-zinc-50",
+        className
+      )}
+      key="button"
+      layoutId={`ScaleUp-${uniqueId}`}
+      onClick={openScaleUp}
+      style={{
+        borderRadius: 8,
+      }}
+    >
+      <motion.span className="text-sm" layoutId={`ScaleUp-label-${uniqueId}`}>
+        {children}
+      </motion.span>
+    </motion.button>
   );
 }
 
@@ -157,7 +160,8 @@ export function ScaleUpContent({
 
   return (
     <AnimatePresence>
-      {isOpen ? <motion.div
+      {isOpen ? (
+        <motion.div
           className={cn(
             "absolute h-[200px] w-[364px] overflow-hidden border border-zinc-950/10 bg-white outline-none dark:bg-zinc-700 z-50", // Changed z-90 to z-50
             className
@@ -173,7 +177,8 @@ export function ScaleUpContent({
         >
           {header ? <ScaleUpHeader>{header}</ScaleUpHeader> : null}
           {children}
-        </motion.div> : null}
+        </motion.div>
+      ) : null}
     </AnimatePresence>
   );
 }
@@ -191,7 +196,8 @@ export function ScaleUpForm({
 }: ScaleUpFormProps) {
   const { note, closeScaleUp } = useScaleUp();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent): void => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- idk
     e.preventDefault();
     onSubmit?.(note);
     closeScaleUp();
@@ -241,12 +247,13 @@ export function ScaleUpTextarea({ className }: ScaleUpTextareaProps) {
 
   return (
     <textarea
-      autoFocus
       className={cn(
         "h-full w-full resize-none rounded-md bg-transparent px-4 py-3 text-sm outline-none",
         className
       )}
-      onChange={(e) => { setNote(e.target.value); }}
+      onChange={(e) => {
+        setNote(e.target.value);
+      }}
       value={note}
     />
   );
@@ -356,6 +363,7 @@ export function ScaleUpButton({
         className
       )}
       onClick={onClick}
+      type="button"
     >
       {children}
     </button>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Tooltip } from ">ui/tooltip";
+import { Tooltip } from ">/tooltip";
 
 interface LinkTipProps {
   href: string;
@@ -20,11 +20,11 @@ export function LinkTip({
     <Tooltip
       tips={
         <p
-            className="text-md sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl omnes"
-            lang={lang}
-          >
-            {tooltipText}
-          </p>
+          className="text-md sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl omnes"
+          lang={lang}
+        >
+          {tooltipText}
+        </p>
       }
     >
       <Link className={className} href={href} lang={lang} prefetch>

@@ -1,6 +1,5 @@
 "use client";
 
- 
 import * as React from "react";
 import * as ProgressPrimitive from "@radix-ui/react-progress";
 
@@ -22,15 +21,16 @@ const Progress = React.forwardRef<
   ProgressProps
 >(({ className, value, color, bg = "bg-background", ...props }, ref) => {
   const colorClasses = React.useMemo(() => {
-    if (!color) return "bg-primary duration-700"; // Default
+    if (!color) return "bg-primary duration-700";
 
-    const sortedKeys = Object.keys(color)
-      .map(Number)
+    const colorMap = color as Record<number, string>;
+    const sortedKeys = Object.keys(colorMap)
+      .map((key): number => Number(key))
       .sort((a, b) => a - b);
     for (let i = sortedKeys.length - 1; i >= 0; i--) {
       const threshold = sortedKeys[i];
-      if (threshold !== undefined && value >= threshold) {
-        return color[threshold];
+      if (value >= threshold) {
+        return colorMap[threshold];
       }
     }
 
