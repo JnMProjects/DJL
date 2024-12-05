@@ -1,9 +1,10 @@
 {
   "extends": "@repo/typescript-config/react-library.json",
-  "include": ["./src/index.ts", "./src/tailwind.ts", "./src/fx.ts", "./src/**/*.ts", "./src/**/*.tsx"],
+  "include": ["./src/index.ts", "./src/tailwind.ts", "./src/fx.ts", "./src/**/*.ts", "./src/**/*.tsx", "tsup.config.ts"],
   "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {
     "allowJs": true,
+    "strictNullChecks": true,
     "paths": {
       ">/*": ["./src/src/ui/*"],
       "$/*": ["./src/src/fx/*"]
