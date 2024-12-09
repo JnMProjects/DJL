@@ -14,6 +14,9 @@ const LintRC = compat.extends("@repo/eslint-config/react.js");
 
 /** @type {import("@eslint/eslintrc").FlatConfig[]} */
 export default [
+  {
+    ignores: ["src/tailwind.js", "eslint.config.mjs"],
+  },
   ...LintRC,
   {
     files: ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx"],

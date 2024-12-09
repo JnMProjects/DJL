@@ -112,7 +112,9 @@ export const Vortex = (props: VortexProps) => {
     renderGlow(canvas, ctx);
     renderToScreen(canvas, ctx);
 
-    window.requestAnimationFrame(() => { draw(canvas, ctx); });
+    window.requestAnimationFrame(() => {
+      draw(canvas, ctx);
+    });
   };
 
   const drawParticles = (ctx: CanvasRenderingContext2D) => {
@@ -157,7 +159,6 @@ export const Vortex = (props: VortexProps) => {
     particleProps[i4] = vy;
     particleProps[i5] = life;
 
-     
     (checkBounds(x, y, canvas) || life > ttl) && initParticle(i);
   };
 
@@ -237,8 +238,7 @@ export const Vortex = (props: VortexProps) => {
         resize(canvas, ctx);
       }
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  });
 
   return (
     <div className={cn("relative h-full w-full", props.containerClassName)}>
