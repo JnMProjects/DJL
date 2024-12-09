@@ -113,7 +113,7 @@ function CustomDirectionAwareTabs({
       </div>
       <MotionConfig transition={{ duration: 0.4, type: "spring", bounce: 0.2 }}>
         <motion.div
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- idk it works
+           
           animate={{ height: bounds.height }}
           className="relative mx-auto w-full h-full overflow-hidden"
           initial={false}

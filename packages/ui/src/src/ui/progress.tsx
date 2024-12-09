@@ -23,7 +23,7 @@ const Progress = React.forwardRef<
   const colorClasses = React.useMemo(() => {
     if (!color) return "bg-primary duration-700";
 
-    const colorMap = color as Record<number, string>;
+    const colorMap = color;
     const sortedKeys = Object.keys(colorMap)
       .map((key): number => Number(key))
       .sort((a, b) => a - b);
