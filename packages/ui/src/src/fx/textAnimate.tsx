@@ -2,15 +2,10 @@
 "use client";
 // need to add smth because vercel git integration is not working
 
-import type { FC} from "react";
+import type { FC } from "react";
 import { useRef } from "react";
-import type {
-  HTMLMotionProps} from "framer-motion";
-import {
-  motion,
-  useAnimation,
-  useInView,
-} from "framer-motion";
+import type { HTMLMotionProps } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 import { DefaultText } from ">util/className";
 import { cn } from ">util/twm";
 
@@ -24,7 +19,7 @@ type AnimationType =
   | "whipInUp"
   | "calmInUp";
 
-interface Props extends HTMLMotionProps<"div"> {
+interface TextAnimateProps extends HTMLMotionProps<"div"> {
   text: string;
   type?: AnimationType;
   delay?: number;
@@ -203,25 +198,24 @@ const animationVariants = {
   },
 };
 
-const TextAnimate: FC<Props> = ({
+const TextAnimate: FC<TextAnimateProps> = ({
   text,
   type = "whipInUp",
   className,
   ...props
-}: Props) => {
+}: TextAnimateProps) => {
   //   const { ref, inView } = useInView({
   //     threshold: 0.5,
   //     triggerOnce: true,
   //   });
 
   const ref = useRef(null);
-   
+
   const isInView = useInView(ref, { once: true });
 
   const letters = Array.from(text);
   const { container, child } = animationVariants[type];
 
-   
   const ctrls = useAnimation();
 
   //   useEffect(() => {
@@ -243,7 +237,7 @@ const TextAnimate: FC<Props> = ({
               aria-hidden="true"
               className="inline-block mr-[0.25em] whitespace-nowrap"
               initial="hidden"
-              key={index}
+              key={word[index]}
               ref={ref}
               transition={{
                 delayChildren: index * 0.13,
@@ -253,12 +247,12 @@ const TextAnimate: FC<Props> = ({
               }}
               variants={container}
             >
-              {word.split("").map((character, index) => {
+              {word.split("").map((character, index2) => {
                 return (
                   <motion.span
                     aria-hidden="true"
                     className="inline-block -mr-[0.01em]"
-                    key={index}
+                    key={character[index2]}
                     variants={child}
                   >
                     {character}
@@ -283,7 +277,7 @@ const TextAnimate: FC<Props> = ({
       {...props}
     >
       {letters.map((letter, index) => (
-        <motion.span key={index} variants={child}>
+        <motion.span key={letter[index]} variants={child}>
           {letter === " " ? "\u00A0" : letter}
         </motion.span>
       ))}

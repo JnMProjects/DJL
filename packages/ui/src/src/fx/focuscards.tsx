@@ -16,19 +16,22 @@ export const Card = React.memo(
     hovered,
     setHovered,
   }: {
-     
     card: Card;
     index: number;
     hovered: number | null;
     setHovered: React.Dispatch<React.SetStateAction<number | null>>;
-  }) => (
+  }): React.JSX.Element => (
     <div
       className={cn(
         "rounded-lg relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-60 md:h-96 w-full transition-all duration-300 ease-out",
         hovered !== null && hovered !== index && "blur-sm scale-[0.98]"
       )}
-      onMouseEnter={() => { setHovered(index); }}
-      onMouseLeave={() => { setHovered(null); }}
+      onMouseEnter={() => {
+        setHovered(index);
+      }}
+      onMouseLeave={() => {
+        setHovered(null);
+      }}
     >
       <Link href={card.href} prefetch={card.prefetch}>
         <Image
@@ -61,7 +64,7 @@ interface Card {
   prefetch?: boolean;
 }
 
-export function FocusCards({ cards }: { cards: Card[] }) {
+export function FocusCards({ cards }: { cards: Card[] }): React.JSX.Element {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (

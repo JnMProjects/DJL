@@ -22,7 +22,7 @@ interface VortexProps {
   backgroundColor?: string;
 }
 
-export const Vortex = (props: VortexProps) => {
+export const Vortex = (props: VortexProps): React.JSX.Element => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef(null);
   const particleCount = props.particleCount || 700;
@@ -59,10 +59,9 @@ export const Vortex = (props: VortexProps) => {
   const lerp = (n1: number, n2: number, speed: number): number =>
     (1 - speed) * n1 + speed * n2;
 
-  const setup = () => {
+  const setup = (): void => {
     const canvas = canvasRef.current;
-    const container = containerRef.current;
-    if (canvas && container) {
+    if (canvas) {
       const ctx = canvas.getContext("2d");
 
       if (ctx) {
@@ -73,7 +72,7 @@ export const Vortex = (props: VortexProps) => {
     }
   };
 
-  const initParticles = () => {
+  const initParticles = (): void => {
     tick = 0;
     // simplex = new SimplexNoise();
     particleProps = new Float32Array(particlePropsLength);
@@ -83,7 +82,7 @@ export const Vortex = (props: VortexProps) => {
     }
   };
 
-  const initParticle = (i: number) => {
+  const initParticle = (i: number): void => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -100,7 +99,10 @@ export const Vortex = (props: VortexProps) => {
     particleProps.set([x, y, vx, vy, life, ttl, speed, radius, hue], i);
   };
 
-  const draw = (canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) => {
+  const draw = (
+    canvas: HTMLCanvasElement,
+    ctx: CanvasRenderingContext2D
+  ): void => {
     tick++;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -117,13 +119,13 @@ export const Vortex = (props: VortexProps) => {
     });
   };
 
-  const drawParticles = (ctx: CanvasRenderingContext2D) => {
+  const drawParticles = (ctx: CanvasRenderingContext2D): void => {
     for (let i = 0; i < particlePropsLength; i += particlePropCount) {
       updateParticle(i, ctx);
     }
   };
 
-  const updateParticle = (i: number, ctx: CanvasRenderingContext2D) => {
+  const updateParticle = (i: number, ctx: CanvasRenderingContext2D): void => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -159,7 +161,9 @@ export const Vortex = (props: VortexProps) => {
     particleProps[i4] = vy;
     particleProps[i5] = life;
 
-    (checkBounds(x, y, canvas) || life > ttl) && initParticle(i);
+    if (checkBounds(x, y, canvas) || life > ttl) {
+      initParticle(i);
+    }
   };
 
   const drawParticle = (
@@ -172,11 +176,11 @@ export const Vortex = (props: VortexProps) => {
     radius: number,
     hue: number,
     ctx: CanvasRenderingContext2D
-  ) => {
+  ): void => {
     ctx.save();
     ctx.lineCap = "round";
     ctx.lineWidth = radius;
-    ctx.strokeStyle = `hsla(${hue},100%,60%,${fadeInOut(life, ttl)})`;
+    ctx.strokeStyle = `hsla(${hue.toString()},100%,60%,${fadeInOut(life, ttl).toString()})`;
     ctx.beginPath();
     ctx.moveTo(x, y);
     ctx.lineTo(x2, y2);
@@ -185,14 +189,18 @@ export const Vortex = (props: VortexProps) => {
     ctx.restore();
   };
 
-  const checkBounds = (x: number, y: number, canvas: HTMLCanvasElement) => {
+  const checkBounds = (
+    x: number,
+    y: number,
+    canvas: HTMLCanvasElement
+  ): boolean => {
     return x > canvas.width || x < 0 || y > canvas.height || y < 0;
   };
 
   const resize = (
     canvas: HTMLCanvasElement,
     ctx?: CanvasRenderingContext2D
-  ) => {
+  ): void => {
     const { innerWidth, innerHeight } = window;
 
     canvas.width = innerWidth;
@@ -205,7 +213,7 @@ export const Vortex = (props: VortexProps) => {
   const renderGlow = (
     canvas: HTMLCanvasElement,
     ctx: CanvasRenderingContext2D
-  ) => {
+  ): void => {
     ctx.save();
     ctx.filter = "blur(8px) brightness(200%)";
     ctx.globalCompositeOperation = "lighter";
@@ -222,7 +230,7 @@ export const Vortex = (props: VortexProps) => {
   const renderToScreen = (
     canvas: HTMLCanvasElement,
     ctx: CanvasRenderingContext2D
-  ) => {
+  ): void => {
     ctx.save();
     ctx.globalCompositeOperation = "lighter";
     ctx.drawImage(canvas, 0, 0);

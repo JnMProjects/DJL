@@ -6,9 +6,23 @@ import React from "react";
 import { motion } from "framer-motion";
 import { cn } from ">util/twm";
 
-export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
+export const BoxesCore: React.FC<{ className?: string }> = ({
+  className,
+  ...rest
+}) => {
   const rows = new Array(150).fill(1);
   const cols = new Array(100).fill(1);
+
+  const rowIds = React.useMemo(
+    () => Array.from({ length: 150 }, () => crypto.randomUUID()),
+    []
+  );
+
+  const colIds = React.useMemo(
+    () => Array.from({ length: 100 }, () => crypto.randomUUID()),
+    []
+  );
+
   const colors = [
     "--sky-300",
     "--pink-300",
@@ -20,7 +34,7 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
     "--indigo-300",
     "--violet-300",
   ];
-  const getRandomColor = () => {
+  const getRandomColor = (): string => {
     return colors[Math.floor(Math.random() * colors.length)];
   };
 
@@ -37,16 +51,16 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
     >
       {rows.map((_, i) => (
         <motion.div
-          className="w-16 h-8  border-l  border-slate-700 relative"
-          key={`row${  i}`}
+          className="w-16 h-8 border-l border-slate-700 relative"
+          key={rowIds[i]}
         >
-          {cols.map((_, j) => (
+          {cols.map((__, j) => (
             <motion.div
               animate={{
                 transition: { duration: 2 },
               }}
               className="w-16 h-8  border-r border-t border-slate-700 relative"
-              key={`col${  j}`}
+              key={colIds[j]}
               whileHover={{
                 backgroundColor: `var(${getRandomColor()})`,
                 transition: { duration: 0 },

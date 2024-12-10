@@ -14,7 +14,7 @@ export const BackgroundGradient = ({
   className?: string;
   containerClassName?: string;
   animate?: boolean;
-}) => {
+}): React.JSX.Element => {
   const variants = {
     initial: {
       backgroundPosition: "0 50%",

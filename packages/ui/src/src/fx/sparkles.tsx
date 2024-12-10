@@ -1,5 +1,5 @@
 "use client";
-import React, { useId , useEffect, useState } from "react";
+import React, { useId, useEffect, useState } from "react";
 
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import type { Container, SingleOrMultiple } from "@tsparticles/engine";
@@ -18,7 +18,7 @@ interface ParticlesProps {
   particleColor?: string;
   particleDensity?: number;
 }
-export const SparklesCore = (props: ParticlesProps) => {
+export const SparklesCore = (props: ParticlesProps): React.JSX.Element => {
   const {
     id,
     className,
@@ -31,8 +31,11 @@ export const SparklesCore = (props: ParticlesProps) => {
   } = props;
   const [init, setInit] = useState(false);
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call -- this is a third party library
     initParticlesEngine(async (engine) => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call -- this is a third party library
       await loadSlim(engine);
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     }).then(() => {
       setInit(true);
     });
@@ -53,7 +56,8 @@ export const SparklesCore = (props: ParticlesProps) => {
   const generatedId = useId();
   return (
     <motion.div animate={controls} className={cn("opacity-0", className)}>
-      {init ? <Particles
+      {init ? (
+        <Particles
           className={cn("h-full w-full")}
           id={id || generatedId}
           options={{
@@ -427,7 +431,8 @@ export const SparklesCore = (props: ParticlesProps) => {
             detectRetina: true,
           }}
           particlesLoaded={particlesLoaded}
-        /> : null}
+        />
+      ) : null}
     </motion.div>
   );
 };

@@ -23,35 +23,44 @@ export const TextHoverEffect = ({
   initial?: any;
   animate?: any;
   exit?: any;
-}) => {
+}): React.JSX.Element => {
   const svgRef = useRef<SVGSVGElement>(null);
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
   const [maskPosition, setMaskPosition] = useState({ cx: "50%", cy: "50%" });
 
   useEffect(() => {
-    if (svgRef.current && cursor.x !== null && cursor.y !== null) {
+    if (svgRef.current) {
       const svgRect = svgRef.current.getBoundingClientRect();
       const cxPercentage = ((cursor.x - svgRect.left) / svgRect.width) * 100;
       const cyPercentage = ((cursor.y - svgRect.top) / svgRect.height) * 100;
       setMaskPosition({
-        cx: `${cxPercentage}%`,
-        cy: `${cyPercentage}%`,
+        cx: `${cxPercentage.toString()}%`,
+        cy: `${cyPercentage.toString()}%`,
       });
     }
   }, [cursor]);
 
   return (
     <motion.svg
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- not infered by importer // works fine
       animate={animate}
       className={cn("select-none", className)}
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- not infered by importer // works fine
       exit={exit}
       height="100%"
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- not infered by importer // works fine
       initial={initial}
       key="hoverfx"
-      onMouseEnter={() => { setHovered(true); }}
-      onMouseLeave={() => { setHovered(false); }}
-      onMouseMove={(e) => { setCursor({ x: e.clientX, y: e.clientY }); }}
+      onMouseEnter={() => {
+        setHovered(true);
+      }}
+      onMouseLeave={() => {
+        setHovered(false);
+      }}
+      onMouseMove={(e) => {
+        setCursor({ x: e.clientX, y: e.clientY });
+      }}
       ref={svgRef}
       viewBox="0 0 300 100"
       width="100%"
@@ -65,13 +74,15 @@ export const TextHoverEffect = ({
           id="textGradient"
           r="25%"
         >
-          {hovered ? <>
+          {hovered ? (
+            <>
               <stop offset="0%" stopColor="var(--yellow-500)" />
               <stop offset="25%" stopColor="var(--red-500)" />
               <stop offset="50%" stopColor="var(--blue-500)" />
               <stop offset="75%" stopColor="var(--cyan-500)" />
               <stop offset="100%" stopColor="var(--violet-500)" />
-            </> : null}
+            </>
+          ) : null}
         </linearGradient>
 
         <motion.radialGradient

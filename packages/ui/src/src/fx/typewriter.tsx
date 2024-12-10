@@ -1,4 +1,3 @@
- 
 "use client";
 // need to add smth because vercel git integration is not working
 
@@ -7,13 +6,17 @@ import { animate, motion, useMotionValue, useTransform } from "framer-motion";
 import { DefaultText } from ">util/className";
 import { cn } from ">util/twm";
 
-export interface ITypewriterProps {
+export interface TypewriterProps {
   delay: number;
   texts: string[];
   baseText?: string;
 }
 
-export function Typewriter({ delay, texts, baseText = "" }: ITypewriterProps) {
+export function Typewriter({
+  delay,
+  texts,
+  baseText = "",
+}: TypewriterProps): React.JSX.Element {
   const [animationComplete, setAnimationComplete] = useState(false);
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.round(latest));
@@ -27,23 +30,27 @@ export function Typewriter({ delay, texts, baseText = "" }: ITypewriterProps) {
       delay,
       duration: 1,
       ease: "easeInOut",
-      onComplete: () => { setAnimationComplete(true); },
+      onComplete: () => {
+        setAnimationComplete(true);
+      },
     });
     return () => {
-      controls.stop && controls.stop();
+      controls.stop();
     };
   }, [count, baseText.length, delay]);
 
   return (
     <span className={DefaultText}>
       <motion.span>{displayText}</motion.span>
-      {animationComplete ? <RepeatedTextAnimation delay={delay + 1} texts={texts} /> : null}
+      {animationComplete ? (
+        <RepeatedTextAnimation delay={delay + 1} texts={texts} />
+      ) : null}
       <BlinkingCursor />
     </span>
   );
 }
 
-export interface IRepeatedTextAnimationProps {
+export interface RepeatedTextAnimationProps {
   delay: number;
   texts: string[];
 }
@@ -60,7 +67,7 @@ const defaultTexts = [
 function RepeatedTextAnimation({
   delay,
   texts = defaultTexts,
-}: IRepeatedTextAnimationProps) {
+}: RepeatedTextAnimationProps): React.JSX.Element {
   const textIndex = useMotionValue(0);
 
   const baseText = useTransform(textIndex, (latest) => texts[latest] || "");
@@ -90,7 +97,7 @@ function RepeatedTextAnimation({
       },
     });
     return () => {
-      animation.stop && animation.stop();
+      animation.stop();
     };
   }, [count, delay, textIndex, texts, updatedThisRound]);
 
@@ -114,7 +121,7 @@ const cursorVariants = {
   },
 };
 
-function BlinkingCursor() {
+function BlinkingCursor(): React.JSX.Element {
   return (
     <motion.div
       animate="blinking"
