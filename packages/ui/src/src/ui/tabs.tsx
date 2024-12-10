@@ -34,7 +34,7 @@ function CustomDirectionAwareTabs({
   onChange,
   activeTab: propActiveTab,
   setActiveTab: _propSetActiveTab,
-}: OgImageSectionProps) {
+}: OgImageSectionProps): React.JSX.Element {
   const [activeTab, setActiveTab] = useState(propActiveTab || 1);
   const [direction, setDirection] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -45,12 +45,12 @@ function CustomDirectionAwareTabs({
     return activeTabContent || null;
   }, [activeTab, tabs]);
 
-  const handleTabClick = (newTabId: number) => {
+  const handleTabClick = (newTabId: number): void => {
     if (newTabId !== activeTab && !isAnimating) {
       const newDirection = newTabId > activeTab ? 1 : -1;
       setDirection(newDirection);
       setActiveTab(newTabId);
-      onChange ? onChange() : null;
+      if (onChange) onChange();
     }
   };
 
@@ -113,7 +113,6 @@ function CustomDirectionAwareTabs({
       </div>
       <MotionConfig transition={{ duration: 0.4, type: "spring", bounce: 0.2 }}>
         <motion.div
-           
           animate={{ height: bounds.height }}
           className="relative mx-auto w-full h-full overflow-hidden"
           initial={false}
@@ -151,7 +150,9 @@ function CustomDirectionAwareTabs({
   );
 }
 
-function PresetDirectionAwareTabs(props: OgImageSectionProps) {
+function PresetDirectionAwareTabs(
+  props: OgImageSectionProps
+): React.JSX.Element {
   const [activeTabs, setActiveTabs] = useState(0);
   return (
     <Wrapper className="border-accent ">

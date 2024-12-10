@@ -100,7 +100,7 @@ const Collapse: React.FC<CollapseProps> = ({
   no,
   ...props
 }) => {
-  const value = no || `collapse-${collapseCounter++}`;
+  const value = no || `collapse-${(collapseCounter++).toString()}`;
 
   if (!defaultExpanded) {
     return (

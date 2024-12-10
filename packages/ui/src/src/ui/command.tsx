@@ -43,7 +43,7 @@ const asDialog = ({
   trigger,
   triggervariant,
   ...props
-}: CommandDialogProps) => {
+}: CommandDialogProps): React.JSX.Element => {
   return (
     <DialogWrapper trigger={trigger} triggervariant={triggervariant}>
       <Dialog className="overflow-hidden p-0 shadow-lg" {...props}>
@@ -63,7 +63,7 @@ const asPopup = ({
   trigger,
   triggervariant,
   ...props
-}: CommandDialogProps) => {
+}: CommandDialogProps): React.JSX.Element => {
   return (
     <Preset trigger={trigger} triggervariant={triggervariant}>
       <Command
@@ -174,7 +174,7 @@ Item.displayName = CommandPrimitive.Item.displayName;
 const Shortcut = ({
   className,
   ...props
-}: React.HTMLAttributes<HTMLSpanElement>) => {
+}: React.HTMLAttributes<HTMLSpanElement>): React.JSX.Element => {
   return (
     <span
       className={cn(

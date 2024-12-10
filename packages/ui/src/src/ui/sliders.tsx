@@ -1,6 +1,5 @@
 "use client";
 
- 
 import * as React from "react";
 import * as SliderPrimitive from "@radix-ui/react-slider";
 
@@ -37,7 +36,7 @@ function GaugeCircle({
   min?: number;
   value?: number;
   className?: string;
-}) {
+}): React.JSX.Element {
   const circumference = 2 * Math.PI * 45;
   const percentPx = circumference / 100;
   const currentPercent = ((value - min) / (max - min)) * 100;
@@ -52,7 +51,7 @@ function GaugeCircle({
         {
           "--circle-size": "100px",
           "--circumference": circumference,
-          "--percent-to-px": `${percentPx}px`,
+          "--percent-to-px": `${percentPx.toString()}px`,
           "--gap-percent": "5",
           "--offset-factor": "0",
           "--transition-length": "1s",

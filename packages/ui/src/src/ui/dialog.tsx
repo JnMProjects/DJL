@@ -76,7 +76,7 @@ RawAlertRawDialogContent.displayName =
 const RawAlertRawDialogHeader = ({
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
+}: React.HTMLAttributes<HTMLDivElement>): React.JSX.Element => (
   <div
     className={cn(
       "flex flex-col space-y-2 text-center sm:text-left",
@@ -90,7 +90,7 @@ RawAlertRawDialogHeader.displayName = "RawAlertRawDialogHeader";
 const RawAlertRawDialogFooter = ({
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
+}: React.HTMLAttributes<HTMLDivElement>): React.JSX.Element => (
   <div
     className={cn(
       "flex flex-col-reverse sm:flex-row duration-700 sm:justify-end sm:space-x-2",
@@ -347,7 +347,7 @@ RawDialogContent.displayName = RawDialogPrimitive.Content.displayName;
 const RawDialogHeader = ({
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
+}: React.HTMLAttributes<HTMLDivElement>): React.JSX.Element => (
   <div
     className={cn(
       "flex flex-col space-y-1.5 text-center sm:text-left",
@@ -361,7 +361,7 @@ RawDialogHeader.displayName = "RawDialogHeader";
 const RawDialogFooter = ({
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
+}: React.HTMLAttributes<HTMLDivElement>): React.JSX.Element => (
   <div
     className={cn(
       "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",

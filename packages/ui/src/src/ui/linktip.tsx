@@ -15,7 +15,7 @@ export function LinkTip({
   children,
   lang,
   className = "underline decoration-wavy decoration-secondary",
-}: LinkTipProps) {
+}: LinkTipProps): React.JSX.Element {
   return (
     <Tooltip
       tips={

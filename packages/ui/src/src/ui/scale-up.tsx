@@ -28,7 +28,7 @@ function useClickOutside<T extends HTMLElement>(
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent): void => {
       const target = event.target as HTMLElement;
-       
+
       if (ref.current && !ref.current.contains(target)) {
         handler();
       }
@@ -52,7 +52,7 @@ interface ScaleUpContextType {
 
 const ScaleUpContext = createContext<ScaleUpContextType | undefined>(undefined);
 
-function useScaleUp() {
+function useScaleUp(): ScaleUpContextType {
   const context = useContext(ScaleUpContext);
   if (!context) {
     throw new Error("useScaleUp must be used within a ScaleUpProvider");
@@ -60,15 +60,15 @@ function useScaleUp() {
   return context;
 }
 
-function useScaleUpLogic() {
+function useScaleUpLogic(): ScaleUpContextType {
   const uniqueId = useId();
   const [isOpen, setIsOpen] = useState(false);
   const [note, setNote] = useState("");
 
-  const openScaleUp = () => {
+  const openScaleUp = (): void => {
     setIsOpen(true);
   };
-  const closeScaleUp = () => {
+  const closeScaleUp = (): void => {
     setIsOpen(false);
     setNote("");
   };
@@ -81,7 +81,10 @@ interface ScaleUpRootProps {
   className?: string;
 }
 
-export function ScaleUpRoot({ children, className }: ScaleUpRootProps) {
+export function ScaleUpRoot({
+  children,
+  className,
+}: ScaleUpRootProps): React.JSX.Element {
   const ScaleUpLogic = useScaleUpLogic();
 
   return (
@@ -105,7 +108,10 @@ interface ScaleUpTriggerProps {
   className?: string;
 }
 
-export function ScaleUpTrigger({ children, className }: ScaleUpTriggerProps) {
+export function ScaleUpTrigger({
+  children,
+  className,
+}: ScaleUpTriggerProps): React.JSX.Element {
   const { openScaleUp, uniqueId } = useScaleUp();
 
   return (
@@ -138,14 +144,14 @@ export function ScaleUpContent({
   header,
   children,
   className,
-}: ScaleUpContentProps) {
+}: ScaleUpContentProps): React.JSX.Element {
   const { isOpen, closeScaleUp, uniqueId } = useScaleUp();
   const formContainerRef = useRef<HTMLDivElement>(null);
 
   useClickOutside(formContainerRef, closeScaleUp);
 
   useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
+    const handleKeyDown = (event: KeyboardEvent): void => {
       if (event.key === "Escape") {
         closeScaleUp();
       }
@@ -193,11 +199,10 @@ export function ScaleUpForm({
   children,
   onSubmit,
   className,
-}: ScaleUpFormProps) {
+}: ScaleUpFormProps): React.JSX.Element {
   const { note, closeScaleUp } = useScaleUp();
 
   const handleSubmit = (e: React.FormEvent): void => {
-     
     e.preventDefault();
     onSubmit?.(note);
     closeScaleUp();
@@ -218,7 +223,10 @@ interface ScaleUpLabelProps {
   className?: string;
 }
 
-export function ScaleUpLabel({ children, className }: ScaleUpLabelProps) {
+export function ScaleUpLabel({
+  children,
+  className,
+}: ScaleUpLabelProps): React.JSX.Element {
   const { uniqueId, note } = useScaleUp();
 
   return (
@@ -242,7 +250,9 @@ interface ScaleUpTextareaProps {
   className?: string;
 }
 
-export function ScaleUpTextarea({ className }: ScaleUpTextareaProps) {
+export function ScaleUpTextarea({
+  className,
+}: ScaleUpTextareaProps): React.JSX.Element {
   const { note, setNote } = useScaleUp();
 
   return (
@@ -264,7 +274,10 @@ interface ScaleUpFooterProps {
   className?: string;
 }
 
-export function ScaleUpFooter({ children, className }: ScaleUpFooterProps) {
+export function ScaleUpFooter({
+  children,
+  className,
+}: ScaleUpFooterProps): React.JSX.Element {
   return (
     <div
       className={cn("flex justify-between px-4 py-3", className)}
@@ -279,7 +292,9 @@ interface ScaleUpCloseButtonProps {
   className?: string;
 }
 
-export function ScaleUpCloseButton({ className }: ScaleUpCloseButtonProps) {
+export function ScaleUpCloseButton({
+  className,
+}: ScaleUpCloseButtonProps): React.JSX.Element {
   const { closeScaleUp } = useScaleUp();
 
   return (
@@ -302,7 +317,7 @@ interface ScaleUpSubmitButtonProps {
 export function ScaleUpSubmitButton({
   text = "Submit",
   className,
-}: ScaleUpSubmitButtonProps) {
+}: ScaleUpSubmitButtonProps): React.JSX.Element {
   return (
     <button
       aria-label={text}
@@ -323,7 +338,7 @@ export function ScaleUpHeader({
 }: {
   children: React.ReactNode;
   className?: string;
-}) {
+}): React.JSX.Element {
   return (
     <div
       className={cn(
@@ -342,7 +357,7 @@ export function ScaleUpBody({
 }: {
   children: React.ReactNode;
   className?: string;
-}) {
+}): React.JSX.Element {
   return <div className={cn("p-4", className)}>{children}</div>;
 }
 
@@ -355,7 +370,7 @@ export function ScaleUpButton({
   children: React.ReactNode;
   onClick?: () => void;
   className?: string;
-}) {
+}): React.JSX.Element {
   return (
     <button
       className={cn(

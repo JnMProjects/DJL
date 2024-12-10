@@ -48,7 +48,7 @@ function useFloatingPanel(): FloatingPanelContextType {
   return context;
 }
 
-function useFloatingPanelLogic() {
+function useFloatingPanelLogic(): FloatingPanelContextType {
   const uniqueId = useId();
   const [isOpen, setIsOpen] = useState(false);
   const [note, setNote] = useState("");
@@ -56,11 +56,11 @@ function useFloatingPanelLogic() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  const openFloatingPanel = (rect: DOMRect) => {
+  const openFloatingPanel = (rect: DOMRect): void => {
     setTriggerRect(rect);
     setIsOpen(true);
   };
-  const closeFloatingPanel = () => {
+  const closeFloatingPanel = (): void => {
     setIsOpen(false);
     setNote("");
   };
@@ -88,7 +88,7 @@ interface FloatingPanelRootProps {
 export function FloatingPanelRoot({
   children,
   className,
-}: FloatingPanelRootProps) {
+}: FloatingPanelRootProps): React.JSX.Element {
   const floatingPanelLogic = useFloatingPanelLogic();
 
   return (
@@ -112,13 +112,13 @@ export function FloatingPanelTrigger({
   className,
   title,
   description,
-}: FloatingPanelTriggerProps) {
+}: FloatingPanelTriggerProps): React.JSX.Element {
   const floatingPanelContext = useFloatingPanel();
   const { openFloatingPanel, uniqueId, setTitle, setDescription } =
     floatingPanelContext;
   const triggerRef = useRef<HTMLButtonElement>(null);
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     if (triggerRef.current) {
       openFloatingPanel(triggerRef.current.getBoundingClientRect());
     }
@@ -164,7 +164,7 @@ interface FloatingPanelContentProps {
 export function FloatingPanelContent({
   children,
   className,
-}: FloatingPanelContentProps) {
+}: FloatingPanelContentProps): React.JSX.Element {
   const floatingPanelContext = useFloatingPanel();
   const {
     isOpen,
@@ -177,7 +177,7 @@ export function FloatingPanelContent({
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (event: MouseEvent): void => {
       if (
         contentRef.current &&
         !contentRef.current.contains(event.target as Node)
@@ -192,7 +192,7 @@ export function FloatingPanelContent({
   }, [closeFloatingPanel]);
 
   useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
+    const handleKeyDown = (event: KeyboardEvent): void => {
       if (event.key === "Escape") closeFloatingPanel();
     };
     document.addEventListener("keydown", handleKeyDown);
@@ -251,7 +251,9 @@ interface FloatingPanelTitleProps {
   children: React.ReactNode;
 }
 
-function FloatingPanelTitle({ children }: FloatingPanelTitleProps) {
+function FloatingPanelTitle({
+  children,
+}: FloatingPanelTitleProps): React.JSX.Element {
   const floatingPanelContext = useFloatingPanel();
   const { uniqueId } = floatingPanelContext;
 
@@ -275,7 +277,9 @@ interface FloatingPanelDescriptionProps {
   children: React.ReactNode;
 }
 
-function FloatingPanelDescription({ children }: FloatingPanelDescriptionProps) {
+function FloatingPanelDescription({
+  children,
+}: FloatingPanelDescriptionProps): React.JSX.Element {
   const floatingPanelContext = useFloatingPanel();
   const { uniqueId } = floatingPanelContext;
 
@@ -305,10 +309,10 @@ export function FloatingPanelForm({
   children,
   onSubmit,
   className,
-}: FloatingPanelFormProps) {
+}: FloatingPanelFormProps): React.JSX.Element {
   const { note, closeFloatingPanel } = useFloatingPanel();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
     onSubmit?.(note);
     closeFloatingPanel();
@@ -334,7 +338,7 @@ export function FloatingPanelLabel({
   children,
   htmlFor,
   className,
-}: FloatingPanelLabelProps) {
+}: FloatingPanelLabelProps): React.JSX.Element {
   const { note } = useFloatingPanel();
 
   return (
@@ -359,7 +363,7 @@ interface FloatingPanelTextareaProps {
 export function FloatingPanelTextarea({
   className,
   id,
-}: FloatingPanelTextareaProps) {
+}: FloatingPanelTextareaProps): React.JSX.Element {
   const { note, setNote } = useFloatingPanel();
 
   return (
@@ -385,7 +389,7 @@ interface FloatingPanelHeaderProps {
 export function FloatingPanelHeader({
   children,
   className,
-}: FloatingPanelHeaderProps) {
+}: FloatingPanelHeaderProps): React.JSX.Element {
   return (
     <motion.div
       animate={{ opacity: 1, y: 0 }}
@@ -409,7 +413,7 @@ interface FloatingPanelBodyProps {
 export function FloatingPanelBody({
   children,
   className,
-}: FloatingPanelBodyProps) {
+}: FloatingPanelBodyProps): React.JSX.Element {
   return (
     <motion.div
       animate={{ opacity: 1, y: 0 }}
@@ -430,7 +434,7 @@ interface FloatingPanelFooterProps {
 export function FloatingPanelFooter({
   children,
   className,
-}: FloatingPanelFooterProps) {
+}: FloatingPanelFooterProps): React.JSX.Element {
   return (
     <motion.div
       animate={{ opacity: 1, y: 0 }}
@@ -449,7 +453,7 @@ interface FloatingPanelCloseButtonProps {
 
 export function FloatingPanelCloseButton({
   className,
-}: FloatingPanelCloseButtonProps) {
+}: FloatingPanelCloseButtonProps): React.JSX.Element {
   const { closeFloatingPanel } = useFloatingPanel();
 
   return (
@@ -474,7 +478,7 @@ interface FloatingPanelSubmitButtonProps {
 export function FloatingPanelSubmitButton({
   className,
   text = "Submit",
-}: FloatingPanelSubmitButtonProps) {
+}: FloatingPanelSubmitButtonProps): React.JSX.Element {
   return (
     <motion.button
       aria-label={text}
@@ -501,7 +505,7 @@ export function FloatingPanelButton({
   children,
   onClick,
   className,
-}: FloatingPanelButtonProps) {
+}: FloatingPanelButtonProps): React.JSX.Element {
   return (
     <motion.button
       className={cn(
