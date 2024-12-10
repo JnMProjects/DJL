@@ -39,7 +39,7 @@ export const HoverEffect = ({
     <div
       className={cn(
         "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3  py-4",
-        className
+        className,
       )}
       key="hovereffectfxwrapppper"
     >
@@ -115,7 +115,7 @@ export const Card = ({
     <div
       className={cn(
         "rounded-2xl h-full w-full p-1 overflow-hidden bg-background/50 glassblur flex items-center justify-evenly border border-accent group-hover:border-secondary relative z-20",
-        className
+        className,
       )}
       key={forewardkey ? `${forewardkey}hoverfxwrapper` : generateRandomInt()}
     >
@@ -160,7 +160,7 @@ export const CardDescription = ({
     <p
       className={cn(
         "mt-2 text-foreground/80 tracking-wide leading-relaxed text-sm",
-        className
+        className,
       )}
     >
       {children}

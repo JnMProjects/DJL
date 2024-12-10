@@ -27,8 +27,8 @@ describe("Button", () => {
   it("renders as child when asChild prop is true", () => {
     render(
       <Button asChild>
-        <a href="#">Link Button</a>
-      </Button>
+        <a href="https://example.com">Link Button</a>
+      </Button>,
     );
     const link = screen.getByRole("link");
     expect(link).toHaveClass(buttonVariants());

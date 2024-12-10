@@ -101,7 +101,7 @@ export const Vortex = (props: VortexProps): React.JSX.Element => {
 
   const draw = (
     canvas: HTMLCanvasElement,
-    ctx: CanvasRenderingContext2D
+    ctx: CanvasRenderingContext2D,
   ): void => {
     tick++;
 
@@ -175,7 +175,7 @@ export const Vortex = (props: VortexProps): React.JSX.Element => {
     ttl: number,
     radius: number,
     hue: number,
-    ctx: CanvasRenderingContext2D
+    ctx: CanvasRenderingContext2D,
   ): void => {
     ctx.save();
     ctx.lineCap = "round";
@@ -192,14 +192,14 @@ export const Vortex = (props: VortexProps): React.JSX.Element => {
   const checkBounds = (
     x: number,
     y: number,
-    canvas: HTMLCanvasElement
+    canvas: HTMLCanvasElement,
   ): boolean => {
     return x > canvas.width || x < 0 || y > canvas.height || y < 0;
   };
 
   const resize = (
     canvas: HTMLCanvasElement,
-    ctx?: CanvasRenderingContext2D
+    ctx?: CanvasRenderingContext2D,
   ): void => {
     const { innerWidth, innerHeight } = window;
 
@@ -212,7 +212,7 @@ export const Vortex = (props: VortexProps): React.JSX.Element => {
 
   const renderGlow = (
     canvas: HTMLCanvasElement,
-    ctx: CanvasRenderingContext2D
+    ctx: CanvasRenderingContext2D,
   ): void => {
     ctx.save();
     ctx.filter = "blur(8px) brightness(200%)";
@@ -229,7 +229,7 @@ export const Vortex = (props: VortexProps): React.JSX.Element => {
 
   const renderToScreen = (
     canvas: HTMLCanvasElement,
-    ctx: CanvasRenderingContext2D
+    ctx: CanvasRenderingContext2D,
   ): void => {
     ctx.save();
     ctx.globalCompositeOperation = "lighter";

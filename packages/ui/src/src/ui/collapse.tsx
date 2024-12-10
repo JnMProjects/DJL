@@ -41,7 +41,7 @@ const CollapseItem = React.forwardRef<
     {...props}
     className={cn(
       "border-t border-b border-secondary/70 duration-700 ",
-      className
+      className,
     )}
   />
 ));
@@ -55,7 +55,7 @@ const CollapseHeadRaw = React.forwardRef<
     <CollapsePrimitive.Trigger
       className={cn(
         "flex flex-1 items-center justify-between text-foreground duration-700 font py-4 font-medium transition-all [&[data-state=open]>svg]:rotate-180",
-        className
+        className,
       )}
       ref={ref}
       {...props}

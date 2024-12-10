@@ -4,7 +4,7 @@ import { cn } from ">util/twm";
 
 function useDimensions(
   ref: RefObject<HTMLElement>,
-  options = { debounce: 0 }
+  options = { debounce: 0 },
 ): { width: number; height: number } {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 

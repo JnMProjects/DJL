@@ -78,7 +78,7 @@ function CustomDirectionAwareTabs({
         className={cn(
           "flex space-x-1 border border-none border-accent rounded-full cursor-pointer bg-muted opacity-90 glassblur px-[3px] py-[3.2px] shadow-inner-shadow",
           className,
-          rounded
+          rounded,
         )}
       >
         {tabs.map((tab) => (
@@ -89,7 +89,7 @@ function CustomDirectionAwareTabs({
               activeTab === tab.id
                 ? "text-white"
                 : "hover:text-neutral-300/60  text-neutral-200/80",
-              rounded
+              rounded,
             )}
             key={tab.id}
             onClick={() => {
@@ -151,7 +151,7 @@ function CustomDirectionAwareTabs({
 }
 
 function PresetDirectionAwareTabs(
-  props: OgImageSectionProps
+  props: OgImageSectionProps,
 ): React.JSX.Element {
   const [activeTabs, setActiveTabs] = useState(0);
   return (

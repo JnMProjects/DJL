@@ -64,13 +64,16 @@ export const BackgroundBeams = React.memo(
       <div
         className={cn(
           "absolute  h-full w-full inset-0  [mask-size:40px] [mask-repeat:no-repeat] flex items-center justify-center",
-          className
+          className,
         )}
+        data-testid="background-beams"
       >
         <svg
+          aria-hidden="true"
           className=" z-0 h-full w-full pointer-events-none absolute "
           fill="none"
           height="100%"
+          role="img"
           viewBox="0 0 696 316"
           width="100%"
           xmlns="http://www.w3.org/2000/svg"
@@ -80,16 +83,18 @@ export const BackgroundBeams = React.memo(
             stroke="url(#paint0_radial_242_278)"
             strokeOpacity="0.05"
             strokeWidth="0.5"
-           />
+          />
 
           {paths.map((path, index) => (
             <motion.path
               d={path}
-              key={`path-${  index}`}
+              data-testid="gradient-path"
+              key={`path-${path[index]}`}
+              // eslint-disable-next-line @typescript-eslint/restrict-template-expressions -- required for the col
               stroke={`url(#linearGradient-${index})`}
               strokeOpacity="0.4"
               strokeWidth="0.5"
-             />
+            />
           ))}
           <defs>
             {paths.map((path, index) => (
@@ -98,16 +103,17 @@ export const BackgroundBeams = React.memo(
                   x1: ["0%", "100%"],
                   x2: ["0%", "95%"],
                   y1: ["0%", "100%"],
-                  y2: ["0%", `${93 + Math.random() * 8}%`],
+                  y2: [`0%`, `${(93 + Math.random() * 8).toString()}%`],
                 }}
-                id={`linearGradient-${index}`}
+                data-testid="gradient-def"
+                id={`linearGradient-${path[index]}`}
                 initial={{
                   x1: "0%",
                   x2: "0%",
                   y1: "0%",
                   y2: "0%",
                 }}
-                key={`gradient-${index}`}
+                key={`gradient-${path[index]}`}
                 transition={{
                   duration: Math.random() * 10 + 10,
                   ease: "easeInOut",
@@ -138,7 +144,7 @@ export const BackgroundBeams = React.memo(
         </svg>
       </div>
     );
-  }
+  },
 );
 
 BackgroundBeams.displayName = "BackgroundBeams";

@@ -13,7 +13,7 @@ const Slider = React.forwardRef<
   <SliderPrimitive.Root
     className={cn(
       "relative flex w-full touch-none select-none items-center",
-      className
+      className,
     )}
     ref={ref}
     {...props}
@@ -45,7 +45,7 @@ function GaugeCircle({
     <div
       className={cn(
         "relative h-40 w-40 text-2xl font-semibold text-foreground duration-700",
-        className
+        className,
       )}
       style={
         {

@@ -15,12 +15,12 @@ export const BoxesCore: React.FC<{ className?: string }> = ({
 
   const rowIds = React.useMemo(
     () => Array.from({ length: 150 }, () => crypto.randomUUID()),
-    []
+    [],
   );
 
   const colIds = React.useMemo(
     () => Array.from({ length: 100 }, () => crypto.randomUUID()),
-    []
+    [],
   );
 
   const colors = [
@@ -42,8 +42,9 @@ export const BoxesCore: React.FC<{ className?: string }> = ({
     <div
       className={cn(
         "absolute left-1/4 p-4 -top-1/4 flex  -translate-x-1/2 -translate-y-1/2 w-full h-full z-0 ",
-        className
+        className,
       )}
+      data-testid="boxes-container"
       style={{
         transform: `translate(-40%,-60%) skewX(-48deg) skewY(14deg) scale(0.675) rotate(0deg) translateZ(0)`,
       }}
@@ -52,6 +53,8 @@ export const BoxesCore: React.FC<{ className?: string }> = ({
       {rows.map((_, i) => (
         <motion.div
           className="w-16 h-8 border-l border-slate-700 relative"
+          data-key={rowIds[i]}
+          data-testid="box-row"
           key={rowIds[i]}
         >
           {cols.map((__, j) => (
@@ -60,6 +63,7 @@ export const BoxesCore: React.FC<{ className?: string }> = ({
                 transition: { duration: 2 },
               }}
               className="w-16 h-8  border-r border-t border-slate-700 relative"
+              data-testid="box-col"
               key={colIds[j]}
               whileHover={{
                 backgroundColor: `var(${getRandomColor()})`,
@@ -69,6 +73,7 @@ export const BoxesCore: React.FC<{ className?: string }> = ({
               {j % 2 === 0 && i % 2 === 0 ? (
                 <svg
                   className="absolute h-6 w-10 -top-[14px] -left-[22px] text-slate-700 stroke-[1px] pointer-events-none"
+                  data-testid="box-icon"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="1.5"

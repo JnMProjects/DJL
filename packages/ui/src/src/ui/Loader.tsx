@@ -68,179 +68,135 @@ const Loader: React.FC<LoaderProps> = ({
     void import("ldrs").then((ldr) => {
       switch (type) {
         case "ring":
-           
           ldr.ring.register();
           break;
         case "ring2":
-           
           ldr.ring2.register();
           break;
         case "tailSpin":
-           
           ldr.tailspin.register();
           break;
         case "lineSpinner":
-           
           ldr.lineSpinner.register();
           break;
         case "squircle":
-           
           ldr.squircle.register();
           break;
         case "square":
-           
           ldr.square.register();
           break;
         case "reuleaux":
-           
           ldr.reuleaux.register();
           break;
         case "tailChase":
-           
           ldr.tailChase.register();
           break;
         case "dotSpinner":
-           
           ldr.dotSpinner.register();
           break;
         case "spiral":
-           
           ldr.spiral.register();
           break;
         case "bouncy":
-           
           ldr.bouncy.register();
           break;
         case "treadmill":
-           
           ldr.treadmill.register();
           break;
         case "bouncyArc":
-           
           ldr.bouncyArc.register();
           break;
         case "waveform":
-           
           ldr.waveform.register();
           break;
         case "hatch":
-           
           ldr.hatch.register();
           break;
         case "hourglass":
-           
           ldr.hourglass.register();
           break;
         case "zoomies":
-           
           ldr.zoomies.register();
           break;
         case "lineWobble":
-           
           ldr.lineWobble.register();
           break;
         case "infinity":
-           
           ldr.infinity.register();
           break;
         case "trefoil":
-           
           ldr.trefoil.register();
           break;
         case "cardio":
-           
           ldr.cardio.register();
           break;
         case "helix":
-           
           ldr.helix.register();
           break;
         case "grid":
-           
           ldr.grid.register();
           break;
         case "quantum":
-           
           ldr.quantum.register();
           break;
         case "wobble":
-           
           ldr.wobble.register();
           break;
         case "orbit":
-           
           ldr.orbit.register();
           break;
         case "chaoticOrbit":
-           
           ldr.chaoticOrbit.register();
           break;
         case "superballs":
-           
           ldr.superballs.register();
           break;
         case "trio":
-           
           ldr.trio.register();
           break;
         case "momentum":
-           
           ldr.momentum.register();
           break;
         case "dotWave":
-           
           ldr.dotWave.register();
           break;
         case "leapfrog":
-           
           ldr.leapfrog.register();
           break;
         case "newton": // 's cradle
-           
           ldr.newtonsCradle.register();
           break;
         case "dotStream":
-           
           ldr.dotStream.register();
           break;
         case "dotPulse":
-           
           ldr.dotPulse.register();
           break;
         case "metronome":
-           
           ldr.metronome.register();
           break;
         case "jelly":
-           
           ldr.jelly.register();
           break;
         case "jellyTriangle":
-           
           ldr.jellyTriangle.register();
           break;
         case "mirage":
-           
           ldr.mirage.register();
           break;
         case "ping":
-           
           ldr.ping.register();
           break;
         case "pulsar":
-           
           ldr.pulsar.register();
           break;
         case "ripples":
-           
           ldr.ripples.register();
           break;
         case "miyagi":
-           
           ldr.miyagi.register();
           break;
         case "pinwheel":
-           
           ldr.pinwheel.register();
           break;
       }
