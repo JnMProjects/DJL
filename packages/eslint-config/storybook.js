@@ -1,6 +1,10 @@
 const { resolve } = require("node:path");
 
-const project = resolve(process.cwd(), "tsconfig.json");
+const tscc = resolve(process.cwd(), "tsconfig.json");
+
+const browser = require("@vercel/style-guide/eslint/browser");
+const typescript = require("@vercel/style-guide/eslint/typescript");
+const react = require("@vercel/style-guide/eslint/react");
 
 /*
  * This is a custom ESLint configuration for use a library
@@ -12,18 +16,14 @@ const project = resolve(process.cwd(), "tsconfig.json");
  */
 
 module.exports = {
-  extends: [
-    "@vercel/style-guide/eslint/node",
-    "@vercel/style-guide/eslint/browser",
-    "@vercel/style-guide/eslint/typescript",
-    "@vercel/style-guide/eslint/react",
-    "plugin:storybook/recommended",
-    "plugin:mdx/recommended",
-  ],
+  ...browser,
+  ...typescript,
+  ...react,
+  parser: "@typescript-eslint/parser",
   parserOptions: {
-    project,
+    project: tscc,
   },
-  plugins: ["only-warn"],
+  plugins: ["only-warn", "react-hooks", "eslint-comments", "storybook", "mdx"],
   globals: {
     React: true,
     JSX: true,
@@ -35,8 +35,17 @@ module.exports = {
       },
     },
   },
-  ignorePatterns: ["node_modules/", "dist/", ".eslintrc.js", "**/*.css"],
-  // add rules configurations here
+  ignorePatterns: [
+    "node_modules/",
+    "dist/",
+    ".eslintrc.js",
+    "**/*.css",
+    "jest.config.ts",
+    "coverage/",
+    "babel.config.js",
+    "eslint.config.js",
+    "**/*.css",
+  ], // add rules configurations here
   rules: {
     "import/no-default-export": "off",
     "import/no-extraneous-dependencies": "off",

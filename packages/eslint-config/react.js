@@ -23,7 +23,7 @@ module.exports = {
   parserOptions: {
     project: tscc,
   },
-  plugins: ["only-warn", "react-hooks"],
+  plugins: ["only-warn", "react-hooks", "eslint-comments"],
   globals: {
     JSX: true,
   },
