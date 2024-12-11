@@ -6,8 +6,8 @@
     "./src/fx.ts",
     "./src/**/*.ts",
     "./src/**/*.tsx",
-    "./src/tests/**/*",
-    "tsup.config.ts",
+    "./src/tests/**/*test.tsx",
+    "tsup.config.ts"
   ],
   "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {

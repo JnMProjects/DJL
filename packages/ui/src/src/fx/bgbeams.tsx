@@ -89,9 +89,8 @@ export const BackgroundBeams = React.memo(
             <motion.path
               d={path}
               data-testid="gradient-path"
-              key={`path-${path[index]}`}
-              // eslint-disable-next-line @typescript-eslint/restrict-template-expressions -- required for the col
-              stroke={`url(#linearGradient-${index})`}
+              key={`path-${index.toString()}`}
+              stroke={`url(#linearGradient-${index.toString()})`}
               strokeOpacity="0.4"
               strokeWidth="0.5"
             />
@@ -106,14 +105,14 @@ export const BackgroundBeams = React.memo(
                   y2: [`0%`, `${(93 + Math.random() * 8).toString()}%`],
                 }}
                 data-testid="gradient-def"
-                id={`linearGradient-${path[index]}`}
+                id={`linearGradient-${index.toString()}`}
                 initial={{
                   x1: "0%",
                   x2: "0%",
                   y1: "0%",
                   y2: "0%",
                 }}
-                key={`gradient-${path[index]}`}
+                key={`gradient-${index.toString()}`}
                 transition={{
                   duration: Math.random() * 10 + 10,
                   ease: "easeInOut",

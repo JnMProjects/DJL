@@ -13,16 +13,6 @@ export const BoxesCore: React.FC<{ className?: string }> = ({
   const rows = new Array(150).fill(1);
   const cols = new Array(100).fill(1);
 
-  const rowIds = React.useMemo(
-    () => Array.from({ length: 150 }, () => crypto.randomUUID()),
-    [],
-  );
-
-  const colIds = React.useMemo(
-    () => Array.from({ length: 100 }, () => crypto.randomUUID()),
-    [],
-  );
-
   const colors = [
     "--sky-300",
     "--pink-300",
@@ -53,9 +43,10 @@ export const BoxesCore: React.FC<{ className?: string }> = ({
       {rows.map((_, i) => (
         <motion.div
           className="w-16 h-8 border-l border-slate-700 relative"
-          data-key={rowIds[i]}
+          data-key={i}
           data-testid="box-row"
-          key={rowIds[i]}
+          // eslint-disable-next-line react/no-array-index-key
+          key={i}
         >
           {cols.map((__, j) => (
             <motion.div
@@ -64,7 +55,8 @@ export const BoxesCore: React.FC<{ className?: string }> = ({
               }}
               className="w-16 h-8  border-r border-t border-slate-700 relative"
               data-testid="box-col"
-              key={colIds[j]}
+              // eslint-disable-next-line react/no-array-index-key
+              key={j}
               whileHover={{
                 backgroundColor: `var(${getRandomColor()})`,
                 transition: { duration: 0 },

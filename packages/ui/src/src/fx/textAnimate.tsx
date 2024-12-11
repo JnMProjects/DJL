@@ -237,7 +237,8 @@ const TextAnimate: FC<TextAnimateProps> = ({
               aria-hidden="true"
               className="inline-block mr-[0.25em] whitespace-nowrap"
               initial="hidden"
-              key={word[index]}
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
               ref={ref}
               transition={{
                 delayChildren: index * 0.13,
@@ -252,7 +253,8 @@ const TextAnimate: FC<TextAnimateProps> = ({
                   <motion.span
                     aria-hidden="true"
                     className="inline-block -mr-[0.01em]"
-                    key={character[index2]}
+                    // eslint-disable-next-line react/no-array-index-key
+                    key={index2}
                     variants={child}
                   >
                     {character}
@@ -277,7 +279,8 @@ const TextAnimate: FC<TextAnimateProps> = ({
       {...props}
     >
       {letters.map((letter, index) => (
-        <motion.span key={letter[index]} variants={child}>
+        // eslint-disable-next-line react/no-array-index-key
+        <motion.span key={index} variants={child}>
           {letter === " " ? "\u00A0" : letter}
         </motion.span>
       ))}

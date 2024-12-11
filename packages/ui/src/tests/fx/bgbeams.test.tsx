@@ -11,7 +11,7 @@ describe("BackgroundBeams", () => {
     expect(container).toHaveClass("absolute h-full w-full inset-0");
   });
 
-  it("applies custom className correctly", () => {
+  it("applies custom classNames correctly", () => {
     const customClass = "custom-test-class";
     render(<BackgroundBeams className={customClass} />);
     const container = screen.getByTestId("background-beams");
