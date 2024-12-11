@@ -9,11 +9,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 
-const randomInt = (min: number, max: number) => {
+const randomInt = (min: number, max: number): number => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-const generateRandomInt = () => {
+const generateRandomInt = (): number => {
   let result = 1;
   for (let i = 0; i < 5; i++) {
     result *= randomInt(0, 1000);
@@ -32,7 +32,7 @@ export const HoverEffect = ({
     bg?: string;
   }[];
   className?: string;
-}) => {
+}): React.JSX.Element => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
@@ -48,7 +48,7 @@ export const HoverEffect = ({
           className="relative group  block p-2 h-full w-full"
           href={item.href || "#"}
           id={item.title}
-          key={item.title ?? generateRandomInt()}
+          key={item.title || generateRandomInt()}
           onMouseEnter={() => {
             setHoveredIndex(idx);
           }}
@@ -80,12 +80,16 @@ export const HoverEffect = ({
             key={item.title ? `card${item.title}` : generateRandomInt()}
           >
             {item.title ? (
-              <CardTitle key={item.title ?? generateRandomInt()}>
+              <CardTitle
+                key={item.title ? `title${item.title}` : generateRandomInt()}
+              >
                 {item.title}
               </CardTitle>
             ) : null}
             {item.description ? (
-              <CardDescription key={item.description ?? generateRandomInt()}>
+              <CardDescription
+                key={item.title ? `desc${item.title}` : generateRandomInt()}
+              >
                 {item.description}
               </CardDescription>
             ) : null}
@@ -106,20 +110,20 @@ export const Card = ({
   children: React.ReactNode;
   forewardkey?: string;
   bg?: string;
-}) => {
+}): React.JSX.Element => {
   return (
     <div
       className={cn(
         "rounded-2xl h-full w-full p-1 overflow-hidden bg-background/50 glassblur flex items-center justify-evenly border border-accent group-hover:border-secondary relative z-20",
         className
       )}
-      key={`${forewardkey}hoverfxwrapper`}
+      key={forewardkey ? `${forewardkey}hoverfxwrapper` : generateRandomInt()}
     >
       {bg ? (
         <Image
           alt={bg || "default image"}
           height={250}
-          key={`${forewardkey}hoverfximage`}
+          key={forewardkey ? `${forewardkey}hoverfximage` : generateRandomInt()}
           src={bg || "/default-image.jpg"}
           width={250}
         />
@@ -136,7 +140,7 @@ export const CardTitle = ({
 }: {
   className?: string;
   children: React.ReactNode;
-}) => {
+}): React.JSX.Element => {
   return (
     <h4
       className={cn("text-foreground font-bold tracking-wide mt-1", className)}
@@ -151,7 +155,7 @@ export const CardDescription = ({
 }: {
   className?: string;
   children: React.ReactNode;
-}) => {
+}): React.JSX.Element => {
   return (
     <p
       className={cn(

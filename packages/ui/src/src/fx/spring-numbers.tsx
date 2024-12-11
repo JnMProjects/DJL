@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import type { MotionValue} from "framer-motion";
+import type { MotionValue } from "framer-motion";
 import { motion, useSpring, useTransform } from "framer-motion";
 import { cldText } from ">util/classnames";
 
@@ -11,7 +11,7 @@ interface AnimatedNumberProps {
   stiffness?: number;
   damping?: number;
   precision?: number;
-   
+
   format?: (value: number) => string;
   onAnimationStart?: () => void;
   onAnimationComplete?: () => void;
@@ -26,7 +26,7 @@ export function Custom({
   format = (num) => num.toLocaleString(),
   onAnimationStart,
   onAnimationComplete,
-}: AnimatedNumberProps) {
+}: AnimatedNumberProps): React.JSX.Element {
   const spring = useSpring(value, { mass, stiffness, damping });
   const display: MotionValue<string> = useTransform(
     spring,
@@ -38,10 +38,13 @@ export function Custom({
   useEffect(() => {
     spring.set(value);
     if (onAnimationStart) onAnimationStart();
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- i know but it works in this usecase
     const unsubscribe = spring.onChange(() => {
       if (spring.get() === value && onAnimationComplete) onAnimationComplete();
     });
-    return () => { unsubscribe(); };
+    return () => {
+      unsubscribe();
+    };
   }, [spring, value, onAnimationStart, onAnimationComplete]);
 
   return <motion.span className={cldText}>{display}</motion.span>;
@@ -51,7 +54,7 @@ export function SpringNumbers({
   value,
   onAnimationStart,
   onAnimationComplete,
-}: AnimatedNumberProps) {
+}: AnimatedNumberProps): React.JSX.Element {
   return (
     <Custom
       damping={15}

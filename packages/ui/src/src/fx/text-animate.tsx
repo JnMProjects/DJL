@@ -1,10 +1,10 @@
 "use client";
 
 import type { FC } from "react";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import type { HTMLMotionProps } from "framer-motion";
 import { motion, useAnimation, useInView } from "framer-motion";
-import { cldText } from ">util/classnames";
+import { DefaultText } from ">util/className";
 import { cn } from ">util/twm";
 
 type AnimationType =
@@ -202,20 +202,28 @@ const TextAnimate: FC<TextAnimateProps> = ({
   className,
   ...props
 }: TextAnimateProps) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: false }); // Changed to false to allow repeated animations
-  const ctrls = useAnimation();
+  //   const { ref, inView } = useInView({
+  //     threshold: 0.5,
+  //     triggerOnce: true,
+  //   });
 
-  useEffect(() => {
-    if (isInView) {
-      void ctrls.start("visible");
-    } else {
-      void ctrls.start("hidden");
-    }
-  }, [ctrls, isInView]);
+  const ref = useRef(null);
+
+  const isInView = useInView(ref, { once: true });
 
   const letters = Array.from(text);
   const { container, child } = animationVariants[type];
+
+  const ctrls = useAnimation();
+
+  //   useEffect(() => {
+  //     if (isInView) {
+  //       ctrls.start("visible");
+  //     }
+  //     if (!isInView) {
+  //       ctrls.start("hidden");
+  //     }
+  //   }, [ctrls, isInView]);
 
   if (type === "rollIn" || type === "whipIn") {
     return (
@@ -227,7 +235,8 @@ const TextAnimate: FC<TextAnimateProps> = ({
               aria-hidden="true"
               className="inline-block mr-[0.25em] whitespace-nowrap"
               initial="hidden"
-              key={word}
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
               ref={ref}
               transition={{
                 delayChildren: windex * 0.13,
@@ -235,12 +244,13 @@ const TextAnimate: FC<TextAnimateProps> = ({
               }}
               variants={container}
             >
-              {word.split("").map((character, cindex) => {
+              {word.split("").map((character, index2) => {
                 return (
                   <motion.span
                     aria-hidden="true"
                     className="inline-block -mr-[0.01em]"
-                    key={character[cindex]}
+                    // eslint-disable-next-line react/no-array-index-key
+                    key={index2}
                     variants={child}
                   >
                     {character}
@@ -265,8 +275,9 @@ const TextAnimate: FC<TextAnimateProps> = ({
       variants={container}
       {...props}
     >
-      {letters.map((letter, lindex) => (
-        <motion.span key={letter[lindex]} variants={child}>
+      {letters.map((letter, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <motion.span key={index} variants={child}>
           {letter === " " ? "\u00A0" : letter}
         </motion.span>
       ))}

@@ -64,7 +64,6 @@ const ToggleGroup = React.forwardRef<
   </ToggleGroupPrimitive.Root>
 ));
 
- 
 ToggleGroup.displayName = ToggleGroupPrimitive.Root.displayName;
 
 const ToggleGroupItem = React.forwardRef<
@@ -89,7 +88,6 @@ const ToggleGroupItem = React.forwardRef<
   );
 });
 
- 
 ToggleGroupItem.displayName = ToggleGroupPrimitive.Item.displayName;
 
 export { ToggleGroup as Group, ToggleGroupItem as Item };

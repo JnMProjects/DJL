@@ -1,6 +1,10 @@
 const { resolve } = require("node:path");
 
-const project = resolve(process.cwd(), "tsconfig.json");
+const tscc = resolve(process.cwd(), "tsconfig.json");
+
+const browser = require("@vercel/style-guide/eslint/browser");
+const typescript = require("@vercel/style-guide/eslint/typescript");
+const react = require("@vercel/style-guide/eslint/react");
 
 /*
  * This is a custom ESLint configuration for use a library
@@ -12,26 +16,37 @@ const project = resolve(process.cwd(), "tsconfig.json");
  */
 
 module.exports = {
-  extends: [
-    "@vercel/style-guide/eslint/browser",
-    "@vercel/style-guide/eslint/typescript",
-    "@vercel/style-guide/eslint/react",
-  ].map(require.resolve),
+  ...browser,
+  ...typescript,
+  ...react,
+  parser: "@typescript-eslint/parser",
   parserOptions: {
-    project,
+    project: tscc,
   },
-  plugins: ["only-warn"],
+  plugins: ["only-warn", "react-hooks", "eslint-comments"],
   globals: {
     JSX: true,
   },
   settings: {
     "import/resolver": {
       typescript: {
-        project,
+        project: tscc,
       },
     },
+    react: {
+      version: "detect",
+    },
   },
-  ignorePatterns: ["node_modules/", "dist/", ".eslintrc.js", "**/*.css"],
+  ignorePatterns: [
+    "node_modules/",
+    "dist/",
+    ".eslintrc.js",
+    "**/*.css",
+    "jest.config.ts",
+    "coverage/",
+    "babel.config.js",
+    "eslint.config.js",
+  ],
   // add rules configurations here
   rules: {
     "import/no-default-export": "off",
@@ -42,5 +57,7 @@ module.exports = {
     "@typescript-eslint/no-redundant-type-constituents": "off",
     "react/function-component-definition": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
   },
 };

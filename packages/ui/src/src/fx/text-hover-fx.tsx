@@ -25,7 +25,7 @@ export const TextHoverEffect = ({
   animate?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Cant import types from framer-motion
   exit?: any;
-}) => {
+}): React.JSX.Element => {
   const svgRef = useRef<SVGSVGElement>(null);
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
@@ -37,18 +37,21 @@ export const TextHoverEffect = ({
       const cxPercentage = ((cursor.x - svgRect.left) / svgRect.width) * 100;
       const cyPercentage = ((cursor.y - svgRect.top) / svgRect.height) * 100;
       setMaskPosition({
-        cx: `${cxPercentage}%`,
-        cy: `${cyPercentage}%`,
+        cx: `${cxPercentage.toString()}%`,
+        cy: `${cyPercentage.toString()}%`,
       });
     }
   }, [cursor]);
 
   return (
     <motion.svg
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- not infered by importer // works fine
       animate={animate}
       className={cn("select-none", className)}
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- not infered by importer // works fine
       exit={exit}
       height="100%"
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- not infered by importer // works fine
       initial={initial}
       key="hoverfx"
       onMouseEnter={() => {
@@ -115,7 +118,7 @@ export const TextHoverEffect = ({
       <text
         className={cn(
           font ?? "font-[helvetica] font-bold ",
-          " stroke-neutral-200 dark:stroke-neutral-800 fill-transparent text-7xl"
+          " stroke-neutral-200 dark:stroke-neutral-800 fill-transparent text-7xl",
         )}
         dominantBaseline="middle"
         key="t1"
@@ -134,7 +137,7 @@ export const TextHoverEffect = ({
         }}
         className={cn(
           font ?? "font-[helvetica] font-bold ",
-          " font-bold fill-transparent text-7xl   stroke-neutral-200 dark:stroke-neutral-800"
+          " font-bold fill-transparent text-7xl   stroke-neutral-200 dark:stroke-neutral-800",
         )}
         dominantBaseline="middle"
         initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
@@ -153,7 +156,7 @@ export const TextHoverEffect = ({
       <text
         className={cn(
           font ?? "font-[helvetica] font-bold ",
-          " font-bold fill-transparent text-7xl  "
+          " font-bold fill-transparent text-7xl  ",
         )}
         dominantBaseline="middle"
         key="t3"

@@ -11,7 +11,11 @@ export interface TypewriterProps {
   baseText?: string;
 }
 
-export function Typewriter({ delay, texts, baseText = "" }: TypewriterProps) {
+export function Typewriter({
+  delay,
+  texts,
+  baseText = "",
+}: TypewriterProps): React.JSX.Element {
   const [animationComplete, setAnimationComplete] = useState(false);
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.round(latest));
@@ -62,7 +66,7 @@ const defaultTexts = [
 function RepeatedTextAnimation({
   delay,
   texts = defaultTexts,
-}: RepeatedTextAnimationProps) {
+}: RepeatedTextAnimationProps): React.JSX.Element {
   const textIndex = useMotionValue(0);
 
   const baseText = useTransform(textIndex, (latest) => texts[latest] || "");
@@ -114,7 +118,7 @@ const cursorVariants = {
   },
 };
 
-function BlinkingCursor() {
+function BlinkingCursor(): React.JSX.Element {
   return (
     <motion.div
       animate="blinking"

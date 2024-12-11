@@ -9,7 +9,7 @@ import { Button } from ">/button";
 const Drawer = ({
   shouldScaleBackground = true,
   ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Root>) => (
+}: React.ComponentProps<typeof DrawerPrimitive.Root>): React.JSX.Element => (
   <DrawerPrimitive.Root
     shouldScaleBackground={shouldScaleBackground}
     {...props}
@@ -51,7 +51,7 @@ const DrawerOverlay = React.forwardRef<
   <DrawerPrimitive.Overlay
     className={cn(
       "fixed inset-0 z-50 bg-background/10 duration-700 tinyblur",
-      className
+      className,
     )}
     ref={ref}
     {...props}
@@ -69,7 +69,7 @@ const DrawerContent = React.forwardRef<
     <DrawerPrimitive.Content
       className={cn(
         "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border border-b-0 border-ring duration-700  bg-background/20 glassblur",
-        className
+        className,
       )}
       ref={ref}
       style={{ maxHeight: "65vh" }} // Set the max height to 90% of the viewport height
@@ -96,11 +96,11 @@ DrawerContent.displayName = "DrawerContent";
 const DrawerHeader = ({
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
+}: React.HTMLAttributes<HTMLDivElement>): React.JSX.Element => (
   <div
     className={cn(
       "grid gap-1.5 p-4 text-center text-foreground duration-700 sm:text-left",
-      className
+      className,
     )}
     {...props}
   />
@@ -110,11 +110,11 @@ DrawerHeader.displayName = "DrawerHeader";
 const DrawerFooter = ({
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
+}: React.HTMLAttributes<HTMLDivElement>): React.JSX.Element => (
   <div
     className={cn(
       "mt-auto flex flex-col gap-2 p-4 text-muted-foreground/80 duration-700",
-      className
+      className,
     )}
     {...props}
   />
@@ -128,7 +128,7 @@ const DrawerTitle = React.forwardRef<
   <DrawerPrimitive.Title
     className={cn(
       "text-lg font-semibold lores leading-none tracking-tight text-foreground duration-700",
-      className
+      className,
     )}
     ref={ref}
     {...props}

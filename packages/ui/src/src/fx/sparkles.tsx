@@ -1,5 +1,6 @@
 "use client";
 import { useId, useEffect, useState } from "react";
+import React, { useId, useEffect, useState } from "react";
 
 import { default as Particles, initParticlesEngine } from "@tsparticles/react";
 import type {
@@ -23,7 +24,7 @@ interface ParticlesProps {
   particleColor?: string;
   particleDensity?: number;
 }
-export const SparklesCore = (props: ParticlesProps) => {
+export const SparklesCore = (props: ParticlesProps): React.JSX.Element => {
   const {
     id,
     className,
@@ -46,10 +47,19 @@ export const SparklesCore = (props: ParticlesProps) => {
     initEngine().catch(() => {
       throw new Error("Failed to initialize particles engine");
     });
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    })
+      .then(() => {
+        setInit(true);
+      })
+      .catch(() => {
+        throw new Error("Failed to initialize particles");
+      });
   }, []);
   const controls = useAnimation();
 
-  const particlesLoaded = async (container?: Container) => {
+  const particlesLoaded = (container?: Container): Promise<void> => {
     if (container) {
       await controls.start({
         opacity: 1,
@@ -57,12 +67,23 @@ export const SparklesCore = (props: ParticlesProps) => {
           duration: 1,
         },
       });
+      return controls
+        .start({
+          opacity: 1,
+          transition: {
+            duration: 1,
+          },
+        })
+        .catch(console.error);
     }
+    return Promise.resolve();
   };
 
   const generatedId = useId();
   return (
     <motion.div animate={controls} className={cn("opacity-0", className)}>
+      {init ? (
+        <Particles
       {init ? (
         <Particles
           className={cn("h-full w-full")}
@@ -91,6 +112,8 @@ export const SparklesCore = (props: ParticlesProps) => {
                 },
 
                 resize: true as unknown as RecursivePartial<IResizeEvent>,
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any -- this is a third party library
+                resize: true as any,
               },
               modes: {
                 push: {
@@ -438,6 +461,8 @@ export const SparklesCore = (props: ParticlesProps) => {
             detectRetina: true,
           }}
           particlesLoaded={particlesLoaded}
+        />
+      ) : null}
         />
       ) : null}
     </motion.div>
