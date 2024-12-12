@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import * as React from "react";
 import "@testing-library/jest-dom";
-import { BackgroundBeams } from "$/bgbeams";
+import { BackgroundBeams } from "$/bg-beams";
 
 describe("BackgroundBeams", () => {
   it("renders correctly with default props", () => {
@@ -20,7 +20,7 @@ describe("BackgroundBeams", () => {
 
   it("renders SVG element with correct attributes", () => {
     render(<BackgroundBeams />);
-    const svg = screen.getByRole("img", { hidden: true });
+    const svg = screen.getByTestId("background-beams-svg");
     expect(svg).toBeInTheDocument();
     expect(svg).toHaveAttribute("width", "100%");
     expect(svg).toHaveAttribute("height", "100%");
