@@ -12,6 +12,7 @@ server/dist
 public/dist
 storybook-static/
 
-.yarn
+.yarn/berry
+.yarn/install-state.gz
 coverage
 temp-jest
