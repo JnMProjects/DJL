@@ -18,6 +18,9 @@
     },
     "test": {
       "dependsOn": ["^test"]
+    },
+    "release": {
+      "dependsOn": ["build"]
     }
   }
 }
