@@ -42,6 +42,7 @@ export const HoverEffect = ({
         className
       )}
       key="hovereffectfxwrapppper"
+      data-testid="hover-cards-wrapper"
     >
       {items.map((item, idx) => (
         <Link
@@ -55,6 +56,7 @@ export const HoverEffect = ({
           onMouseLeave={() => {
             setHoveredIndex(null);
           }}
+          data-testid="hover-effect"
         >
           <AnimatePresence>
             {hoveredIndex === idx && (

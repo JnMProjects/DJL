@@ -28,17 +28,13 @@ export function Custom({
   onAnimationComplete,
 }: AnimatedNumberProps): React.JSX.Element {
   const spring = useSpring(value, { mass, stiffness, damping });
-  const display: MotionValue<string> = useTransform(
-    spring,
-    (
-      current: number // typeof number is a fix rn / Need to Test dis
-    ) => format(parseFloat(current.toFixed(precision)))
+  const display: MotionValue<string> = useTransform(spring, (current: number) =>
+    format(parseFloat(current.toFixed(precision)))
   );
 
   useEffect(() => {
     spring.set(value);
     if (onAnimationStart) onAnimationStart();
-    // eslint-disable-next-line @typescript-eslint/no-deprecated -- i know but it works in this usecase
     const unsubscribe = spring.onChange(() => {
       if (spring.get() === value && onAnimationComplete) onAnimationComplete();
     });
@@ -47,7 +43,11 @@ export function Custom({
     };
   }, [spring, value, onAnimationStart, onAnimationComplete]);
 
-  return <motion.span className={cldText}>{display}</motion.span>;
+  return (
+    <motion.span data-testid="animated-number" className={cldText}>
+      {display}
+    </motion.span>
+  );
 }
 
 export function SpringNumbers({

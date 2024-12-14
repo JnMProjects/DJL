@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import * as React from "react";
 import "@testing-library/jest-dom";
-import { Boxes } from "$/bgboxes";
+import { Boxes } from "$/bg-boxes";
 
 describe("Boxes", () => {
   it("renders correctly with default props", () => {
