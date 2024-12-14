@@ -1,0 +1,17 @@
+name: Lint! 🍷
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    name: Run Eslint 🎯
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: yarn install
+      - name: Run tests
+        run: yarn turbo run lint

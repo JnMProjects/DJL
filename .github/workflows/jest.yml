@@ -1,0 +1,17 @@
+name: Test Jest 🃏
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Jest Test 🃏
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: yarn install
+      - name: Run tests
+        run: yarn turbo run test
