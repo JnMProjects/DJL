@@ -1,7 +1,7 @@
 export * as AspectRatio from ">/aspect-ratio";
-export * as Button from ">/button";
+export { Button, buttonVariants } from ">/button";
 export * as Card from ">/card";
-export * as Checkbox from ">/checkbox";
+export { Checkbox } from ">/checkbox";
 export * as Collapse from ">/collapse";
 export * as Command from ">/command";
 export * as CustomCard from ">/custom-card";

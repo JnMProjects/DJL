@@ -3,8 +3,8 @@
 import type { FC } from "react";
 import { useRef } from "react";
 import type { HTMLMotionProps } from "framer-motion";
-import { motion, useAnimation, useInView } from "framer-motion";
-import { DefaultText } from ">util/className";
+import { motion, useAnimation } from "framer-motion";
+import { cldText } from ">util/classnames";
 import { cn } from ">util/twm";
 
 type AnimationType =
@@ -209,8 +209,6 @@ const TextAnimate: FC<TextAnimateProps> = ({
 
   const ref = useRef(null);
 
-  const isInView = useInView(ref, { once: true });
-
   const letters = Array.from(text);
   const { container, child } = animationVariants[type];
 
@@ -236,7 +234,7 @@ const TextAnimate: FC<TextAnimateProps> = ({
               className="inline-block mr-[0.25em] whitespace-nowrap"
               initial="hidden"
               // eslint-disable-next-line react/no-array-index-key
-              key={index}
+              key={windex}
               ref={ref}
               transition={{
                 delayChildren: windex * 0.13,
