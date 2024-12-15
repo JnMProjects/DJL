@@ -6,10 +6,5 @@
   "linked": [],
   "access": "public",
   "updateInternalDependencies": "patch",
-  "ignore": [
-    "docs",
-    "storydocs",
-    "@repo/eslint-config",
-    "@repo/typescript-config"
-  ]
+  "ignore": ["docs"]
 }
