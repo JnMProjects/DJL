@@ -59,6 +59,7 @@ export const SparklesCore = (props: ParticlesProps): React.JSX.Element => {
   const controls = useAnimation();
 
   const particlesLoaded = async (container?: Container): Promise<void> => {
+  const particlesLoaded = async (container?: Container): Promise<void> => {
     if (container) {
       await controls.start({
         opacity: 1,
