@@ -13,20 +13,20 @@ describe("Custom Component", () => {
 
   it("applies custom formatting function", () => {
     const format = (num: number) => `$${num.toFixed(2)}`;
-    render(<Custom value={100} format={format} />);
+    render(<Custom format={format} value={100} />);
     const animatedNumber = screen.getByTestId("animated-number");
     expect(animatedNumber).toHaveTextContent("$100.00");
   });
 
   it("calls onAnimationStart when animation starts", () => {
     const onAnimationStart = jest.fn();
-    render(<Custom value={100} onAnimationStart={onAnimationStart} />);
+    render(<Custom onAnimationStart={onAnimationStart} value={100} />);
     expect(onAnimationStart).toHaveBeenCalled();
   });
 
   it("calls onAnimationComplete when animation completes", async () => {
     const onAnimationComplete = jest.fn();
-    render(<Custom value={100} onAnimationComplete={onAnimationComplete} />);
+    render(<Custom onAnimationComplete={onAnimationComplete} value={100} />);
     // Simulate a value change to trigger the animation completion
     // This may require a more complex setup depending on your animation logic
     expect(onAnimationComplete).toHaveBeenCalled();
@@ -46,9 +46,9 @@ describe("SpringNumbers Component", () => {
     const onAnimationComplete = jest.fn();
     render(
       <SpringNumbers
-        value={200}
-        onAnimationStart={onAnimationStart}
         onAnimationComplete={onAnimationComplete}
+        onAnimationStart={onAnimationStart}
+        value={200}
       />
     );
 

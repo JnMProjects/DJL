@@ -7,7 +7,7 @@ import useMeasure from "react-use-measure";
 
 import { cn } from ">util/twm";
 import { Wrapper } from ">/custom-card";
-import { cldText } from ">util/classnames";
+import { Text as cldText } from ">util/classnames";
 
 // Direction Aware Tabs
 interface Tab {
@@ -77,7 +77,7 @@ function CustomDirectionAwareTabs({
         className={cn(
           "flex space-x-1 border border-none border-accent rounded-full cursor-pointer bg-muted opacity-90 glassblur px-[3px] py-[3.2px] shadow-inner-shadow",
           className,
-          rounded,
+          rounded
         )}
       >
         {tabs.map((tab) => (
@@ -88,7 +88,7 @@ function CustomDirectionAwareTabs({
               activeTab === tab.id
                 ? "text-white"
                 : "hover:text-neutral-300/60  text-neutral-200/80",
-              rounded,
+              rounded
             )}
             key={tab.id}
             onClick={() => {
@@ -150,7 +150,7 @@ function CustomDirectionAwareTabs({
 }
 
 function PresetDirectionAwareTabs(
-  props: OgImageSectionProps,
+  props: OgImageSectionProps
 ): React.JSX.Element {
   const [activeTabs, setActiveTabs] = useState(0);
   return (
@@ -163,4 +163,7 @@ function PresetDirectionAwareTabs(
     </Wrapper>
   );
 }
-export { CustomDirectionAwareTabs, PresetDirectionAwareTabs };
+export {
+  CustomDirectionAwareTabs as DirectionAware,
+  PresetDirectionAwareTabs as PresetDirectionAware,
+};

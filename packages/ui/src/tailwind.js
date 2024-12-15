@@ -1,7 +1,7 @@
 import svgToDataUri from "mini-svg-data-uri";
 import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
 
-export const config = {
+const config = {
   darkMode: ["class", '[data-mode="dark"]'],
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -168,3 +168,5 @@ function addVariablesForColors({ addBase, theme }) {
     ":root": newVars,
   });
 }
+
+export default config;

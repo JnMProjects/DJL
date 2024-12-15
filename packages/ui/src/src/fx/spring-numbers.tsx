@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import type { MotionValue } from "framer-motion";
 import { motion, useSpring, useTransform } from "framer-motion";
-import { cldText } from ">util/classnames";
+import { Text as cldText } from ">util/classnames";
 
 interface AnimatedNumberProps {
   value: number;
@@ -35,6 +35,7 @@ export function Custom({
   useEffect(() => {
     spring.set(value);
     if (onAnimationStart) onAnimationStart();
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- idk it works
     const unsubscribe = spring.onChange(() => {
       if (spring.get() === value && onAnimationComplete) onAnimationComplete();
     });
@@ -44,7 +45,7 @@ export function Custom({
   }, [spring, value, onAnimationStart, onAnimationComplete]);
 
   return (
-    <motion.span data-testid="animated-number" className={cldText}>
+    <motion.span className={cldText} data-testid="animated-number">
       {display}
     </motion.span>
   );

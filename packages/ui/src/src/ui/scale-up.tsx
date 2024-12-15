@@ -79,7 +79,7 @@ interface ScaleUpRootProps {
   className?: string;
 }
 
-export function ScaleUpRoot({
+function ScaleUpRoot({
   children,
   className,
 }: ScaleUpRootProps): React.JSX.Element {
@@ -106,7 +106,7 @@ interface ScaleUpTriggerProps {
   className?: string;
 }
 
-export function ScaleUpTrigger({
+function ScaleUpTrigger({
   children,
   className,
 }: ScaleUpTriggerProps): React.JSX.Element {
@@ -138,7 +138,7 @@ interface ScaleUpContentProps {
   header?: string;
 }
 
-export function ScaleUpContent({
+function ScaleUpContent({
   header,
   children,
   className,
@@ -193,7 +193,7 @@ interface ScaleUpFormProps {
   className?: string;
 }
 
-export function ScaleUpForm({
+function ScaleUpForm({
   children,
   onSubmit,
   className,
@@ -221,7 +221,7 @@ interface ScaleUpLabelProps {
   className?: string;
 }
 
-export function ScaleUpLabel({
+function ScaleUpLabel({
   children,
   className,
 }: ScaleUpLabelProps): React.JSX.Element {
@@ -248,7 +248,7 @@ interface ScaleUpTextareaProps {
   className?: string;
 }
 
-export function ScaleUpTextarea({
+function ScaleUpTextarea({
   className,
 }: ScaleUpTextareaProps): React.JSX.Element {
   const { note, setNote } = useScaleUp();
@@ -272,7 +272,7 @@ interface ScaleUpFooterProps {
   className?: string;
 }
 
-export function ScaleUpFooter({
+function ScaleUpFooter({
   children,
   className,
 }: ScaleUpFooterProps): React.JSX.Element {
@@ -290,7 +290,7 @@ interface ScaleUpCloseButtonProps {
   className?: string;
 }
 
-export function ScaleUpCloseButton({
+function ScaleUpCloseButton({
   className,
 }: ScaleUpCloseButtonProps): React.JSX.Element {
   const { closeScaleUp } = useScaleUp();
@@ -312,7 +312,7 @@ interface ScaleUpSubmitButtonProps {
   text?: string;
 }
 
-export function ScaleUpSubmitButton({
+function ScaleUpSubmitButton({
   text = "Submit",
   className,
 }: ScaleUpSubmitButtonProps): React.JSX.Element {
@@ -330,7 +330,7 @@ export function ScaleUpSubmitButton({
   );
 }
 
-export function ScaleUpHeader({
+function ScaleUpHeader({
   children,
   className,
 }: {
@@ -349,7 +349,7 @@ export function ScaleUpHeader({
   );
 }
 
-export function ScaleUpBody({
+function ScaleUpBody({
   children,
   className,
 }: {
@@ -359,7 +359,7 @@ export function ScaleUpBody({
   return <div className={cn("p-4", className)}>{children}</div>;
 }
 
-export function ScaleUpButton({
+function ScaleUpButton({
   children,
   onClick,
   className,
@@ -381,3 +381,18 @@ export function ScaleUpButton({
     </button>
   );
 }
+
+export {
+  ScaleUpRoot as Base,
+  ScaleUpTrigger as Trigger,
+  ScaleUpContent as Content,
+  ScaleUpForm as Form,
+  ScaleUpLabel as Label,
+  ScaleUpTextarea as Textarea,
+  ScaleUpFooter as Footer,
+  ScaleUpCloseButton as Close,
+  ScaleUpSubmitButton as Submit,
+  ScaleUpHeader as Header,
+  ScaleUpBody as Body,
+  ScaleUpButton as Button,
+};

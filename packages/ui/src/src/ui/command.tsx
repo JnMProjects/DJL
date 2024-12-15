@@ -6,7 +6,7 @@ import { Command as CommandPrimitive } from "cmdk";
 import { Search } from "react-feather";
 
 import { cn } from ">util/twm";
-import { Dialog, DialogWrapper } from ">/dialog";
+import { Dialog, DialogBase } from ">/dialog";
 import { Preset } from ">/popup";
 
 const Command = React.forwardRef<
@@ -19,7 +19,7 @@ const Command = React.forwardRef<
     className={cn(
       "flex h-full w-full flex-col overflow-hidden rounded-md duration-700 bg-background text-foreground border border-ring",
       "[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium duration-700 [&_[cmdk-group-heading]]:text-primary-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5",
-      className,
+      className
     )}
     ref={ref}
     {...props}
@@ -44,7 +44,7 @@ const asDialog = ({
   ...props
 }: CommandDialogProps): React.JSX.Element => {
   return (
-    <DialogWrapper trigger={trigger} triggervariant={triggervariant}>
+    <DialogBase trigger={trigger} triggervariant={triggervariant}>
       <Dialog className="overflow-hidden p-0 shadow-lg" {...props}>
         <Command
           className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium duration-700 [&_[cmdk-group-heading]]:text-primary-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5"
@@ -53,7 +53,7 @@ const asDialog = ({
           {children}
         </Command>
       </Dialog>
-    </DialogWrapper>
+    </DialogBase>
   );
 };
 
@@ -87,7 +87,7 @@ const Input = React.forwardRef<
       className={cn(
         "flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none duration-700 placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50",
 
-        className,
+        className
       )}
       ref={ref}
       {...props}
@@ -130,7 +130,7 @@ const Group = React.forwardRef<
   <CommandPrimitive.Group
     className={cn(
       "overflow-hidden p-1 text-foreground duration-700 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-secondary-foreground",
-      className,
+      className
     )}
     ref={ref}
     {...props}
@@ -146,7 +146,7 @@ const Separator = React.forwardRef<
   <CommandPrimitive.Separator
     className={cn(
       "-mx-1 h-px bg-l-bg-600 duration-700 dark:bg-d-bg-300",
-      className,
+      className
     )}
     ref={ref}
     {...props}
@@ -161,7 +161,7 @@ const Item = React.forwardRef<
   <CommandPrimitive.Item
     className={cn(
       "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none duration-700 aria-selected:bg-card aria-selected:text-muted-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-      className,
+      className
     )}
     ref={ref}
     {...props}
@@ -178,7 +178,7 @@ const Shortcut = ({
     <span
       className={cn(
         "ml-auto text-s tracking-widest font-bold text-foreground duration-700",
-        className,
+        className
       )}
       {...props}
     />

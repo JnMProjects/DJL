@@ -5,7 +5,7 @@ import * as React from "react";
 import * as RawTooltipPrimitive from "@radix-ui/react-tooltip";
 
 import { cn } from ">util/twm";
-import { cldText } from ">util/classnames";
+import { Text as cldText } from ">util/classnames";
 
 const RawTooltipProvider = RawTooltipPrimitive.Provider;
 

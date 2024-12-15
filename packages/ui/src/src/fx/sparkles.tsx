@@ -81,14 +81,14 @@ export const SparklesCore = (props: ParticlesProps): React.JSX.Element => {
   const generatedId = useId();
   return (
     <motion.div
-      data-testid="sparkles-container"
       animate={controls}
       className={cn("opacity-0", className)}
+      data-testid="sparkles-container"
     >
       {init ? (
         <Particles
-          data-testid="particles-container"
           className={cn("h-full w-full")}
+          data-testid="particles-container"
           id={id || generatedId}
           options={{
             background: {
