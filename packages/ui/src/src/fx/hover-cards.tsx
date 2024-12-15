@@ -41,12 +41,13 @@ export const HoverEffect = ({
         "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3  py-4",
         className
       )}
-      key="hovereffectfxwrapppper"
       data-testid="hover-cards-wrapper"
+      key="hovereffectfxwrapppper"
     >
       {items.map((item, idx) => (
         <Link
           className="relative group  block p-2 h-full w-full"
+          data-testid="hover-effect"
           href={item.href || "#"}
           id={item.title}
           key={item.title || generateRandomInt()}
@@ -56,7 +57,6 @@ export const HoverEffect = ({
           onMouseLeave={() => {
             setHoveredIndex(null);
           }}
-          data-testid="hover-effect"
         >
           <AnimatePresence>
             {hoveredIndex === idx && (

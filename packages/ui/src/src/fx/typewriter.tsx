@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { animate, motion, useMotionValue, useTransform } from "framer-motion";
-import { cldText } from ">util/classnames";
+import { Text as cldText } from ">util/classnames";
 import { cn } from ">util/twm";
 
 export interface TypewriterProps {

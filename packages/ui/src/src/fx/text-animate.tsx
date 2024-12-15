@@ -4,7 +4,7 @@ import type { FC } from "react";
 import { useRef } from "react";
 import type { HTMLMotionProps } from "framer-motion";
 import { motion, useAnimation } from "framer-motion";
-import { cldText } from ">util/classnames";
+import { Text as cldText } from ">util/classnames";
 import { cn } from ">util/twm";
 
 type AnimationType =
