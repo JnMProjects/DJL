@@ -1,3 +1,4 @@
 "use client";
 
-export * as SpringNumbers from "$/spring-numbers";
+import * as SpringNumbers from "$/spring-numbers";
+export default SpringNumbers;

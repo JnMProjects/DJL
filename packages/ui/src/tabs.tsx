@@ -1,2 +1,3 @@
 "use client";
-export * as Tabs from ">/tabs";
+import * as Tabs from ">/tabs";
+export default Tabs;

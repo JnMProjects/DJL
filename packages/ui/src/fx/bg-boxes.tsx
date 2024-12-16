@@ -1,3 +1,4 @@
 "use client";
 
-export * as BgBoxes from "$/bg-boxes";
+import * as BgBoxes from "$/bg-boxes";
+export default BgBoxes;

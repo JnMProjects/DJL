@@ -1,2 +1,3 @@
 "use client";
-export * as ScaleUp from ">/scale-up";
+import * as ScaleUp from ">/scale-up";
+export default ScaleUp;

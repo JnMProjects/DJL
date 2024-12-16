@@ -1,2 +1,3 @@
 "use client";
-export * as Sliders from ">/sliders";
+import * as Sliders from ">/sliders";
+export default Sliders;

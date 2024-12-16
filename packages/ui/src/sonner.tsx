@@ -1,3 +1,4 @@
 "use client";
 
-export * as Sonner from ">/sonner";
+import * as Sonner from ">/sonner";
+export default Sonner;

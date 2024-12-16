@@ -1,3 +1,4 @@
 "use client";
 
-export * as Drawer from ">/drawer";
+import * as Drawer from ">/drawer";
+export default Drawer;

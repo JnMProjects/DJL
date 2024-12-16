@@ -1,2 +1,3 @@
 "use client";
-export * as Popup from ">/popup";
+import * as Popup from ">/popup";
+export default Popup;

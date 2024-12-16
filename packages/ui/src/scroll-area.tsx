@@ -1,2 +1,3 @@
 "use client";
-export * as ScroolArea from ">/scroll-area";
+import * as ScrollArea from ">/scroll-area";
+export default ScrollArea;

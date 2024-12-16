@@ -1,1 +1,2 @@
-export * as Input from ">/inputs";
+import * as Input from ">/inputs";
+export default Input;

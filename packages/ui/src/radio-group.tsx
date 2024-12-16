@@ -1,2 +1,3 @@
 "use client";
-export * as RadioGroup from ">/radio-group";
+import * as RadioGroup from ">/radio-group";
+export default RadioGroup;

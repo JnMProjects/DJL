@@ -1,1 +1,2 @@
-export * as CustomCards from ">/custom-card";
+import * as CustomCards from ">/custom-card";
+export default CustomCards;
