@@ -9,3 +9,6 @@ export function info(): void {
     "Sorry but this package (@jackatdjl/djl-ui) does not support entrypoints anymore"
   );
 }
+
+export * as cldefault from ">util/classnames";
+export { cn } from ">util/twm";
