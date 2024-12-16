@@ -1,5 +1,11 @@
 # @jackatdjl/djl-ui
 
+## 0.3.0
+
+### Minor Changes
+
+- fc2fb83: Switched from Main Entrypoint to One Component Per File because of context issues
+
 ## 0.2.0
 
 ### Minor Changes
