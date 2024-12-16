@@ -1,5 +1,11 @@
 # @jackatdjl/djl-ui
 
+## 0.4.0
+
+### Minor Changes
+
+- e41f70f: Made Every Component a Default Export
+
 ## 0.3.0
 
 ### Minor Changes
