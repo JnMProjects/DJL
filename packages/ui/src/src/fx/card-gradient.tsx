@@ -4,6 +4,20 @@ import { cn } from ">util/twm";
 import React from "react";
 import { motion } from "framer-motion";
 
+/**
+ * #### BackgroundGradient
+ * BackgroundGradient component is a visual effect that creates a dynamic and colorful background.
+ * It uses motion animations and radial gradients to create a mesmerizing interaction with the user.
+ * @param children - The content to be rendered inside the component.
+ * @param className - Additional classes to be applied to the component.
+ * @param containerClassName - Additional classes to be applied to the container.
+ * @param animate - Boolean to enable or disable the animation.
+ * @returns JSX.Element - The rendered BackgroundGradient component.
+ *
+ * @remarks
+ * This Component is "inspired" and customized from the Base of {@link https://ui.aceternity.com/}
+ * @beta
+ */
 export const BackgroundGradient = ({
   children,
   className,

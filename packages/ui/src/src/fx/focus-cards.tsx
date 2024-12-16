@@ -9,6 +9,20 @@ import { memo, useState } from "react";
 import { cn } from ">util/twm";
 import Link from "next/link";
 
+/**
+ * #### Card
+ * Card component is a visual representation of a card with a hover effect.
+ * It displays an image with a title overlay that becomes visible on hover.
+ * @param card - The card data object containing title, src, href, and prefetch.
+ * @param index - The index of the card in the parent component.
+ * @param hovered - The index of the currently hovered card.
+ * @param setHovered - Function to set the index of the hovered card.
+ * @returns JSX.Element - The rendered Card component.
+ *
+ * @remarks
+ * This component is designed to be used within the FocusCards component.
+ * It relies on the hovered state and setHovered function to manage the hover effect.
+ */
 export const Card = memo(
   ({
     card,
@@ -65,6 +79,19 @@ interface Card {
   prefetch?: boolean;
 }
 
+/**
+ * #### FocusCards
+ * FocusCards component is a container for displaying multiple cards with a hover effect.
+ * It manages the state of the hovered card and applies a blur effect to non-hovered cards.
+ * @param cards - An array of card data objects.
+ * @returns JSX.Element - The rendered FocusCards component.
+ *
+ * @remarks
+ * This component is designed to be used as a self-contained card grid.
+ * It can be customized by passing in an array of card data objects.
+ *
+ * {@link https://ui.aceternity.com/}
+ */
 export function FocusCards({ cards }: { cards: Card[] }): React.JSX.Element {
   const [hovered, setHovered] = useState<number | null>(null);
 
@@ -73,8 +100,6 @@ export function FocusCards({ cards }: { cards: Card[] }): React.JSX.Element {
       className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto md:px-8 w-full"
       data-testid="focus-card-wrapper"
     >
-      {" "}
-      // Added testid for the wrapping div
       {cards.map((card, index) => (
         <Card
           card={card}

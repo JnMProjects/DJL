@@ -1,4 +1,5 @@
 "use client";
+
 // Credits: https://ui.aceternity.com/
 
 // Docs for dis: https://ui.aceternity.com/components/card-hover-effect
@@ -21,6 +22,18 @@ const generateRandomInt = (): number => {
   return result;
 };
 
+/**
+ * #### HoverEffect
+ * HoverEffect component is a visual effect that creates a dynamic hover interaction for cards.
+ * It uses motion animations to create a mesmerizing interaction with the user.
+ * @param items - An array of objects containing title, description, href, and bg properties for each card.
+ * @param className - Additional classes to be applied to the component.
+ * @returns JSX.Element - The rendered HoverEffect component.
+ *
+ * @remarks
+ * This Component is "inspired" and customized from the Base of {@link https://ui.aceternity.com/}
+ * @beta
+ */
 export const HoverEffect = ({
   items,
   className,
@@ -102,6 +115,20 @@ export const HoverEffect = ({
   );
 };
 
+/**
+ * #### Card
+ * Card component is a visual representation of a card with a hover effect.
+ * It displays an image with a title overlay that becomes visible on hover.
+ * @param className - Additional classes to be applied to the component.
+ * @param children - The content to be rendered inside the card.
+ * @param forewardkey - A unique key to be used for the card.
+ * @param bg - The background image URL for the card.
+ * @returns JSX.Element - The rendered Card component.
+ *
+ * @remarks
+ * This component is designed to be used within the HoverEffect component.
+ * It relies on the hovered state and setHovered function to manage the hover effect.
+ */
 export const Card = ({
   className,
   children,
@@ -136,6 +163,15 @@ export const Card = ({
     </div>
   );
 };
+
+/**
+ * #### CardTitle
+ * CardTitle component is a text representation of the card title.
+ * It is designed to be used within the Card component.
+ * @param className - Additional classes to be applied to the component.
+ * @param children - The title text to be rendered.
+ * @returns JSX.Element - The rendered CardTitle component.
+ */
 export const CardTitle = ({
   className,
   children,
@@ -151,6 +187,15 @@ export const CardTitle = ({
     </h4>
   );
 };
+
+/**
+ * #### CardDescription
+ * CardDescription component is a text representation of the card description.
+ * It is designed to be used within the Card component.
+ * @param className - Additional classes to be applied to the component.
+ * @param children - The description text to be rendered.
+ * @returns JSX.Element - The rendered CardDescription component.
+ */
 export const CardDescription = ({
   className,
   children,

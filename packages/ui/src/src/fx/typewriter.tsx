@@ -1,3 +1,16 @@
+/**
+ * #### Typewriter
+ * Typewriter component is a visual effect that creates a dynamic and interactive text animation.
+ * It uses motion animations to create a mesmerizing animation of typing text.
+ * @param delay - The delay before the animation starts. Defaults to 0.
+ * @param texts - An array of strings to be animated.
+ * @param baseText - The base text to be animated. Defaults to an empty string.
+ * @returns JSX.Element - The rendered Typewriter component.
+ *
+ * @remarks
+ * This Component is "inspired" and customized from the Base of {@link https://ui.aceternity.com/}
+ * @beta
+ */
 "use client";
 
 import { useEffect, useState } from "react";
@@ -5,12 +18,38 @@ import { animate, motion, useMotionValue, useTransform } from "framer-motion";
 import { Text as cldText } from ">util/classnames";
 import { cn } from ">util/twm";
 
+/**
+ * #### Typewriter
+ * Typewriter component is a visual effect that creates a dynamic and interactive text animation.
+ * It uses motion animations to create a mesmerizing animation of typing text.
+ * @param delay - The delay before the animation starts. Defaults to 0.
+ * @param texts - An array of strings to be animated.
+ * @param baseText - The base text to be animated. Defaults to an empty string.
+ * @returns JSX.Element - The rendered Typewriter component.
+ *
+ * @remarks
+ * This Component is "inspired" and customized from the Base of {@link https://ui.aceternity.com/}
+ * @beta
+ */
 export interface TypewriterProps {
   delay: number;
   texts: string[];
   baseText?: string;
 }
 
+/**
+ * #### Typewriter
+ * Typewriter component is a visual effect that creates a dynamic and interactive text animation.
+ * It uses motion animations to create a mesmerizing animation of typing text.
+ * @param delay - The delay before the animation starts. Defaults to 0.
+ * @param texts - An array of strings to be animated.
+ * @param baseText - The base text to be animated. Defaults to an empty string.
+ * @returns JSX.Element - The rendered Typewriter component.
+ *
+ * @remarks
+ * This Component is "inspired" and customized from the Base of {@link https://ui.aceternity.com/}
+ * @beta
+ */
 export function Typewriter({
   delay,
   texts,
@@ -49,6 +88,18 @@ export function Typewriter({
   );
 }
 
+/**
+ * #### RepeatedTextAnimation
+ * RepeatedTextAnimation component is a visual effect that creates a dynamic and interactive text animation.
+ * It uses motion animations to create a mesmerizing animation of typing text.
+ * @param delay - The delay before the animation starts. Defaults to 0.
+ * @param texts - An array of strings to be animated.
+ * @returns JSX.Element - The rendered RepeatedTextAnimation component.
+ *
+ * @remarks
+ * This Component is "inspired" and customized from the Base of {@link https://ui.aceternity.com/}
+ * @beta
+ */
 export interface RepeatedTextAnimationProps {
   delay: number;
   texts: string[];
@@ -105,6 +156,16 @@ function RepeatedTextAnimation({
   );
 }
 
+/**
+ * #### BlinkingCursor
+ * BlinkingCursor component is a visual effect that creates a dynamic and interactive cursor animation.
+ * It uses motion animations to create a mesmerizing animation of a blinking cursor.
+ * @returns JSX.Element - The rendered BlinkingCursor component.
+ *
+ * @remarks
+ * This Component is "inspired" and customized from the Base of {@link https://ui.aceternity.com/}
+ * @beta
+ */
 const cursorVariants = {
   blinking: {
     opacity: [0, 0, 1, 1],

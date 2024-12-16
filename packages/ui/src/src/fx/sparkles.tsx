@@ -23,6 +23,21 @@ interface ParticlesProps {
   particleColor?: string;
   particleDensity?: number;
 }
+/**
+ * #### SparklesCore
+ * SparklesCore component is a visual effect that creates a dynamic and interactive particle system.
+ * It uses the tsparticles library to generate a mesmerizing animation of particles that can be customized.
+ * @param id - The unique identifier for the component.
+ * @param className - Additional classes to be applied to the component.
+ * @param background - The background color of the particle system.
+ * @param particleSize - The size of the particles.
+ * @param minSize - The minimum size of the particles.
+ * @param maxSize - The maximum size of the particles.
+ * @param speed - The speed of the particles.
+ * @param particleColor - The color of the particles.
+ * @param particleDensity - The density of the particles.
+ * @returns JSX.Element - The rendered SparklesCore component.
+ */
 export const SparklesCore = (props: ParticlesProps): React.JSX.Element => {
   const {
     id,

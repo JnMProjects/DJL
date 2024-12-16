@@ -17,6 +17,15 @@ type AnimationType =
   | "whipInUp"
   | "calmInUp";
 
+/**
+ * #### TextAnimateProps
+ * Interface for defining properties of the TextAnimate component.
+ * @param text - The text to be animated.
+ * @param type - The type of animation to be applied. Defaults to "whipInUp".
+ * @param delay - The delay before the animation starts. Defaults to 0.
+ * @param duration - The duration of the animation. Defaults to 0.
+ * @param className - Additional classes to be applied to the component.
+ */
 interface TextAnimateProps extends HTMLMotionProps<"div"> {
   text: string;
   type?: AnimationType;
@@ -196,6 +205,19 @@ const animationVariants = {
   },
 };
 
+/**
+ * #### TextAnimate
+ * TextAnimate component is a visual effect that creates a dynamic and interactive text animation.
+ * It uses motion animations to create a mesmerizing interaction with the user.
+ * @param text - The text to be animated.
+ * @param type - The type of animation to be applied. Defaults to "whipInUp".
+ * @param className - Additional classes to be applied to the component.
+ * @returns JSX.Element - The rendered TextAnimate component.
+ *
+ * @remarks
+ * This Component is "inspired" and customized from the Base of {@link https://ui.aceternity.com/}
+ * @beta
+ */
 const TextAnimate: FC<TextAnimateProps> = ({
   text,
   type = "whipInUp",

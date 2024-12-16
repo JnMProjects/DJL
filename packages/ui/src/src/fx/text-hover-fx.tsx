@@ -3,6 +3,24 @@ import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "../util/twm";
 
+/**
+ * #### TextHoverEffect
+ * TextHoverEffect component is a visual effect that creates a dynamic hover interaction for text.
+ * It uses motion animations to create a mesmerizing interaction with the user.
+ * @param text - The text to be animated.
+ * @param duration - The duration of the animation. Defaults to 0.
+ * @param className - Additional classes to be applied to the component.
+ * @param thick - The thickness of the text stroke. Defaults to "0.3".
+ * @param font - The font of the text. Defaults to "helvetica".
+ * @param initial - The initial animation state. Defaults to null.
+ * @param animate - The animation state. Defaults to null.
+ * @param exit - The exit animation state. Defaults to null.
+ * @returns JSX.Element - The rendered TextHoverEffect component.
+ *
+ * @remarks
+ * This Component is "inspired" and customized from the Base of {@link https://ui.aceternity.com/}
+ * @beta
+ */
 export const TextHoverEffect = ({
   text,
   duration,
@@ -118,7 +136,7 @@ export const TextHoverEffect = ({
       <text
         className={cn(
           font ?? "font-[helvetica] font-bold ",
-          " stroke-neutral-200 dark:stroke-neutral-800 fill-transparent text-7xl",
+          " stroke-neutral-200 dark:stroke-neutral-800 fill-transparent text-7xl"
         )}
         dominantBaseline="middle"
         key="t1"
@@ -137,7 +155,7 @@ export const TextHoverEffect = ({
         }}
         className={cn(
           font ?? "font-[helvetica] font-bold ",
-          " font-bold fill-transparent text-7xl   stroke-neutral-200 dark:stroke-neutral-800",
+          " font-bold fill-transparent text-7xl   stroke-neutral-200 dark:stroke-neutral-800"
         )}
         dominantBaseline="middle"
         initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
@@ -156,7 +174,7 @@ export const TextHoverEffect = ({
       <text
         className={cn(
           font ?? "font-[helvetica] font-bold ",
-          " font-bold fill-transparent text-7xl  ",
+          " font-bold fill-transparent text-7xl  "
         )}
         dominantBaseline="middle"
         key="t3"

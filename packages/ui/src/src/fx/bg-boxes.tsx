@@ -6,6 +6,17 @@ import { memo } from "react";
 import { motion } from "framer-motion";
 import { cn } from ">util/twm";
 
+/**
+ * #### BoxesCore
+ * BoxesCore component is a visual effect that creates a dynamic and colorful background.
+ * It uses motion animations to create a mesmerizing interaction with the user.
+ * @param className - Additional classes to be applied to the component.
+ * @returns JSX.Element - The rendered BoxesCore component.
+ *
+ * @remarks
+ * This Component is "inspired" and customized from the Base of {@link https://ui.aceternity.com/}
+ * @beta
+ */
 export const BoxesCore: React.FC<{ className?: string }> = ({
   className,
   ...rest
@@ -87,4 +98,15 @@ export const BoxesCore: React.FC<{ className?: string }> = ({
   );
 };
 
+/**
+ * #### Boxes
+ * Boxes component is a memoized version of BoxesCore.
+ * It provides the same functionality as BoxesCore but with improved performance.
+ * @param className - Additional classes to be applied to the component.
+ * @returns JSX.Element - The rendered Boxes component.
+ *
+ * @remarks
+ * This Component is "inspired" and customized from the Base of {@link https://ui.aceternity.com/}
+ * @beta
+ */
 export const Boxes = memo(BoxesCore);
