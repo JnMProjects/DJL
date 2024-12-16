@@ -1,7 +1,12 @@
 import React from "react";
+interface UIProviderProps {
+  kitId: string;
+}
 
-function UIProvider(): React.JSX.Element {
-  return <link href="https://use.typekit.net/nib2aic.css" rel="stylesheet" />;
+function UIProvider({ kitId }: UIProviderProps): React.JSX.Element {
+  return (
+    <link href={`https://use.typekit.net/${kitId}.css`} rel="stylesheet" />
+  );
 }
 
 export default UIProvider;

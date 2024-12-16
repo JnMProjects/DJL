@@ -1,30 +1,11 @@
-export * as AspectRatio from ">/aspect-ratio";
-export { Button, buttonVariants } from ">/button";
-export * as Card from ">/card";
-export { Checkbox } from ">/checkbox";
-export * as Collapse from ">/collapse";
-export * as Command from ">/command";
-export * as CustomCard from ">/custom-card";
-export * as Dialog from ">/dialog";
-export * as Drawer from ">/drawer";
-export * as FloatingPanel from ">/floating-panel";
-export * as Input from ">/inputs";
-export { Label } from ">/label";
-export { LinkTip } from ">/linktip";
-export { default as Loader } from ">/loader";
-export * as Popup from ">/popup";
-export { Progress } from ">/progress";
-export { default as FontProvider } from ">/provider";
-export * as RadioGroup from ">/radio-group";
-export * as ScaleUp from ">/scale-up";
-export * as ScroolArea from ">/scroll-area";
-export { Separator } from ">/separator";
-export { Skeleton } from ">/skeleton";
-export * as Sliders from ">/sliders";
-export { Toaster, toast } from ">/sonner";
-export { Switch } from ">/switch";
-export * as Tabs from ">/tabs";
-export * as Toggle from ">/toggle";
-export { Tooltip } from ">/tooltip";
-
-export * as cldefault from ">util/classnames";
+/**
+ * ### Info
+ * This package does not support entrypoints anymore.
+ *
+ * @deprecated Import by individual Files - For more info visit [our Docs](https://example.org)
+ */
+export function info(): void {
+  console.info(
+    "Sorry but this package (@jackatdjl/djl-ui) does not support entrypoints anymore"
+  );
+}

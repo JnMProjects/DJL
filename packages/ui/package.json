@@ -4,15 +4,15 @@
   "sideEffects": false,
   "license": "MIT",
   "exports": {
-    ".": {
-      "types": "./src/index.tsx",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+    "./*": {
+      "types": "./src/src/ui/*.tsx",
+      "import": "./dist/*.mjs",
+      "require": "./dist/*.js"
     },
-    "./fx": {
-      "types": "./src/fx/fs.tsx",
-      "import": "./dist/fx/fs.mjs",
-      "require": "./dist/fx/fs.js"
+    "./fx/*": {
+      "types": "./src/src/fx/*.tsx",
+      "import": "./dist/fx/*.mjs",
+      "require": "./dist/fx/*.js"
     },
     "./tailwind": {
       "types": "./src/tailwind.ts",
