@@ -1,3 +1,4 @@
 "use client";
 
-export * as HoverCards from "$/hover-cards";
+import * as HoverCards from "$/hover-cards";
+export default HoverCards;

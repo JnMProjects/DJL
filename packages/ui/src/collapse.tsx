@@ -1,3 +1,4 @@
 "use client";
 
-export * as Collapse from ">/collapse";
+import * as Collapse from ">/collapse";
+export default Collapse;

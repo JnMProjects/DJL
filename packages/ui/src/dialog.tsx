@@ -1,3 +1,4 @@
 "use client";
 
-export * as Dialog from ">/dialog";
+import * as Dialog from ">/dialog";
+export default Dialog;

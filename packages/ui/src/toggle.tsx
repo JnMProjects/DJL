@@ -1,2 +1,3 @@
 "use client";
-export * as Toggle from ">/toggle";
+import * as Toggle from ">/toggle";
+export default Toggle;

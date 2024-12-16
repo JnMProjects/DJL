@@ -1,3 +1,4 @@
 "use client";
 
-export * as Command from ">/command";
+import * as Command from ">/command";
+export default Command;

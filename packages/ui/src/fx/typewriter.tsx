@@ -1,2 +1,3 @@
 "use client";
-export * as Typewriter from "$/typewriter";
+import * as Typewriter from "$/typewriter";
+export default Typewriter;

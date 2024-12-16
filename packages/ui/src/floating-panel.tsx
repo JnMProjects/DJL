@@ -1,1 +1,2 @@
-export * as FloatingPanel from ">/floating-panel";
+import * as FloatingPanel from ">/floating-panel";
+export default FloatingPanel;

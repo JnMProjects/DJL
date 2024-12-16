@@ -1,1 +1,2 @@
-export * as Card from ">/card";
+import * as Card from ">/card";
+export default Card;
