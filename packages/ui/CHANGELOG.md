@@ -1,5 +1,11 @@
 # @jackatdjl/djl-ui
 
+## 0.5.1
+
+### Patch Changes
+
+- b3537d7: Patched a Problem making it Hard to import Components (fixed by creating overwrides and tossing javascript)
+
 ## 0.5.0
 
 ### Minor Changes

@@ -1,6 +1,6 @@
 {
   "name": "@jackatdjl/djl-ui",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "sideEffects": false,
   "description": "This Package is typescript exclusive! (use the provided overwrites to use javascript)",
   "license": "MIT",
