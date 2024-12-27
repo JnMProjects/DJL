@@ -5,27 +5,9 @@
   "description": "This Package is typescript exclusive! (use the provided overwrites to use javascript)",
   "license": "MIT",
   "exports": {
-    "./*": {
-      "types": "./src/src/ui/*.tsx",
-      "import": "./dist/*.mjs",
-      "require": "./dist/*.js",
-      "node": "./src/src/ui/*.tsx",
-      "default": "./src/src/ui/*.tsx"
-    },
-    "./fx/*": {
-      "types": "./src/src/fx/*.tsx",
-      "import": "./dist/fx/*.mjs",
-      "require": "./dist/fx/*.js",
-      "node": "./src/src/fx/*.tsx",
-      "default": "./src/src/fx/*.tsx"
-    },
-    "./tailwind": {
-      "types": "./src/tailwind.ts",
-      "import": "./dist/tailwind.mjs",
-      "require": "./dist/tailwind.js",
-      "node": "./src/tailwind.ts",
-      "default": "./src/tailwind.ts"
-    }
+    "./*": "./src/src/ui/*.tsx",
+    "./fx/*": "./src/src/fx/*.tsx",
+    "./tailwind": "./src/tailwind.js"
   },
   "files": [
     "dist",
