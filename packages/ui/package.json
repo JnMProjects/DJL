@@ -1,6 +1,6 @@
 {
   "name": "@jackatdjl/djl-ui",
-  "version": "0.5.2",
+  "version": "0.5.2-canary.1",
   "sideEffects": false,
   "description": "This Package is typescript exclusive! (use the provided overwrites to use javascript)",
   "license": "MIT",
@@ -25,6 +25,123 @@
       "require": "./dist/tailwind.js",
       "node": "./src/tailwind.ts",
       "default": "./src/tailwind.ts"
+    },
+    "./ovwr/ui/aspect-ratio": {
+      "default": "./src/src/ui/aspect-ratio.tsx"
+    },
+    "./ovwr/ui/button": {
+      "default": "./src/src/ui/button.tsx"
+    },
+    "./ovwr/ui/card": {
+      "default": "./src/src/ui/card.tsx"
+    },
+    "./ovwr/ui/checkbox": {
+      "default": "./src/src/ui/checkbox.tsx"
+    },
+    "./ovwr/ui/collapse": {
+      "default": "./src/src/ui/collapse.tsx"
+    },
+    "./ovwr/ui/command": {
+      "default": "./src/src/ui/command.tsx"
+    },
+    "./ovwr/ui/custom-card": {
+      "default": "./src/src/ui/custom-card.tsx"
+    },
+    "./ovwr/ui/dialog": {
+      "default": "./src/src/ui/dialog.tsx"
+    },
+    "./ovwr/ui/drawer": {
+      "default": "./src/src/ui/drawer.tsx"
+    },
+    "./ovwr/ui/floating-panel": {
+      "default": "./src/src/ui/floating-panel.tsx"
+    },
+    "./ovwr/ui/inputs": {
+      "default": "./src/src/ui/inputs.tsx"
+    },
+    "./ovwr/ui/label": {
+      "default": "./src/src/ui/label.tsx"
+    },
+    "./ovwr/ui/linktip": {
+      "default": "./src/src/ui/linktip.tsx"
+    },
+    "./ovwr/ui/loader": {
+      "default": "./src/src/ui/loader.tsx"
+    },
+    "./ovwr/ui/popup": {
+      "default": "./src/src/ui/popup.tsx"
+    },
+    "./ovwr/ui/progress": {
+      "default": "./src/src/ui/progress.tsx"
+    },
+    "./ovwr/ui/provider": {
+      "default": "./src/src/ui/provider.tsx"
+    },
+    "./ovwr/ui/radio-group": {
+      "default": "./src/src/ui/radio-group.tsx"
+    },
+    "./ovwr/ui/scale-up": {
+      "default": "./src/src/ui/scale-up.tsx"
+    },
+    "./ovwr/ui/scrool-area": {
+      "default": "./src/src/ui/scrool-area.tsx"
+    },
+    "./ovwr/ui/seperator": {
+      "default": "./src/src/ui/seperator.tsx"
+    },
+    "./ovwr/ui/skeleton": {
+      "default": "./src/src/ui/skeleton.tsx"
+    },
+    "./ovwr/ui/sliders": {
+      "default": "./src/src/ui/sliders.tsx"
+    },
+    "./ovwr/ui/sonner": {
+      "default": "./src/src/ui/sonner.tsx"
+    },
+    "./ovwr/ui/switch": {
+      "default": "./src/src/ui/switch.tsx"
+    },
+    "./ovwr/ui/tabs": {
+      "default": "./src/src/ui/tabs.tsx"
+    },
+    "./ovwr/ui/toggle": {
+      "default": "./src/src/ui/toggle.tsx"
+    },
+    "./ovwr/ui/tooltip": {
+      "default": "./src/src/ui/tooltip.tsx"
+    },
+    "./ovwr/fx/bg-beams": {
+      "default": "./src/src/fx/bg-beams.tsx"
+    },
+    "./ovwr/fx/bg-boxes": {
+      "default": "./src/src/fx/bg-boxes.tsx"
+    },
+    "./ovwr/fx/card-gradient": {
+      "default": "./src/src/fx/card-gradient.tsx"
+    },
+    "./ovwr/fx/focus-cards": {
+      "default": "./src/src/fx/focus-cards.tsx"
+    },
+    "./ovwr/fx/hover-cards": {
+      "default": "./src/src/fx/hover-cards.tsx"
+    },
+    "./ovwr/fx/sparkles": {
+      "default": "./src/src/fx/sparkles.tsx"
+    },
+    "./ovwr/fx/spring-numbers": {
+      "default": "./src/src/fx/spring-numbers.tsx"
+    },
+    "./ovwr/fx/text-animate": {
+      "default": "./src/src/fx/text-animate.tsx"
+    },
+    "./ovwr/fx/text-hover-fx": {
+      "default": "./src/src/fx/text-hover-fx.tsx"
+    },
+    "./ovwr/fx/typewriter": {
+      "default": "./src/src/fx/typewriter.tsx"
+    },
+    "./ovwr/fx/vortex": {
+      "default": "./src/src/fx/vortex.tsx"
     }
   },
   "files": [
