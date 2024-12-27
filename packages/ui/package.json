@@ -1,6 +1,6 @@
 {
   "name": "@jackatdjl/djl-ui",
-  "version": "0.5.2-canary.8",
+  "version": "0.5.2-canary.9",
   "sideEffects": false,
   "description": "This Package is typescript exclusive! (use the provided overwrites to use javascript)",
   "license": "MIT",
@@ -73,13 +73,13 @@
     "jest-environment-jsdom": "^29.7.0",
     "ldrs": "^1.0.2",
     "mini-svg-data-uri": "^1.4.4",
-    "next": "^15.0.3",
+    "next": "15.1.1-canary.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10",
     "react-use-measure": "^2.1.1",
     "simplex-noise": "^4.0.3",
-    "sonner": "^1.7.0",
+    "sonner": "^1.7.1",
     "tailwind-merge": "^2.5.5",
     "tailwindcss": "^3.4.15",
     "vaul": "^1.1.1"
