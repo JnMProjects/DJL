@@ -1,6 +1,6 @@
 {
   "name": "@jackatdjl/djl-ui",
-  "version": "0.5.2-canary.4",
+  "version": "0.5.2-canary.5",
   "sideEffects": false,
   "description": "This Package is typescript exclusive! (use the provided overwrites to use javascript)",
   "license": "MIT",
@@ -26,19 +26,278 @@
       "node": "./src/tailwind.ts",
       "default": "./src/tailwind.ts"
     },
-    "./ovwrui/*": {
-      "types": "./src/src/ui/*.tsx",
-      "import": "./src/src/ui/*.tsx",
-      "require": "./src/src/ui/*.tsx",
-      "node": "./src/src/ui/*.tsx",
-      "default": "./src/src/ui/*.tsx"
+    "./ui-aspect-ratio": {
+      "types": "./src/src/ui/aspect-ratio.tsx",
+      "import": "./src/src/ui/aspect-ratio.tsx",
+      "require": "./src/src/ui/aspect-ratio.tsx",
+      "node": "./src/src/ui/aspect-ratio.tsx",
+      "default": "./src/src/ui/aspect-ratio.tsx"
     },
-    "./ovwrfx/*": {
-      "types": "./src/src/fx/*.tsx",
-      "import": "./src/src/fx/*.tsx",
-      "require": "./src/src/fx/*.tsx",
-      "node": "./src/src/fx/*.tsx",
-      "default": "./src/src/fx/*.tsx"
+    "./ui-button": {
+      "types": "./src/src/ui/button.tsx",
+      "import": "./src/src/ui/button.tsx",
+      "require": "./src/src/ui/button.tsx",
+      "node": "./src/src/ui/button.tsx",
+      "default": "./src/src/ui/button.tsx"
+    },
+    "./ui-card": {
+      "types": "./src/src/ui/card.tsx",
+      "import": "./src/src/ui/card.tsx",
+      "require": "./src/src/ui/card.tsx",
+      "node": "./src/src/ui/card.tsx",
+      "default": "./src/src/ui/card.tsx"
+    },
+    "./ui-checkbox": {
+      "types": "./src/src/ui/checkbox.tsx",
+      "import": "./src/src/ui/checkbox.tsx",
+      "require": "./src/src/ui/checkbox.tsx",
+      "node": "./src/src/ui/checkbox.tsx",
+      "default": "./src/src/ui/checkbox.tsx"
+    },
+    "./ui-collapse": {
+      "types": "./src/src/ui/collapse.tsx",
+      "import": "./src/src/ui/collapse.tsx",
+      "require": "./src/src/ui/collapse.tsx",
+      "node": "./src/src/ui/collapse.tsx",
+      "default": "./src/src/ui/collapse.tsx"
+    },
+    "./ui-command": {
+      "types": "./src/src/ui/command.tsx",
+      "import": "./src/src/ui/command.tsx",
+      "require": "./src/src/ui/command.tsx",
+      "node": "./src/src/ui/command.tsx",
+      "default": "./src/src/ui/command.tsx"
+    },
+    "./ui-custom-card": {
+      "types": "./src/src/ui/custom-card.tsx",
+      "import": "./src/src/ui/custom-card.tsx",
+      "require": "./src/src/ui/custom-card.tsx",
+      "node": "./src/src/ui/custom-card.tsx",
+      "default": "./src/src/ui/custom-card.tsx"
+    },
+    "./ui-dialog": {
+      "types": "./src/src/ui/dialog.tsx",
+      "import": "./src/src/ui/dialog.tsx",
+      "require": "./src/src/ui/dialog.tsx",
+      "node": "./src/src/ui/dialog.tsx",
+      "default": "./src/src/ui/dialog.tsx"
+    },
+    "./ui-drawer": {
+      "types": "./src/src/ui/drawer.tsx",
+      "import": "./src/src/ui/drawer.tsx",
+      "require": "./src/src/ui/drawer.tsx",
+      "node": "./src/src/ui/drawer.tsx",
+      "default": "./src/src/ui/drawer.tsx"
+    },
+    "./ui-floating-panel": {
+      "types": "./src/src/ui/floating-panel.tsx",
+      "import": "./src/src/ui/floating-panel.tsx",
+      "require": "./src/src/ui/floating-panel.tsx",
+      "node": "./src/src/ui/floating-panel.tsx",
+      "default": "./src/src/ui/floating-panel.tsx"
+    },
+    "./ui-inputs": {
+      "types": "./src/src/ui/inputs.tsx",
+      "import": "./src/src/ui/inputs.tsx",
+      "require": "./src/src/ui/inputs.tsx",
+      "node": "./src/src/ui/inputs.tsx",
+      "default": "./src/src/ui/inputs.tsx"
+    },
+    "./ui-label": {
+      "types": "./src/src/ui/label.tsx",
+      "import": "./src/src/ui/label.tsx",
+      "require": "./src/src/ui/label.tsx",
+      "node": "./src/src/ui/label.tsx",
+      "default": "./src/src/ui/label.tsx"
+    },
+    "./ui-linktip": {
+      "types": "./src/src/ui/linktip.tsx",
+      "import": "./src/src/ui/linktip.tsx",
+      "require": "./src/src/ui/linktip.tsx",
+      "node": "./src/src/ui/linktip.tsx",
+      "default": "./src/src/ui/linktip.tsx"
+    },
+    "./ui-loader": {
+      "types": "./src/src/ui/loader.tsx",
+      "import": "./src/src/ui/loader.tsx",
+      "require": "./src/src/ui/loader.tsx",
+      "node": "./src/src/ui/loader.tsx",
+      "default": "./src/src/ui/loader.tsx"
+    },
+    "./ui-popup": {
+      "types": "./src/src/ui/popup.tsx",
+      "import": "./src/src/ui/popup.tsx",
+      "require": "./src/src/ui/popup.tsx",
+      "node": "./src/src/ui/popup.tsx",
+      "default": "./src/src/ui/popup.tsx"
+    },
+    "./ui-progress": {
+      "types": "./src/src/ui/progress.tsx",
+      "import": "./src/src/ui/progress.tsx",
+      "require": "./src/src/ui/progress.tsx",
+      "node": "./src/src/ui/progress.tsx",
+      "default": "./src/src/ui/progress.tsx"
+    },
+    "./ui-provider": {
+      "types": "./src/src/ui/provider.tsx",
+      "import": "./src/src/ui/provider.tsx",
+      "require": "./src/src/ui/provider.tsx",
+      "node": "./src/src/ui/provider.tsx",
+      "default": "./src/src/ui/provider.tsx"
+    },
+    "./ui-radio-group": {
+      "types": "./src/src/ui/radio-group.tsx",
+      "import": "./src/src/ui/radio-group.tsx",
+      "require": "./src/src/ui/radio-group.tsx",
+      "node": "./src/src/ui/radio-group.tsx",
+      "default": "./src/src/ui/radio-group.tsx"
+    },
+    "./ui-scale-up": {
+      "types": "./src/src/ui/scale-up.tsx",
+      "import": "./src/src/ui/scale-up.tsx",
+      "require": "./src/src/ui/scale-up.tsx",
+      "node": "./src/src/ui/scale-up.tsx",
+      "default": "./src/src/ui/scale-up.tsx"
+    },
+    "./ui-scrool-area": {
+      "types": "./src/src/ui/scrool-area.tsx",
+      "import": "./src/src/ui/scrool-area.tsx",
+      "require": "./src/src/ui/scrool-area.tsx",
+      "node": "./src/src/ui/scrool-area.tsx",
+      "default": "./src/src/ui/scrool-area.tsx"
+    },
+    "./ui-seperator": {
+      "types": "./src/src/ui/seperator.tsx",
+      "import": "./src/src/ui/seperator.tsx",
+      "require": "./src/src/ui/seperator.tsx",
+      "node": "./src/src/ui/seperator.tsx",
+      "default": "./src/src/ui/seperator.tsx"
+    },
+    "./ui-skeleton": {
+      "types": "./src/src/ui/skeleton.tsx",
+      "import": "./src/src/ui/skeleton.tsx",
+      "require": "./src/src/ui/skeleton.tsx",
+      "node": "./src/src/ui/skeleton.tsx",
+      "default": "./src/src/ui/skeleton.tsx"
+    },
+    "./ui-sliders": {
+      "types": "./src/src/ui/sliders.tsx",
+      "import": "./src/src/ui/sliders.tsx",
+      "require": "./src/src/ui/sliders.tsx",
+      "node": "./src/src/ui/sliders.tsx",
+      "default": "./src/src/ui/sliders.tsx"
+    },
+    "./ui-sonner": {
+      "types": "./src/src/ui/sonner.tsx",
+      "import": "./src/src/ui/sonner.tsx",
+      "require": "./src/src/ui/sonner.tsx",
+      "node": "./src/src/ui/sonner.tsx",
+      "default": "./src/src/ui/sonner.tsx"
+    },
+    "./ui-switch": {
+      "types": "./src/src/ui/switch.tsx",
+      "import": "./src/src/ui/switch.tsx",
+      "require": "./src/src/ui/switch.tsx",
+      "node": "./src/src/ui/switch.tsx",
+      "default": "./src/src/ui/switch.tsx"
+    },
+    "./ui-tabs": {
+      "types": "./src/src/ui/tabs.tsx",
+      "import": "./src/src/ui/tabs.tsx",
+      "require": "./src/src/ui/tabs.tsx",
+      "node": "./src/src/ui/tabs.tsx",
+      "default": "./src/src/ui/tabs.tsx"
+    },
+    "./ui-toggle": {
+      "types": "./src/src/ui/toggle.tsx",
+      "import": "./src/src/ui/toggle.tsx",
+      "require": "./src/src/ui/toggle.tsx",
+      "node": "./src/src/ui/toggle.tsx",
+      "default": "./src/src/ui/toggle.tsx"
+    },
+    "./ui-tooltip": {
+      "types": "./src/src/ui/tooltip.tsx",
+      "import": "./src/src/ui/tooltip.tsx",
+      "require": "./src/src/ui/tooltip.tsx",
+      "node": "./src/src/ui/tooltip.tsx",
+      "default": "./src/src/ui/tooltip.tsx"
+    },
+    "./fx-bg-beams": {
+      "types": "./src/src/fx/bg-beams.tsx",
+      "import": "./src/src/fx/bg-beams.tsx",
+      "require": "./src/src/fx/bg-beams.tsx",
+      "node": "./src/src/fx/bg-beams.tsx",
+      "default": "./src/src/fx/bg-beams.tsx"
+    },
+    "./fx-bg-boxes": {
+      "types": "./src/src/fx/bg-boxes.tsx",
+      "import": "./src/src/fx/bg-boxes.tsx",
+      "require": "./src/src/fx/bg-boxes.tsx",
+      "node": "./src/src/fx/bg-boxes.tsx",
+      "default": "./src/src/fx/bg-boxes.tsx"
+    },
+    "./fx-card-gradient": {
+      "types": "./src/src/fx/card-gradient.tsx",
+      "import": "./src/src/fx/card-gradient.tsx",
+      "require": "./src/src/fx/card-gradient.tsx",
+      "node": "./src/src/fx/card-gradient.tsx",
+      "default": "./src/src/fx/card-gradient.tsx"
+    },
+    "./fx-focus-cards": {
+      "types": "./src/src/fx/focus-cards.tsx",
+      "import": "./src/src/fx/focus-cards.tsx",
+      "require": "./src/src/fx/focus-cards.tsx",
+      "node": "./src/src/fx/focus-cards.tsx",
+      "default": "./src/src/fx/focus-cards.tsx"
+    },
+    "./fx-hover-cards": {
+      "types": "./src/src/fx/hover-cards.tsx",
+      "import": "./src/src/fx/hover-cards.tsx",
+      "require": "./src/src/fx/hover-cards.tsx",
+      "node": "./src/src/fx/hover-cards.tsx",
+      "default": "./src/src/fx/hover-cards.tsx"
+    },
+    "./fx-sparkles": {
+      "types": "./src/src/fx/sparkles.tsx",
+      "import": "./src/src/fx/sparkles.tsx",
+      "require": "./src/src/fx/sparkles.tsx",
+      "node": "./src/src/fx/sparkles.tsx",
+      "default": "./src/src/fx/sparkles.tsx"
+    },
+    "./fx-spring-numbers": {
+      "types": "./src/src/fx/spring-numbers.tsx",
+      "import": "./src/src/fx/spring-numbers.tsx",
+      "require": "./src/src/fx/spring-numbers.tsx",
+      "node": "./src/src/fx/spring-numbers.tsx",
+      "default": "./src/src/fx/spring-numbers.tsx"
+    },
+    "./fx-text-animate": {
+      "types": "./src/src/fx/text-animate.tsx",
+      "import": "./src/src/fx/text-animate.tsx",
+      "require": "./src/src/fx/text-animate.tsx",
+      "node": "./src/src/fx/text-animate.tsx",
+      "default": "./src/src/fx/text-animate.tsx"
+    },
+    "./fx-text-hover-fx": {
+      "types": "./src/src/fx/text-hover-fx.tsx",
+      "import": "./src/src/fx/text-hover-fx.tsx",
+      "require": "./src/src/fx/text-hover-fx.tsx",
+      "node": "./src/src/fx/text-hover-fx.tsx",
+      "default": "./src/src/fx/text-hover-fx.tsx"
+    },
+    "./fx-typewriter": {
+      "types": "./src/src/fx/typewriter.tsx",
+      "import": "./src/src/fx/typewriter.tsx",
+      "require": "./src/src/fx/typewriter.tsx",
+      "node": "./src/src/fx/typewriter.tsx",
+      "default": "./src/src/fx/typewriter.tsx"
+    },
+    "./fx-vortex": {
+      "types": "./src/src/fx/vortex.tsx",
+      "import": "./src/src/fx/vortex.tsx",
+      "require": "./src/src/fx/vortex.tsx",
+      "node": "./src/src/fx/vortex.tsx",
+      "default": "./src/src/fx/vortex.tsx"
     }
   },
   "files": [
