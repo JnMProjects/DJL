@@ -1,6 +1,6 @@
 {
   "name": "@jackatdjl/djl-ui",
-  "version": "0.5.2-canary.9",
+  "version": "0.5.2-canary.10",
   "sideEffects": false,
   "description": "This Package is typescript exclusive! (use the provided overwrites to use javascript)",
   "license": "MIT",
@@ -31,10 +31,6 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^14.5.2",
-    "@types/jest": "^29.5.14",
-    "@types/node": "^20.11.24",
-    "@types/react": "^18.2.61",
-    "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^8.18.0",
     "eslint": "^9.16.0",
     "eslint-plugin-import": "^2.30.0",
@@ -46,6 +42,10 @@
     "typescript": "5.5.4"
   },
   "dependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^20.11.24",
+    "@types/react": "^18.2.61",
+    "@types/react-dom": "^18.2.19",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-alert-dialog": "^1.1.2",
     "@radix-ui/react-aspect-ratio": "^1.1.0",
