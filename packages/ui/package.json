@@ -1,34 +1,17 @@
 {
   "name": "@jackatdjl/djl-ui",
-  "version": "0.5.2",
+  "version": "0.5.2-canary.11",
   "sideEffects": false,
   "description": "This Package is typescript exclusive! (use the provided overwrites to use javascript)",
   "license": "MIT",
   "exports": {
-    "./*": {
-      "types": "./src/src/ui/*.tsx",
-      "import": "./dist/*.mjs",
-      "require": "./dist/*.js",
-      "node": "./src/src/ui/*.tsx",
-      "default": "./src/src/ui/*.tsx"
-    },
-    "./fx/*": {
-      "types": "./src/src/fx/*.tsx",
-      "import": "./dist/fx/*.mjs",
-      "require": "./dist/fx/*.js",
-      "node": "./src/src/fx/*.tsx",
-      "default": "./src/src/fx/*.tsx"
-    },
-    "./tailwind": {
-      "types": "./src/tailwind.ts",
-      "import": "./dist/tailwind.mjs",
-      "require": "./dist/tailwind.js",
-      "node": "./src/tailwind.ts",
-      "default": "./src/tailwind.ts"
-    }
+    "./*": "./src/src/ui/*.tsx",
+    "./fx/*": "./src/src/fx/*.tsx",
+    "./tailwind": "./src/tailwind.js"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
     "build": "tsup",
@@ -48,10 +31,6 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^14.5.2",
-    "@types/jest": "^29.5.14",
-    "@types/node": "^20.11.24",
-    "@types/react": "^18.2.61",
-    "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^8.18.0",
     "eslint": "^9.16.0",
     "eslint-plugin-import": "^2.30.0",
@@ -63,6 +42,10 @@
     "typescript": "5.5.4"
   },
   "dependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^20.11.24",
+    "@types/react": "^18.2.61",
+    "@types/react-dom": "^18.2.19",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-alert-dialog": "^1.1.2",
     "@radix-ui/react-aspect-ratio": "^1.1.0",
@@ -90,13 +73,13 @@
     "jest-environment-jsdom": "^29.7.0",
     "ldrs": "^1.0.2",
     "mini-svg-data-uri": "^1.4.4",
-    "next": "^15.0.3",
+    "next": "15.1.1-canary.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10",
     "react-use-measure": "^2.1.1",
     "simplex-noise": "^4.0.3",
-    "sonner": "^1.7.0",
+    "sonner": "^1.7.1",
     "tailwind-merge": "^2.5.5",
     "tailwindcss": "^3.4.15",
     "vaul": "^1.1.1"

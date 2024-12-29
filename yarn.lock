@@ -1653,7 +1653,52 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jackatdjl/djl-ui@npm:*, @jackatdjl/djl-ui@workspace:packages/ui":
+"@jackatdjl/djl-ui@npm:*":
+  version: 0.5.2
+  resolution: "@jackatdjl/djl-ui@npm:0.5.2"
+  dependencies:
+    "@radix-ui/react-accordion": "npm:^1.2.1"
+    "@radix-ui/react-alert-dialog": "npm:^1.1.2"
+    "@radix-ui/react-aspect-ratio": "npm:^1.1.0"
+    "@radix-ui/react-checkbox": "npm:^1.1.2"
+    "@radix-ui/react-dialog": "npm:^1.1.2"
+    "@radix-ui/react-label": "npm:^2.1.0"
+    "@radix-ui/react-popover": "npm:^1.1.2"
+    "@radix-ui/react-progress": "npm:^1.1.0"
+    "@radix-ui/react-radio-group": "npm:^1.2.1"
+    "@radix-ui/react-scroll-area": "npm:^1.2.1"
+    "@radix-ui/react-separator": "npm:^1.1.0"
+    "@radix-ui/react-slider": "npm:^1.2.1"
+    "@radix-ui/react-slot": "npm:^1.1.0"
+    "@radix-ui/react-switch": "npm:^1.1.1"
+    "@radix-ui/react-toggle": "npm:^1.1.0"
+    "@radix-ui/react-toggle-group": "npm:^1.1.0"
+    "@radix-ui/react-tooltip": "npm:^1.1.4"
+    "@tsparticles/engine": "npm:^3.7.1"
+    "@tsparticles/react": "npm:^3.0.0"
+    "@tsparticles/slim": "npm:^3.7.1"
+    cmdk: "npm:^1.0.4"
+    cva: "npm:1.0.0-beta.2"
+    framer-motion: "npm:^11.13.1"
+    input-otp: "npm:^1.4.1"
+    jest-environment-jsdom: "npm:^29.7.0"
+    ldrs: "npm:^1.0.2"
+    mini-svg-data-uri: "npm:^1.4.4"
+    next: "npm:^15.0.3"
+    react: "npm:^18.2.0"
+    react-dom: "npm:^18.2.0"
+    react-feather: "npm:^2.0.10"
+    react-use-measure: "npm:^2.1.1"
+    simplex-noise: "npm:^4.0.3"
+    sonner: "npm:^1.7.0"
+    tailwind-merge: "npm:^2.5.5"
+    tailwindcss: "npm:^3.4.15"
+    vaul: "npm:^1.1.1"
+  checksum: 10c3/d5a207b4a68a2a6d39fce76062f5f717425702a16b7d7f8099c299594dbc08c777f74916bf4a3036b7b9682cd417bc5a0ab1d176e24b429a48cc269bbbc0e0fe
+  languageName: node
+  linkType: hard
+
+"@jackatdjl/djl-ui@workspace:packages/ui":
   version: 0.0.0-use.local
   resolution: "@jackatdjl/djl-ui@workspace:packages/ui"
   dependencies:
@@ -1703,13 +1748,13 @@ __metadata:
     jest-environment-jsdom: "npm:^29.7.0"
     ldrs: "npm:^1.0.2"
     mini-svg-data-uri: "npm:^1.4.4"
-    next: "npm:^15.0.3"
+    next: "npm:15.1.1-canary.21"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     react-feather: "npm:^2.0.10"
     react-use-measure: "npm:^2.1.1"
     simplex-noise: "npm:^4.0.3"
-    sonner: "npm:^1.7.0"
+    sonner: "npm:^1.7.1"
     tailwind-merge: "npm:^2.5.5"
     tailwindcss: "npm:^3.4.15"
     ts-jest: "npm:^29.2.5"
@@ -2082,9 +2127,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@next/env@npm:15.1.1-canary.21":
+  version: 15.1.1-canary.21
+  resolution: "@next/env@npm:15.1.1-canary.21"
+  checksum: 10c3/efd40e2c3a0a5947f2f2418545bf0622a84dc62b33f49755b6305a0ec8ba6d57d306b391823e8876cdfe3a797786e029aad86d3440269bb8480839dc51307ca8
+  languageName: node
+  linkType: hard
+
 "@next/swc-darwin-arm64@npm:15.0.3":
   version: 15.0.3
   resolution: "@next/swc-darwin-arm64@npm:15.0.3"
+  conditions: os=darwin & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"@next/swc-darwin-arm64@npm:15.1.1-canary.21":
+  version: 15.1.1-canary.21
+  resolution: "@next/swc-darwin-arm64@npm:15.1.1-canary.21"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
@@ -2096,9 +2155,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@next/swc-darwin-x64@npm:15.1.1-canary.21":
+  version: 15.1.1-canary.21
+  resolution: "@next/swc-darwin-x64@npm:15.1.1-canary.21"
+  conditions: os=darwin & cpu=x64
+  languageName: node
+  linkType: hard
+
 "@next/swc-linux-arm64-gnu@npm:15.0.3":
   version: 15.0.3
   resolution: "@next/swc-linux-arm64-gnu@npm:15.0.3"
+  conditions: os=linux & cpu=arm64 & libc=glibc
+  languageName: node
+  linkType: hard
+
+"@next/swc-linux-arm64-gnu@npm:15.1.1-canary.21":
+  version: 15.1.1-canary.21
+  resolution: "@next/swc-linux-arm64-gnu@npm:15.1.1-canary.21"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
@@ -2110,9 +2183,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@next/swc-linux-arm64-musl@npm:15.1.1-canary.21":
+  version: 15.1.1-canary.21
+  resolution: "@next/swc-linux-arm64-musl@npm:15.1.1-canary.21"
+  conditions: os=linux & cpu=arm64 & libc=musl
+  languageName: node
+  linkType: hard
+
 "@next/swc-linux-x64-gnu@npm:15.0.3":
   version: 15.0.3
   resolution: "@next/swc-linux-x64-gnu@npm:15.0.3"
+  conditions: os=linux & cpu=x64 & libc=glibc
+  languageName: node
+  linkType: hard
+
+"@next/swc-linux-x64-gnu@npm:15.1.1-canary.21":
+  version: 15.1.1-canary.21
+  resolution: "@next/swc-linux-x64-gnu@npm:15.1.1-canary.21"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
@@ -2124,6 +2211,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@next/swc-linux-x64-musl@npm:15.1.1-canary.21":
+  version: 15.1.1-canary.21
+  resolution: "@next/swc-linux-x64-musl@npm:15.1.1-canary.21"
+  conditions: os=linux & cpu=x64 & libc=musl
+  languageName: node
+  linkType: hard
+
 "@next/swc-win32-arm64-msvc@npm:15.0.3":
   version: 15.0.3
   resolution: "@next/swc-win32-arm64-msvc@npm:15.0.3"
@@ -2131,9 +2225,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@next/swc-win32-arm64-msvc@npm:15.1.1-canary.21":
+  version: 15.1.1-canary.21
+  resolution: "@next/swc-win32-arm64-msvc@npm:15.1.1-canary.21"
+  conditions: os=win32 & cpu=arm64
+  languageName: node
+  linkType: hard
+
 "@next/swc-win32-x64-msvc@npm:15.0.3":
   version: 15.0.3
   resolution: "@next/swc-win32-x64-msvc@npm:15.0.3"
+  conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@next/swc-win32-x64-msvc@npm:15.1.1-canary.21":
+  version: 15.1.1-canary.21
+  resolution: "@next/swc-win32-x64-msvc@npm:15.1.1-canary.21"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -3722,6 +3830,15 @@ __metadata:
   dependencies:
     tslib: "npm:^2.4.0"
   checksum: 10c3/22dc6dd70584006eee6ed3b17f448092710a58f04472ba3a7fa1f4efd927d393938b512832609fea820530f30cbc13d2210af141ce1fd91af3f5d3c03ea6f6fb
+  languageName: node
+  linkType: hard
+
+"@swc/helpers@npm:0.5.15":
+  version: 0.5.15
+  resolution: "@swc/helpers@npm:0.5.15"
+  dependencies:
+    tslib: "npm:^2.8.0"
+  checksum: 10c3/7cf7f592ae4d5b96eab67240ae5c511382394fde1295bcfeebd9851378b72ade4d4fde2f3ed541f193cb75bf0f22c62b859c9b95a84a7af057b603cca48c2564
   languageName: node
   linkType: hard
 
@@ -10812,6 +10929,67 @@ __metadata:
   languageName: node
   linkType: hard
 
+"next@npm:15.1.1-canary.21":
+  version: 15.1.1-canary.21
+  resolution: "next@npm:15.1.1-canary.21"
+  dependencies:
+    "@next/env": "npm:15.1.1-canary.21"
+    "@next/swc-darwin-arm64": "npm:15.1.1-canary.21"
+    "@next/swc-darwin-x64": "npm:15.1.1-canary.21"
+    "@next/swc-linux-arm64-gnu": "npm:15.1.1-canary.21"
+    "@next/swc-linux-arm64-musl": "npm:15.1.1-canary.21"
+    "@next/swc-linux-x64-gnu": "npm:15.1.1-canary.21"
+    "@next/swc-linux-x64-musl": "npm:15.1.1-canary.21"
+    "@next/swc-win32-arm64-msvc": "npm:15.1.1-canary.21"
+    "@next/swc-win32-x64-msvc": "npm:15.1.1-canary.21"
+    "@swc/counter": "npm:0.1.3"
+    "@swc/helpers": "npm:0.5.15"
+    busboy: "npm:1.6.0"
+    caniuse-lite: "npm:^1.0.30001579"
+    postcss: "npm:8.4.31"
+    sharp: "npm:^0.33.5"
+    styled-jsx: "npm:5.1.6"
+  peerDependencies:
+    "@opentelemetry/api": ^1.1.0
+    "@playwright/test": ^1.41.2
+    babel-plugin-react-compiler: "*"
+    react: ^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0
+    react-dom: ^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0
+    sass: ^1.3.0
+  dependenciesMeta:
+    "@next/swc-darwin-arm64":
+      optional: true
+    "@next/swc-darwin-x64":
+      optional: true
+    "@next/swc-linux-arm64-gnu":
+      optional: true
+    "@next/swc-linux-arm64-musl":
+      optional: true
+    "@next/swc-linux-x64-gnu":
+      optional: true
+    "@next/swc-linux-x64-musl":
+      optional: true
+    "@next/swc-win32-arm64-msvc":
+      optional: true
+    "@next/swc-win32-x64-msvc":
+      optional: true
+    sharp:
+      optional: true
+  peerDependenciesMeta:
+    "@opentelemetry/api":
+      optional: true
+    "@playwright/test":
+      optional: true
+    babel-plugin-react-compiler:
+      optional: true
+    sass:
+      optional: true
+  bin:
+    next: dist/bin/next
+  checksum: 10c3/d03b4d3a2f708e418d991fb7f6149c6206821182a5a1dbdce5b2c62aca67fe9ca44b67e9498233d74c2c4a7b4e89245c7579beb3e714c129a0ec625fe80dd44d
+  languageName: node
+  linkType: hard
+
 "next@npm:^15.0.3":
   version: 15.0.3
   resolution: "next@npm:15.0.3"
@@ -12679,6 +12857,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"sonner@npm:^1.7.1":
+  version: 1.7.1
+  resolution: "sonner@npm:1.7.1"
+  peerDependencies:
+    react: ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+    react-dom: ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+  checksum: 10c3/d9d184af9c8cc83f3ea42c73a3f9dee6f1cf91ec0ee8dcba7342471091abe45e2df1967086a66bee8bf4f6f85bc5152449badf88307b47cda395ed537238bf67
+  languageName: node
+  linkType: hard
+
 "sort-object-keys@npm:^1.1.3":
   version: 1.1.3
   resolution: "sort-object-keys@npm:1.1.3"
@@ -13463,7 +13651,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.0, tslib@npm:^2.0.1, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.6.2":
+"tslib@npm:^2.0.0, tslib@npm:^2.0.1, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.6.2, tslib@npm:^2.8.0":
   version: 2.8.1
   resolution: "tslib@npm:2.8.1"
   checksum: 10c3/f5579651f74120a1a191f5bd08c7eb7f5225ca1e0fc10109d783e5ee533d9e032dd5387e6d37a95315ae11c97d155a7697bdba8659b8840485e9fa329d67ff7e
