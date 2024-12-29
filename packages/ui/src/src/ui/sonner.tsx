@@ -31,4 +31,4 @@ const Toaster = ({ ...props }: ToasterProps): React.JSX.Element => {
   );
 };
 
-export { Toaster, toast };
+export { Toaster, type ToasterProps, toast };
