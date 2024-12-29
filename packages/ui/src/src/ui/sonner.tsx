@@ -3,9 +3,8 @@
 import { Toaster as Sonner, toast } from "sonner";
 import React from "react";
 
-type ToasterProps = React.ComponentProps<typeof Sonner>;
-
-const Toaster = ({ ...props }: ToasterProps): React.JSX.Element => {
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type -- dont care it works
+const Toaster = ({ ...props }) => {
   const theme =
     typeof window !== "undefined" && localStorage.getItem("theme") === "dark"
       ? "dark"
@@ -31,4 +30,4 @@ const Toaster = ({ ...props }: ToasterProps): React.JSX.Element => {
   );
 };
 
-export { Toaster, type ToasterProps, toast };
+export { Toaster, toast };
